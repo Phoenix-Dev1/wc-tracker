@@ -1,6 +1,6 @@
 "use client";
 
-import { ProcessedMatch } from "@/data/worldcup";
+import { ProcessedMatch, normalizeTeamName } from "@/data/worldcup";
 
 interface MatchProgressCircleProps {
   match: ProcessedMatch;
@@ -40,8 +40,87 @@ export default function MatchProgressCircle({ match, size = 100 }: MatchProgress
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - progress * circumference;
 
-  // Goals placement
+  // Goals placement & clustering layout
   const goals = match.goals || [];
+
+  // Sort goals chronologically
+  const sortedGoals = [...goals].sort((a, b) => a.minute - b.minute);
+
+  // Group goals into clusters where the difference between consecutive goals is <= 6 minutes
+  const clusters: { goal: typeof goals[0]; originalIndex: number }[][] = [];
+  sortedGoals.forEach((g) => {
+    const originalIndex = goals.indexOf(g);
+    if (clusters.length === 0) {
+      clusters.push([{ goal: g, originalIndex }]);
+    } else {
+      const lastCluster = clusters[clusters.length - 1];
+      const lastGoal = lastCluster[lastCluster.length - 1].goal;
+      if (g.minute - lastGoal.minute <= 6) {
+        lastCluster.push({ goal: g, originalIndex });
+      } else {
+        clusters.push([{ goal: g, originalIndex }]);
+      }
+    }
+  });
+
+  interface PositionedGoal {
+    goal: typeof goals[0];
+    originalIndex: number;
+    left: number;
+    top: number;
+  }
+
+  const positionedGoals: PositionedGoal[] = [];
+
+  clusters.forEach((cluster) => {
+    const n = cluster.length;
+    cluster.forEach((item, clusterIdx) => {
+      const g = item.goal;
+      const goalMin = g.minute;
+      const minuteAngle = Math.min(goalMin, totalMinutes);
+      const baseTheta = (minuteAngle / totalMinutes) * 360 - 90;
+
+      let dr = 0;
+      let dTheta = 0;
+
+      if (n === 2) {
+        dr = clusterIdx === 0 ? -size * 0.09 : size * 0.09;
+        dTheta = clusterIdx === 0 ? -4 : 4;
+      } else if (n === 3) {
+        if (clusterIdx === 0) {
+          dr = -size * 0.12;
+          dTheta = -6;
+        } else if (clusterIdx === 1) {
+          dr = 0;
+          dTheta = 0;
+        } else {
+          dr = size * 0.12;
+          dTheta = 6;
+        }
+      } else if (n >= 4) {
+        const offsets = [
+          { dr: -size * 0.15, dTheta: -9 },
+          { dr: -size * 0.07, dTheta: -3 },
+          { dr: size * 0.07, dTheta: 3 },
+          { dr: size * 0.15, dTheta: 9 }
+        ];
+        const offset = offsets[Math.min(clusterIdx, offsets.length - 1)];
+        dr = offset.dr;
+        dTheta = offset.dTheta;
+      }
+
+      const finalRadius = radius + dr;
+      const finalTheta = baseTheta + dTheta;
+      const radians = (finalTheta * Math.PI) / 180;
+
+      positionedGoals.push({
+        goal: g,
+        originalIndex: item.originalIndex,
+        left: center + finalRadius * Math.cos(radians),
+        top: center + finalRadius * Math.sin(radians),
+      });
+    });
+  });
 
   return (
     <div
@@ -90,22 +169,17 @@ export default function MatchProgressCircle({ match, size = 100 }: MatchProgress
       </div>
 
       {/* Goal Soccer Balls along the Rim */}
-      {goals.map((g, idx) => {
-        const goalMin = g.minute;
-        const minuteAngle = Math.min(goalMin, totalMinutes);
-        const theta = (minuteAngle / totalMinutes) * 360 - 90;
-        const radians = (theta * Math.PI) / 180;
-        const x = radius * Math.cos(radians);
-        const y = radius * Math.sin(radians);
-
-        const left = center + x;
-        const top = center + y;
+      {positionedGoals.map(({ goal: g, originalIndex, left, top }) => {
+        const isHomeTeam = normalizeTeamName(g.team) === normalizeTeamName(match.homeTeam);
+        const colorClasses = isHomeTeam
+          ? "bg-emerald-50 dark:bg-emerald-950/80 border-emerald-500 dark:border-emerald-400 text-emerald-600 dark:text-emerald-400"
+          : "bg-violet-50 dark:bg-violet-950/80 border-violet-500 dark:border-violet-400 text-violet-600 dark:text-violet-400";
 
         // Position & offset so the center of the soccer ball aligns exactly on the circumference
         return (
           <div
-            key={idx}
-            className="absolute z-20 flex items-center justify-center rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm cursor-pointer select-none hover:scale-125 transition-transform"
+            key={originalIndex}
+            className={`absolute z-20 flex items-center justify-center rounded-full border shadow-sm cursor-pointer select-none hover:scale-125 transition-transform ${colorClasses}`}
             style={{
               width: Math.max(14, size * 0.16),
               height: Math.max(14, size * 0.16),
@@ -113,7 +187,7 @@ export default function MatchProgressCircle({ match, size = 100 }: MatchProgress
               top,
               transform: "translate(-50%, -50%)",
             }}
-            title={`${g.scorer} (${g.minute}')`}
+            title={`${g.scorer} (${g.minute}${g.injuryTime ? `+${g.injuryTime}` : ""}') - ${g.team}`}
           >
             <span className="text-[9px] leading-none mb-0.5">⚽</span>
           </div>
@@ -122,3 +196,4 @@ export default function MatchProgressCircle({ match, size = 100 }: MatchProgress
     </div>
   );
 }
+
