@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ─── Tailwind v4 Class-Based Dark Mode ────────────────────────────────────── */
+@custom-variant dark (&:where(.dark, .dark *));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ─── Global theme tokens and extensions ────────────────────────────────────── */
+@theme {
+  --color-highlight: var(--highlight);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-backdrop: var(--backdrop);
+  --color-bg-600: var(--bg-600);
+  --color-bg-700: var(--bg-700);
+  --color-bg-800: var(--bg-800);
+  --color-bg-900: var(--bg-900);
+  --color-bg-full: var(--bg-full);
+  --color-border: var(--border);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --font-sans: "Exo 2", sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+
+  --animate-shine: shine 0.8s ease-in-out;
+
+  @keyframes shine {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
   }
 }
 
+/* ─── Global focus-visible reset ──────────────────────────────────────────── */
+*:focus {
+  outline: none;
+}
+
+/* ─── Reduce Motion Baseline ───────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 10s linear infinite;
+}
+
+@font-face {
+  font-family: "Exo 2";
+  src: url("/fonts/Exo2.ttf") format("truetype");
+}
+
+/* Default light theme variables */
+:root {
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --text-inverse: #fcfcfc;
+  --highlight: #224ed3;
+  --bg-600: #e2e8f0;
+  --bg-700: #f1f5f9;
+  --bg-800: #ffffff;
+  --bg-900: #fcfcfc;
+  --bg-full: #fcfcfc;
+  --backdrop: rgba(252, 252, 252, 0.7);
+  --border: #e2e8f0;
+  --scrollbar-thumb: #d1d5db;
+  --scrollbar-thumb-hover: #9ca3af;
+}
+
+/* Dark theme variables */
+html.dark {
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-inverse: #080b12;
+  --highlight: #60a5fa;
+  --bg-600: #1e293b;
+  --bg-700: #0f172a;
+  --bg-800: #0b1120;
+  --bg-900: #080b12;
+  --bg-full: #080b12;
+  --backdrop: rgba(8, 11, 18, 0.75);
+  --border: #1e293b;
+  --scrollbar-thumb: #374151;
+  --scrollbar-thumb-hover: #4b5563;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-900);
+  color: var(--text-primary);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* ─── Scrollbar Styling ─────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-full);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+  border: 2px solid var(--bg-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Firefox support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--bg-full);
 }

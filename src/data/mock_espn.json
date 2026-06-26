@@ -1,0 +1,87 @@
+{
+  "instructions": "To test a live goal on the UI, copy-paste this goal object inside the 'details' array of a match: { \"type\": { \"id\": \"70\", \"text\": \"Goal\" }, \"clock\": { \"value\": 900, \"displayValue\": \"15'\" }, \"team\": { \"id\": \"10\" }, \"scoringPlay\": true, \"athletesInvolved\": [ { \"shortName\": \"K. Mbappé\" } ] }",
+  "events": [
+    {
+      "id": "101",
+      "date": "2026-06-16T19:00:00Z",
+      "status": {
+        "clock": 900.0,
+        "displayClock": "15'",
+        "type": {
+          "id": "2",
+          "name": "STATUS_IN_PROGRESS",
+          "state": "in",
+          "completed": false
+        }
+      },
+      "competitions": [
+        {
+          "id": "101",
+          "competitors": [
+            {
+              "id": "10",
+              "homeAway": "home",
+              "score": "1",
+              "team": { "id": "10", "displayName": "France" }
+            },
+            {
+              "id": "11",
+              "homeAway": "away",
+              "score": "0",
+              "team": { "id": "11", "displayName": "Senegal" }
+            }
+          ],
+          "details": [
+            {
+              "type": { "id": "70", "text": "Goal" },
+              "clock": { "value": 900, "displayValue": "15'" },
+              "team": { "id": "10" },
+              "scoringPlay": true,
+              "athletesInvolved": [
+                { "shortName": "K. Mbappé" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "102",
+      "date": "2026-06-28T19:00:00Z",
+      "status": {
+        "clock": 7200.0,
+        "displayClock": "FT-PEN",
+        "type": {
+          "id": "18",
+          "name": "STATUS_SHOOTOUT",
+          "state": "post",
+          "completed": true
+        }
+      },
+      "competitions": [
+        {
+          "id": "102",
+          "competitors": [
+            {
+              "id": "205",
+              "homeAway": "home",
+              "score": "1",
+              "shootoutScore": "4",
+              "winner": true,
+              "team": { "id": "205", "displayName": "Brazil" }
+            },
+            {
+              "id": "206",
+              "homeAway": "away",
+              "score": "1",
+              "shootoutScore": "2",
+              "winner": false,
+              "team": { "id": "206", "displayName": "Canada" }
+            }
+          ],
+          "details": []
+        }
+      ]
+    }
+  ]
+}
