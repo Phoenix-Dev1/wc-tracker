@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { normalizeTeamName, getProcessedMatches, parseEspnGoals, EspnEventDetail, isPlaceholderTeam } from "@/data/worldcup";
+import { normalizeTeamName, getProcessedMatches, parseEspnGoals, EspnEventDetail, isPlaceholderTeam, calculateGroupStandings } from "@/data/worldcup";
 import localFixtures from "@/data/fixtures.json";
 import TeamPageClient from "./TeamPageClient";
 
@@ -131,6 +131,7 @@ export default async function TeamPage({ params, searchParams }: PageProps) {
   const { teamName } = await params;
   const resolvedSearchParams = await searchParams;
   const isMock = resolvedSearchParams?.mock === "true";
+  const simTimeParam = resolvedSearchParams?.simTime;
   const decodedTeamName = decodeURIComponent(teamName);
   const targetNormalized = normalizeTeamName(decodedTeamName);
 
@@ -145,6 +146,18 @@ export default async function TeamPage({ params, searchParams }: PageProps) {
     notFound();
   }
 
+  // Parse simulated system time
+  const systemTime = typeof simTimeParam === "string" ? simTimeParam : new Date().toISOString();
+
+  // Find team group letter
+  const teamMatchWithGroup = localFixtures.fixtures.find(
+    (f) =>
+      (normalizeTeamName(f.homeTeam) === targetNormalized ||
+       normalizeTeamName(f.awayTeam) === targetNormalized) &&
+      f.group
+  );
+  const teamGroupLetter = teamMatchWithGroup?.group;
+
   let matches: TeamMatch[] = [];
   let standings: StandingGroup | null = null;
   let isFallback = false;
@@ -153,17 +166,23 @@ export default async function TeamPage({ params, searchParams }: PageProps) {
     const headers = { "X-Auth-Token": FOOTBALL_DATA_TOKEN };
 
     const apiUrl = isMock ? MOCK_ESPN_API_URL : REAL_ESPN_API_URL;
+    
+    // We only fetch standings from Football Data API if NOT in simulation mode
+    const fetchStandings = !simTimeParam;
+
     const [matchesRes, standingsRes] = await Promise.all([
       fetch(apiUrl, { cache: "no-store" }),
-      fetch(STANDINGS_API_URL, { headers, next: { revalidate: 60 } }),
+      fetchStandings
+        ? fetch(STANDINGS_API_URL, { headers, next: { revalidate: 60 } }).catch(() => null)
+        : Promise.resolve(null),
     ]);
 
-    if (!matchesRes.ok || !standingsRes.ok) {
-      throw new Error(`API returned status code error: Matches: ${matchesRes.status}, Standings: ${standingsRes.status}`);
+    if (!matchesRes.ok) {
+      throw new Error(`API returned status code error: Matches: ${matchesRes.status}`);
     }
 
     const matchesData = await matchesRes.json();
-    const standingsData = await standingsRes.json();
+    const standingsData = standingsRes && standingsRes.ok ? await standingsRes.json() : null;
 
     if (!matchesData || !Array.isArray(matchesData.events)) {
       throw new Error("Invalid matches response payload");
@@ -172,7 +191,6 @@ export default async function TeamPage({ params, searchParams }: PageProps) {
     // Process & Filter matches from ESPN
     const allMatches = matchesData.events as EspnApiEvent[];
 
-    const systemTime = new Date().toISOString();
     const processedLocal = getProcessedMatches(systemTime);
     
     // Filter local matches belonging to the target team
@@ -317,12 +335,17 @@ export default async function TeamPage({ params, searchParams }: PageProps) {
         };
       }
     }
+
+    // Dynamic Standings fallback if not retrieved from API
+    if (!standings && teamGroupLetter) {
+      standings = calculateGroupStandings(systemTime, teamGroupLetter);
+    }
+
   } catch (error) {
     console.error("API error. Falling back to local fixtures:", error);
     isFallback = true;
 
     // Local fixtures fallback:
-    const systemTime = new Date().toISOString(); // standard JS clock
     const processedLocal = getProcessedMatches(systemTime);
     
     // Filter local matches belonging to the target team
@@ -359,6 +382,10 @@ export default async function TeamPage({ params, searchParams }: PageProps) {
         displayClock: m.displayClock,
       };
     });
+
+    if (teamGroupLetter) {
+      standings = calculateGroupStandings(systemTime, teamGroupLetter);
+    }
   }
 
   // Render Client view

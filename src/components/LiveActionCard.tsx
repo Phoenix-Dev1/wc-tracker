@@ -17,7 +17,10 @@ export default function LiveActionCard({ match, index }: LiveActionCardProps) {
   const [isDeepScanOpen, setIsDeepScanOpen] = useState(false);
   const searchParams = useSearchParams();
   const isMock = searchParams?.get("mock") === "true";
+  const simTime = searchParams?.get("simTime");
   const mockQuery = isMock ? "?mock=true" : "";
+  const simQuery = simTime ? `${isMock ? "&" : "?"}simTime=${encodeURIComponent(simTime)}` : "";
+  const finalQuery = `${mockQuery}${simQuery}`;
 
   return (
     <motion.div
@@ -49,7 +52,7 @@ export default function LiveActionCard({ match, index }: LiveActionCardProps) {
             </div>
           ) : (
             <Link
-              href={`/team/${encodeURIComponent(match.homeTeam)}${mockQuery}`}
+              href={`/team/${encodeURIComponent(match.homeTeam)}${finalQuery}`}
               className="flex flex-col items-center gap-2 group/link w-full"
             >
               <span className="text-4xl sm:text-5xl hover:scale-105 active:scale-95 transition-transform" role="img" aria-label={`${match.homeTeam} Flag`}>
@@ -78,7 +81,7 @@ export default function LiveActionCard({ match, index }: LiveActionCardProps) {
             </div>
           ) : (
             <Link
-              href={`/team/${encodeURIComponent(match.awayTeam)}${mockQuery}`}
+              href={`/team/${encodeURIComponent(match.awayTeam)}${finalQuery}`}
               className="flex flex-col items-center gap-2 group/link w-full"
             >
               <span className="text-4xl sm:text-5xl hover:scale-105 active:scale-95 transition-transform" role="img" aria-label={`${match.awayTeam} Flag`}>

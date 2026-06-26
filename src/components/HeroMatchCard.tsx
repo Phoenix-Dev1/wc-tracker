@@ -26,7 +26,10 @@ export default function HeroMatchCard({ match, index, systemTime }: HeroMatchCar
   const isLive = match.status === "LIVE";
   const searchParams = useSearchParams();
   const isMock = searchParams?.get("mock") === "true";
+  const simTime = searchParams?.get("simTime");
   const mockQuery = isMock ? "?mock=true" : "";
+  const simQuery = simTime ? `${isMock ? "&" : "?"}simTime=${encodeURIComponent(simTime)}` : "";
+  const finalQuery = `${mockQuery}${simQuery}`;
 
   const cardClasses = cn(
     "relative rounded-2xl p-6 backdrop-blur-md transition-all duration-300 border group overflow-hidden min-w-[85vw] sm:min-w-[45vw] md:min-w-0 snap-center flex-shrink-0",
@@ -118,7 +121,7 @@ export default function HeroMatchCard({ match, index, systemTime }: HeroMatchCar
             </div>
           ) : (
             <Link
-              href={`/team/${encodeURIComponent(match.homeTeam)}${mockQuery}`}
+              href={`/team/${encodeURIComponent(match.homeTeam)}${finalQuery}`}
               className="flex items-center gap-3 group/link hover:text-cyan-600 transition-colors"
             >
               <span className="text-2xl" role="img" aria-label={`${match.homeTeam} Flag`}>
@@ -161,7 +164,7 @@ export default function HeroMatchCard({ match, index, systemTime }: HeroMatchCar
             </div>
           ) : (
             <Link
-              href={`/team/${encodeURIComponent(match.awayTeam)}${mockQuery}`}
+              href={`/team/${encodeURIComponent(match.awayTeam)}${finalQuery}`}
               className="flex items-center gap-3 group/link hover:text-cyan-600 transition-colors"
             >
               <span className="text-2xl" role="img" aria-label={`${match.awayTeam} Flag`}>

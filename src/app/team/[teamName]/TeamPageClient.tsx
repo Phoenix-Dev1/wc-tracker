@@ -58,7 +58,10 @@ export default function TeamPageClient({
   const [mounted, setMounted] = useState(false);
   const searchParams = useSearchParams();
   const isMock = searchParams?.get("mock") === "true";
+  const simTime = searchParams?.get("simTime");
   const mockQuery = isMock ? "?mock=true" : "";
+  const simQuery = simTime ? `${isMock ? "&" : "?"}simTime=${encodeURIComponent(simTime)}` : "";
+  const finalQuery = `${mockQuery}${simQuery}`;
 
   useEffect(() => {
     setMounted(true);
@@ -89,7 +92,7 @@ export default function TeamPageClient({
         {/* Back Link */}
         <div className="mb-6">
           <Link
-            href={`/${mockQuery}`}
+            href={`/${finalQuery}`}
             className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors font-medium group"
           >
             <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
@@ -129,7 +132,7 @@ export default function TeamPageClient({
                 </span>
               </div>
               <p className="text-xs text-text-secondary mt-1 uppercase tracking-wider font-semibold">
-                FIFA World Cup 2026 Contender
+                FIFA World Cup 2026 Contender {simTime && <span className="text-[10px] bg-purple-600 text-white font-extrabold px-1.5 py-0.5 rounded ml-1.5 shadow-sm">SIMULATION</span>}
               </p>
             </div>
           </div>

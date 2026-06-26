@@ -21,7 +21,10 @@ const formatCityName = (city: string) => {
 export default function MatchListRow({ match }: MatchListRowProps) {
   const searchParams = useSearchParams();
   const isMock = searchParams?.get("mock") === "true";
+  const simTime = searchParams?.get("simTime");
   const mockQuery = isMock ? "?mock=true" : "";
+  const simQuery = simTime ? `${isMock ? "&" : "?"}simTime=${encodeURIComponent(simTime)}` : "";
+  const finalQuery = `${mockQuery}${simQuery}`;
 
   // Determine color theme based on game status
   const isLive = match.status === "LIVE";
@@ -100,7 +103,7 @@ export default function MatchListRow({ match }: MatchListRowProps) {
               </>
             ) : (
               <Link
-                href={`/team/${encodeURIComponent(match.homeTeam)}${mockQuery}`}
+                href={`/team/${encodeURIComponent(match.homeTeam)}${finalQuery}`}
                 className="flex items-center gap-3 justify-end group/link hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors max-w-full"
               >
                 <span className={teamTextClasses}>
@@ -146,7 +149,7 @@ export default function MatchListRow({ match }: MatchListRowProps) {
               </>
             ) : (
               <Link
-                href={`/team/${encodeURIComponent(match.awayTeam)}${mockQuery}`}
+                href={`/team/${encodeURIComponent(match.awayTeam)}${finalQuery}`}
                 className="flex items-center gap-3 group/link hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors max-w-full"
               >
                 <span className="text-xl sm:text-2xl" role="img" aria-label={`${match.awayTeam} Flag`}>

@@ -28,6 +28,7 @@ export interface Fixture {
     home: number;
     away: number;
   };
+  stats?: MatchStats;
 }
 
 export interface MatchStats {
@@ -385,67 +386,127 @@ export const getProcessedMatches = (systemTimeStr: string, rawFixturesInput?: Fi
     let displayClock: string | undefined;
     let homeScore: number | undefined;
     let awayScore: number | undefined;
+    let goals: Goal[] | undefined = fixture.goals;
+    let stats: MatchStats | undefined = fixture.stats;
 
-    // Determine Status
+    // Check if we are close to actual real-time (within 5 minutes)
+    const isRealTime = Math.abs(Date.now() - systemTime) < 5 * 60 * 1000;
+
     if (isKnockoutPlaceholder) {
       status = 'UPCOMING';
-    } else if (fixture.apiStatus) {
-      // Handle our normalized statuses (mapped from ESPN 'pre', 'in', 'post' or legacy FINISHED/IN_PLAY)
-      if (fixture.apiStatus === 'COMPLETED' || fixture.apiStatus === 'FINISHED') {
-        status = 'COMPLETED';
-      } else if (fixture.apiStatus === 'LIVE' || fixture.apiStatus === 'IN_PLAY' || fixture.apiStatus === 'PAUSED') {
-        status = 'LIVE';
-        displayClock = fixture.displayClock; // pass through from server exactly as-is
-      } else {
-        // Fallback for UPCOMING or unknown
-        if (timeDiff >= durationMs) {
-          status = 'COMPLETED';
-        } else if (timeDiff >= 0) {
-          status = 'LIVE';
-        } else {
-          status = 'UPCOMING';
-        }
-      }
     } else {
-      if (timeDiff >= durationMs) {
-        status = 'COMPLETED';
-      } else if (timeDiff >= 0) {
+      // Date gating logic:
+      if (timeDiff < 0) {
+        status = 'UPCOMING';
+      } else if (timeDiff < durationMs) {
         status = 'LIVE';
       } else {
-        status = 'UPCOMING';
+        status = 'COMPLETED';
       }
     }
 
-    // Generate deterministic scores for COMPLETED or LIVE matches
-    // This uses a simple hash of matchNumber and team name lengths so it stays identical on refresh.
-    if (status === 'COMPLETED' || status === 'LIVE') {
+    if (status === 'UPCOMING') {
+      homeScore = undefined;
+      awayScore = undefined;
+      goals = [];
+      stats = undefined;
+      displayClock = undefined;
+    } else if (status === 'LIVE') {
+      const elapsedMins = Math.floor(timeDiff / 60000);
+      const simulatedMatchMins = (elapsedMins < 45) 
+        ? elapsedMins 
+        : (elapsedMins < 60) 
+          ? 45 
+          : Math.min(90, elapsedMins - 15);
+
+      if (isRealTime && (fixture.apiStatus === 'LIVE' || fixture.apiStatus === 'IN_PLAY' || fixture.apiStatus === 'PAUSED')) {
+        // Use real live data if we are actually at real-time
+        status = 'LIVE';
+        displayClock = fixture.displayClock;
+        homeScore = fixture.homeScore;
+        awayScore = fixture.awayScore;
+        goals = fixture.goals;
+        stats = fixture.stats;
+      } else {
+        // Simulate live clock progression
+        if (elapsedMins < 45) {
+          displayClock = `${elapsedMins}'`;
+        } else if (elapsedMins < 60) {
+          displayClock = 'HT';
+        } else {
+          displayClock = `${Math.min(90, elapsedMins - 15)}'`;
+        }
+
+        // Simulate live goals (only those scored up to current elapsed minutes)
+        const allGoals = fixture.goals || [];
+        const simGoals = allGoals.filter(g => g.minute <= simulatedMatchMins);
+        goals = simGoals;
+
+        // Determine scores
+        if (fixture.homeScore !== undefined && fixture.awayScore !== undefined) {
+          if (allGoals.length > 0) {
+            // Count home and away goals from filtered goals list
+            homeScore = simGoals.filter(g => normalizeTeamName(g.team) === normalizeTeamName(fixture.homeTeam)).length;
+            awayScore = simGoals.filter(g => normalizeTeamName(g.team) === normalizeTeamName(fixture.awayTeam)).length;
+          } else {
+            // If no goals details exist, scale final score by match progress ratio
+            const ratio = simulatedMatchMins / 90;
+            homeScore = Math.floor(fixture.homeScore * ratio);
+            awayScore = Math.floor(fixture.awayScore * ratio);
+          }
+        } else {
+          // Use deterministic scores scaled by time progression
+          const homeLen = fixture.homeTeam ? fixture.homeTeam.length : 0;
+          const awayLen = fixture.awayTeam ? fixture.awayTeam.length : 0;
+          let finalHome = (fixture.matchNumber * 3 + homeLen) % 4;
+          const finalAway = (fixture.matchNumber * 7 + awayLen) % 3;
+          if (fixture.stage === 'final' && finalHome === finalAway) finalHome += 1;
+
+          const ratio = simulatedMatchMins / 90;
+          homeScore = Math.floor(finalHome * ratio);
+          awayScore = Math.floor(finalAway * ratio);
+        }
+
+        // Simulate live statistics
+        const progressRatio = simulatedMatchMins / 90;
+        const baseStats = fixture.stats || {
+          homePossession: 50 + (fixture.matchNumber % 10) - 5,
+          awayPossession: 100 - (50 + (fixture.matchNumber % 10) - 5),
+          homeShotsOnTarget: 4,
+          awayShotsOnTarget: 3,
+          homeTotalShots: 9,
+          awayTotalShots: 7,
+          homeCorners: 5,
+          awayCorners: 4,
+        };
+
+        stats = {
+          homePossession: baseStats.homePossession,
+          awayPossession: baseStats.awayPossession,
+          homeShotsOnTarget: Math.round(baseStats.homeShotsOnTarget * progressRatio),
+          awayShotsOnTarget: Math.round(baseStats.awayShotsOnTarget * progressRatio),
+          homeTotalShots: Math.round(baseStats.homeTotalShots * progressRatio),
+          awayTotalShots: Math.round(baseStats.awayTotalShots * progressRatio),
+          homeCorners: Math.round(baseStats.homeCorners * progressRatio),
+          awayCorners: Math.round(baseStats.awayCorners * progressRatio),
+        };
+      }
+    } else { // COMPLETED
+      displayClock = fixture.displayClock || undefined;
       if (fixture.homeScore !== undefined && fixture.awayScore !== undefined) {
         homeScore = fixture.homeScore;
         awayScore = fixture.awayScore;
       } else {
         const homeLen = fixture.homeTeam ? fixture.homeTeam.length : 0;
         const awayLen = fixture.awayTeam ? fixture.awayTeam.length : 0;
-        
-        // Let's create a realistic score distribution
         let finalHome = (fixture.matchNumber * 3 + homeLen) % 4;
         const finalAway = (fixture.matchNumber * 7 + awayLen) % 3;
-
-        // Make finals/semis higher stakes or avoid extreme patterns
-        if (fixture.stage === 'final' && finalHome === finalAway) {
-          finalHome += 1; // avoid draw in final after full time
-        }
-
-        if (status === 'COMPLETED') {
-          homeScore = finalHome;
-          awayScore = finalAway;
-        } else {
-          // Live score updates based on match progression
-          const elapsedMins = displayClock === 'HT' ? 45 : parseInt(displayClock || "0") || 0;
-          const ratio = Math.min(1, elapsedMins / 90);
-          homeScore = Math.floor(finalHome * ratio);
-          awayScore = Math.floor(finalAway * ratio);
-        }
+        if (fixture.stage === 'final' && finalHome === finalAway) finalHome += 1;
+        homeScore = finalHome;
+        awayScore = finalAway;
       }
+      goals = fixture.goals || [];
+      stats = fixture.stats;
     }
 
     const homeInfo = getTeamInfo(fixture.homeTeam);
@@ -461,6 +522,8 @@ export const getProcessedMatches = (systemTimeStr: string, rawFixturesInput?: Fi
       homeCode: homeInfo.code,
       awayCode: awayInfo.code,
       displayClock,
+      goals,
+      stats,
       formattedTimeJerusalem: formatJerusalemTime(fixture.kickoffUtc),
       formattedDateJerusalem: formatJerusalemDate(fixture.kickoffUtc),
     };
@@ -639,3 +702,134 @@ export function calculateMatchupProbabilities(
 
   return { teamA: normA, draw: normDraw, teamB: normB };
 }
+
+export interface StandingTeam {
+  position: number;
+  team: {
+    id: number;
+    name: string;
+    shortName: string;
+    tla: string;
+    crest: string;
+  };
+  playedGames: number;
+  won: number;
+  draw: number;
+  lost: number;
+  points: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  goalDifference: number;
+}
+
+export interface StandingGroup {
+  groupName: string;
+  table: StandingTeam[];
+}
+
+export function calculateGroupStandings(
+  systemTimeStr: string,
+  groupLetter: string,
+  rawFixturesInput?: Fixture[]
+): StandingGroup | null {
+  if (!groupLetter) return null;
+
+  const matches = getProcessedMatches(systemTimeStr, rawFixturesInput);
+  
+  // Find all matches belonging to this group
+  const groupMatches = matches.filter(
+    (m) => m.stage === "group-stage" && m.group && m.group.toUpperCase() === groupLetter.toUpperCase()
+  );
+
+  if (groupMatches.length === 0) return null;
+
+  // Extract unique teams in this group
+  const teamsSet = new Set<string>();
+  groupMatches.forEach((m) => {
+    if (m.homeTeam) teamsSet.add(m.homeTeam);
+    if (m.awayTeam) teamsSet.add(m.awayTeam);
+  });
+  const teams = Array.from(teamsSet);
+
+  // Initialize stats for each team
+  const tableMap: Record<string, StandingTeam> = {};
+  teams.forEach((t, index) => {
+    const info = getTeamInfo(t);
+    tableMap[t] = {
+      position: 0,
+      team: {
+        id: index + 1,
+        name: t,
+        shortName: t,
+        tla: info.code,
+        crest: "",
+      },
+      playedGames: 0,
+      won: 0,
+      draw: 0,
+      lost: 0,
+      points: 0,
+      goalsFor: 0,
+      goalsAgainst: 0,
+      goalDifference: 0,
+    };
+  });
+
+  // Accumulate stats from completed group matches
+  const completedGroupMatches = groupMatches.filter((m) => m.status === "COMPLETED");
+
+  completedGroupMatches.forEach((m) => {
+    const home = m.homeTeam;
+    const away = m.awayTeam;
+    const homeS = m.homeScore ?? 0;
+    const awayS = m.awayScore ?? 0;
+
+    if (tableMap[home] && tableMap[away]) {
+      tableMap[home].playedGames += 1;
+      tableMap[away].playedGames += 1;
+      tableMap[home].goalsFor += homeS;
+      tableMap[home].goalsAgainst += awayS;
+      tableMap[away].goalsFor += awayS;
+      tableMap[away].goalsAgainst += homeS;
+
+      if (homeS > awayS) {
+        tableMap[home].won += 1;
+        tableMap[home].points += 3;
+        tableMap[away].lost += 1;
+      } else if (homeS < awayS) {
+        tableMap[away].won += 1;
+        tableMap[away].points += 3;
+        tableMap[home].lost += 1;
+      } else {
+        tableMap[home].draw += 1;
+        tableMap[home].points += 1;
+        tableMap[away].draw += 1;
+        tableMap[away].points += 1;
+      }
+    }
+  });
+
+  // Calculate goal differences
+  teams.forEach((t) => {
+    tableMap[t].goalDifference = tableMap[t].goalsFor - tableMap[t].goalsAgainst;
+  });
+
+  // Sort teams by points desc, goalDifference desc, goalsFor desc, then name asc
+  const sortedTeams = teams.map((t) => tableMap[t]).sort((a, b) => {
+    if (b.points !== a.points) return b.points - a.points;
+    if (b.goalDifference !== a.goalDifference) return b.goalDifference - a.goalDifference;
+    if (b.goalsFor !== a.goalsFor) return b.goalsFor - a.goalsFor;
+    return a.team.name.localeCompare(b.team.name);
+  });
+
+  // Assign positions
+  sortedTeams.forEach((item, index) => {
+    item.position = index + 1;
+  });
+
+  return {
+    groupName: `Group ${groupLetter.toUpperCase()}`,
+    table: sortedTeams,
+  };
+}
+

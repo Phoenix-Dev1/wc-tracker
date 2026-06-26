@@ -335,8 +335,8 @@ export default function MatchupAnalyzer({ matches }: MatchupAnalyzerProps) {
                 { stats: statsA!, info: infoA!, color: "emerald" },
                 { stats: statsB!, info: infoB!, color: "violet" },
               ].map(({ stats, info, color }) => {
-                const textClass  = color === "emerald" ? "text-emerald-700 dark:text-emerald-400"  : "text-violet-755 dark:text-violet-404";
-                const bgClass    = color === "emerald" ? "bg-emerald-50 dark:bg-emerald-950/20"     : "bg-violet-50 dark:bg-violet-955/20";
+                const textClass  = color === "emerald" ? "text-emerald-700 dark:text-emerald-400"  : "text-violet-700 dark:text-violet-400";
+                const bgClass    = color === "emerald" ? "bg-emerald-50 dark:bg-emerald-950/20"     : "bg-violet-50 dark:bg-violet-950/20";
                 const borderClass= color === "emerald" ? "border-emerald-200 dark:border-emerald-900/40": "border-violet-200 dark:border-violet-900/40";
                 return (
                   <Link
@@ -441,7 +441,7 @@ export default function MatchupAnalyzer({ matches }: MatchupAnalyzerProps) {
                     </div>
                     <div className="w-full min-w-[130px] max-w-[160px]" />
                     <div className="text-left">
-                      <span className="inline-flex items-center gap-1.5 text-[11px] font-black text-violet-755 dark:text-violet-404">
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-black text-violet-700 dark:text-violet-400">
                         {infoB!.flag} <span>{infoB!.code}</span>
                       </span>
                     </div>
