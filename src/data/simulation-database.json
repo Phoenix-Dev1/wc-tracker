@@ -1,113 +1,150 @@
 {
   "1": {
     "homeScore": 2,
-    "awayScore": 1,
+    "awayScore": 0,
     "goals": [
       {
-        "minute": 15,
-        "scorer": "J. Hernandez",
+        "minute": 9,
+        "injuryTime": null,
+        "scorer": "J. Quiñones",
         "team": "Mexico",
         "type": "NORMAL"
       },
       {
-        "minute": 42,
-        "scorer": "P. Tau",
-        "team": "South Africa",
-        "type": "PENALTY"
-      },
-      {
-        "minute": 88,
-        "scorer": "R. Jimenez",
+        "minute": 67,
+        "injuryTime": null,
+        "scorer": "R. Jiménez",
         "team": "Mexico",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 55,
-      "awayPossession": 45,
-      "homeShotsOnTarget": 6,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 12,
-      "awayTotalShots": 9,
-      "homeCorners": 4,
-      "awayCorners": 3
+      "homePossession": 60.5,
+      "awayPossession": 39.5,
+      "homeShotsOnTarget": 4,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 16,
+      "awayTotalShots": 3,
+      "homeCorners": 3,
+      "awayCorners": 1
     }
   },
   "2": {
-    "homeScore": 0,
-    "awayScore": 0,
-    "goals": [],
-    "stats": {
-      "homePossession": 52,
-      "awayPossession": 48,
-      "homeShotsOnTarget": 0,
-      "awayShotsOnTarget": 1,
-      "homeTotalShots": 4,
-      "awayTotalShots": 4,
-      "homeCorners": 7,
-      "awayCorners": 3
-    }
-  },
-  "3": {
-    "homeScore": 3,
+    "homeScore": 2,
     "awayScore": 1,
     "goals": [
       {
-        "minute": 19,
-        "scorer": "A. Dedić",
+        "minute": 59,
+        "injuryTime": null,
+        "scorer": "L. Krejcí",
+        "team": "Czechia",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 67,
+        "injuryTime": null,
+        "scorer": "H. In-Beom",
+        "team": "Korea Republic",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 80,
+        "injuryTime": null,
+        "scorer": "O. Hyeon-Gyu",
+        "team": "Korea Republic",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 61.5,
+      "awayPossession": 38.5,
+      "homeShotsOnTarget": 6,
+      "awayShotsOnTarget": 4,
+      "homeTotalShots": 15,
+      "awayTotalShots": 7,
+      "homeCorners": 4,
+      "awayCorners": 5
+    }
+  },
+  "3": {
+    "homeScore": 1,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 21,
+        "injuryTime": null,
+        "scorer": "J. Lukic",
         "team": "Bosnia and Herzegovina",
         "type": "NORMAL"
       },
       {
-        "minute": 19,
-        "scorer": "J. David",
-        "team": "Canada",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 35,
-        "scorer": "A. Davies",
-        "team": "Canada",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 57,
-        "scorer": "T. Buchanan",
+        "minute": 78,
+        "injuryTime": null,
+        "scorer": "C. Larin",
         "team": "Canada",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 59,
-      "awayPossession": 41,
-      "homeShotsOnTarget": 5,
+      "homePossession": 61.1,
+      "awayPossession": 38.9,
+      "homeShotsOnTarget": 4,
       "awayShotsOnTarget": 3,
-      "homeTotalShots": 11,
-      "awayTotalShots": 10,
-      "homeCorners": 2,
-      "awayCorners": 6
+      "homeTotalShots": 13,
+      "awayTotalShots": 8,
+      "homeCorners": 9,
+      "awayCorners": 4
     }
   },
   "4": {
-    "homeScore": 1,
-    "awayScore": 0,
+    "homeScore": 4,
+    "awayScore": 1,
     "goals": [
       {
-        "minute": 8,
-        "scorer": "B. Aaronson",
+        "minute": 7,
+        "injuryTime": null,
+        "scorer": "D. Bobadilla",
+        "team": "United States",
+        "type": "OWN"
+      },
+      {
+        "minute": 31,
+        "injuryTime": null,
+        "scorer": "F. Balogun",
+        "team": "United States",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 45,
+        "injuryTime": 5,
+        "scorer": "F. Balogun",
+        "team": "United States",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 73,
+        "injuryTime": null,
+        "scorer": "Maurício",
+        "team": "Paraguay",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 8,
+        "scorer": "G. Reyna",
         "team": "United States",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 57,
-      "awayPossession": 43,
-      "homeShotsOnTarget": 3,
-      "awayShotsOnTarget": 2,
-      "homeTotalShots": 7,
-      "awayTotalShots": 10,
+      "homePossession": 65.3,
+      "awayPossession": 34.7,
+      "homeShotsOnTarget": 6,
+      "awayShotsOnTarget": 1,
+      "homeTotalShots": 16,
+      "awayTotalShots": 9,
       "homeCorners": 3,
-      "awayCorners": 7
+      "awayCorners": 1
     }
   },
   "5": {
@@ -115,107 +152,82 @@
     "awayScore": 1,
     "goals": [
       {
-        "minute": 3,
-        "scorer": "S. Player 8",
+        "minute": 28,
+        "injuryTime": null,
+        "scorer": "J. McGinn",
         "team": "Scotland",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 42,
-      "awayPossession": 58,
-      "homeShotsOnTarget": 3,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 11,
-      "awayTotalShots": 6,
-      "homeCorners": 2,
-      "awayCorners": 4
+      "homePossession": 53.7,
+      "awayPossession": 46.3,
+      "homeShotsOnTarget": 2,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 15,
+      "awayTotalShots": 9,
+      "homeCorners": 4,
+      "awayCorners": 3
     }
   },
   "6": {
-    "homeScore": 3,
-    "awayScore": 1,
+    "homeScore": 2,
+    "awayScore": 0,
     "goals": [
       {
-        "minute": 83,
-        "scorer": "T. Player 5",
-        "team": "Turkiye",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 83,
-        "scorer": "A. Player 6",
+        "minute": 27,
+        "injuryTime": null,
+        "scorer": "N. Irankunda",
         "team": "Australia",
         "type": "NORMAL"
       },
       {
-        "minute": 83,
-        "scorer": "A. Player 4",
-        "team": "Australia",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 88,
-        "scorer": "A. Player 9",
+        "minute": 75,
+        "injuryTime": null,
+        "scorer": "C. Metcalfe",
         "team": "Australia",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 59,
-      "awayPossession": 41,
-      "homeShotsOnTarget": 5,
-      "awayShotsOnTarget": 1,
-      "homeTotalShots": 13,
-      "awayTotalShots": 9,
-      "homeCorners": 3,
-      "awayCorners": 6
+      "homePossession": 28.4,
+      "awayPossession": 71.6,
+      "homeShotsOnTarget": 4,
+      "awayShotsOnTarget": 8,
+      "homeTotalShots": 9,
+      "awayTotalShots": 30,
+      "homeCorners": 5,
+      "awayCorners": 8
     }
   },
   "7": {
-    "homeScore": 3,
-    "awayScore": 2,
+    "homeScore": 1,
+    "awayScore": 1,
     "goals": [
       {
-        "minute": 15,
-        "scorer": "S. Amallah",
+        "minute": 21,
+        "injuryTime": null,
+        "scorer": "I. Saibari",
         "team": "Morocco",
         "type": "NORMAL"
       },
       {
         "minute": 32,
-        "scorer": "Lucas Paquetá",
-        "team": "Brazil",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 64,
-        "scorer": "S. Amallah",
-        "team": "Morocco",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 70,
-        "scorer": "Rodrygo",
-        "team": "Brazil",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 88,
-        "scorer": "Vinícius Jr.",
+        "injuryTime": null,
+        "scorer": "Vinícius Júnior",
         "team": "Brazil",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 57,
-      "awayPossession": 43,
+      "homePossession": 51.4,
+      "awayPossession": 48.6,
       "homeShotsOnTarget": 5,
       "awayShotsOnTarget": 3,
-      "homeTotalShots": 10,
-      "awayTotalShots": 11,
-      "homeCorners": 3,
-      "awayCorners": 6
+      "homeTotalShots": 12,
+      "awayTotalShots": 14,
+      "homeCorners": 6,
+      "awayCorners": 2
     }
   },
   "8": {
@@ -223,464 +235,600 @@
     "awayScore": 1,
     "goals": [
       {
-        "minute": 64,
-        "scorer": "Almoez Ali",
-        "team": "Qatar",
-        "type": "NORMAL"
+        "minute": 17,
+        "injuryTime": null,
+        "scorer": "B. Embolo",
+        "team": "Switzerland",
+        "type": "PENALTY"
       },
       {
-        "minute": 79,
-        "scorer": "R. Freuler",
-        "team": "Switzerland",
-        "type": "NORMAL"
+        "minute": 90,
+        "injuryTime": 4,
+        "scorer": "M. Muheim",
+        "team": "Qatar",
+        "type": "OWN"
       }
     ],
     "stats": {
-      "homePossession": 49,
-      "awayPossession": 51,
+      "homePossession": 32,
+      "awayPossession": 68,
       "homeShotsOnTarget": 3,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 10,
-      "awayTotalShots": 8,
-      "homeCorners": 8,
-      "awayCorners": 6
+      "awayShotsOnTarget": 7,
+      "homeTotalShots": 6,
+      "awayTotalShots": 26,
+      "homeCorners": 3,
+      "awayCorners": 10
     }
   },
   "9": {
-    "homeScore": 0,
-    "awayScore": 1,
+    "homeScore": 1,
+    "awayScore": 0,
     "goals": [
       {
-        "minute": 66,
-        "scorer": "E. Valencia",
-        "team": "Ecuador",
+        "minute": 90,
+        "injuryTime": null,
+        "scorer": "A. Diallo",
+        "team": "Cote d'Ivoire",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 43,
-      "awayPossession": 57,
-      "homeShotsOnTarget": 0,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 8,
-      "awayTotalShots": 10,
-      "homeCorners": 5,
+      "homePossession": 48.4,
+      "awayPossession": 51.6,
+      "homeShotsOnTarget": 4,
+      "awayShotsOnTarget": 1,
+      "homeTotalShots": 15,
+      "awayTotalShots": 12,
+      "homeCorners": 3,
       "awayCorners": 6
     }
   },
   "10": {
-    "homeScore": 1,
-    "awayScore": 2,
+    "homeScore": 7,
+    "awayScore": 1,
     "goals": [
       {
-        "minute": 8,
-        "scorer": "L. Sané",
+        "minute": 6,
+        "injuryTime": null,
+        "scorer": "F. Nmecha",
         "team": "Germany",
         "type": "NORMAL"
       },
       {
         "minute": 21,
-        "scorer": "C. Player 2",
+        "injuryTime": null,
+        "scorer": "L. Comenencia",
         "team": "Curacao",
         "type": "NORMAL"
       },
       {
-        "minute": 42,
-        "scorer": "C. Player 6",
-        "team": "Curacao",
+        "minute": 38,
+        "injuryTime": null,
+        "scorer": "N. Schlotterbeck",
+        "team": "Germany",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 45,
+        "injuryTime": 5,
+        "scorer": "K. Havertz",
+        "team": "Germany",
+        "type": "PENALTY"
+      },
+      {
+        "minute": 47,
+        "injuryTime": null,
+        "scorer": "J. Musiala",
+        "team": "Germany",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 68,
+        "injuryTime": null,
+        "scorer": "N. Brown",
+        "team": "Germany",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 78,
+        "injuryTime": null,
+        "scorer": "D. Undav",
+        "team": "Germany",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 88,
+        "injuryTime": null,
+        "scorer": "K. Havertz",
+        "team": "Germany",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 43,
-      "awayPossession": 57,
-      "homeShotsOnTarget": 4,
-      "awayShotsOnTarget": 5,
-      "homeTotalShots": 7,
+      "homePossession": 64.6,
+      "awayPossession": 35.4,
+      "homeShotsOnTarget": 12,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 26,
       "awayTotalShots": 8,
-      "homeCorners": 4,
-      "awayCorners": 8
+      "homeCorners": 8,
+      "awayCorners": 1
     }
   },
   "11": {
-    "homeScore": 0,
-    "awayScore": 1,
+    "homeScore": 2,
+    "awayScore": 2,
     "goals": [
       {
-        "minute": 78,
-        "scorer": "R. Doan",
+        "minute": 51,
+        "injuryTime": null,
+        "scorer": "V. van Dijk",
+        "team": "Netherlands",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 57,
+        "injuryTime": null,
+        "scorer": "K. Nakamura",
+        "team": "Japan",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 64,
+        "injuryTime": null,
+        "scorer": "C. Summerville",
+        "team": "Netherlands",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 89,
+        "injuryTime": null,
+        "scorer": "D. Kamada",
         "team": "Japan",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 44,
-      "awayPossession": 56,
-      "homeShotsOnTarget": 0,
-      "awayShotsOnTarget": 1,
-      "homeTotalShots": 4,
-      "awayTotalShots": 9,
+      "homePossession": 59.8,
+      "awayPossession": 40.2,
+      "homeShotsOnTarget": 6,
+      "awayShotsOnTarget": 3,
+      "homeTotalShots": 10,
+      "awayTotalShots": 10,
       "homeCorners": 5,
-      "awayCorners": 2
+      "awayCorners": 4
     }
   },
   "12": {
-    "homeScore": 2,
+    "homeScore": 5,
     "awayScore": 1,
     "goals": [
       {
-        "minute": 15,
-        "scorer": "S. Player 10",
+        "minute": 7,
+        "injuryTime": null,
+        "scorer": "Y. Ayari",
         "team": "Sweden",
         "type": "NORMAL"
       },
       {
-        "minute": 56,
-        "scorer": "S. Player 6",
+        "minute": 30,
+        "injuryTime": null,
+        "scorer": "A. Isak",
         "team": "Sweden",
         "type": "NORMAL"
       },
       {
-        "minute": 87,
-        "scorer": "Y. Msakni",
+        "minute": 43,
+        "injuryTime": null,
+        "scorer": "O. Rekik",
         "team": "Tunisia",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 59,
+        "injuryTime": null,
+        "scorer": "V. Gyökeres",
+        "team": "Sweden",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 84,
+        "injuryTime": null,
+        "scorer": "M. Svanberg",
+        "team": "Sweden",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 6,
+        "scorer": "Y. Ayari",
+        "team": "Sweden",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 57,
-      "awayPossession": 43,
-      "homeShotsOnTarget": 5,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 10,
+      "homePossession": 48.7,
+      "awayPossession": 51.3,
+      "homeShotsOnTarget": 7,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 13,
       "awayTotalShots": 6,
       "homeCorners": 4,
-      "awayCorners": 4
+      "awayCorners": 2
     }
   },
   "13": {
-    "homeScore": 3,
-    "awayScore": 2,
+    "homeScore": 1,
+    "awayScore": 1,
     "goals": [
       {
-        "minute": 10,
-        "scorer": "G. de Arrascaeta",
-        "team": "Uruguay",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 16,
-        "scorer": "G. de Arrascaeta",
-        "team": "Uruguay",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 51,
-        "scorer": "Saleh Al-Shehri",
-        "team": "Saudi Arabia",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 61,
-        "scorer": "Salem Al-Dawsari",
+        "minute": 41,
+        "injuryTime": null,
+        "scorer": "A. Al-Amri",
         "team": "Saudi Arabia",
         "type": "NORMAL"
       },
       {
         "minute": 80,
-        "scorer": "Firas Al-Buraikan",
-        "team": "Saudi Arabia",
+        "injuryTime": null,
+        "scorer": "M. Araújo",
+        "team": "Uruguay",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 57,
-      "awayPossession": 43,
-      "homeShotsOnTarget": 5,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 9,
-      "awayTotalShots": 6,
-      "homeCorners": 7,
-      "awayCorners": 5
+      "homePossession": 33.2,
+      "awayPossession": 66.8,
+      "homeShotsOnTarget": 3,
+      "awayShotsOnTarget": 10,
+      "homeTotalShots": 7,
+      "awayTotalShots": 27,
+      "homeCorners": 4,
+      "awayCorners": 14
     }
   },
   "14": {
-    "homeScore": 3,
+    "homeScore": 0,
     "awayScore": 0,
-    "goals": [
-      {
-        "minute": 35,
-        "scorer": "Alvaro Morata",
-        "team": "Spain",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 45,
-        "scorer": "Pedri",
-        "team": "Spain",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 73,
-        "scorer": "Dani Olmo",
-        "team": "Spain",
-        "type": "NORMAL"
-      }
-    ],
+    "goals": [],
     "stats": {
-      "homePossession": 50,
-      "awayPossession": 50,
-      "homeShotsOnTarget": 4,
-      "awayShotsOnTarget": 0,
-      "homeTotalShots": 11,
-      "awayTotalShots": 5,
-      "homeCorners": 2,
-      "awayCorners": 2
+      "homePossession": 74.3,
+      "awayPossession": 25.7,
+      "homeShotsOnTarget": 7,
+      "awayShotsOnTarget": 1,
+      "homeTotalShots": 27,
+      "awayTotalShots": 6,
+      "homeCorners": 11,
+      "awayCorners": 1
     }
   },
   "15": {
-    "homeScore": 0,
+    "homeScore": 2,
     "awayScore": 2,
     "goals": [
       {
-        "minute": 25,
-        "scorer": "N. Player 11",
+        "minute": 7,
+        "injuryTime": null,
+        "scorer": "E. Just",
         "team": "New Zealand",
         "type": "NORMAL"
       },
       {
-        "minute": 78,
-        "scorer": "N. Player 2",
+        "minute": 32,
+        "injuryTime": null,
+        "scorer": "R. Rezaeian",
+        "team": "IR Iran",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 54,
+        "injuryTime": null,
+        "scorer": "E. Just",
         "team": "New Zealand",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 64,
+        "injuryTime": null,
+        "scorer": "M. Mohebbi",
+        "team": "IR Iran",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 41,
-      "awayPossession": 59,
-      "homeShotsOnTarget": 1,
-      "awayShotsOnTarget": 2,
-      "homeTotalShots": 4,
-      "awayTotalShots": 10,
-      "homeCorners": 2,
-      "awayCorners": 5
+      "homePossession": 48.5,
+      "awayPossession": 51.5,
+      "homeShotsOnTarget": 4,
+      "awayShotsOnTarget": 8,
+      "homeTotalShots": 17,
+      "awayTotalShots": 14,
+      "homeCorners": 4,
+      "awayCorners": 1
     }
   },
   "16": {
-    "homeScore": 3,
-    "awayScore": 0,
+    "homeScore": 1,
+    "awayScore": 1,
     "goals": [
       {
-        "minute": 32,
-        "scorer": "L. Trossard",
-        "team": "Belgium",
+        "minute": 20,
+        "injuryTime": null,
+        "scorer": "E. Ashour",
+        "team": "Egypt",
         "type": "NORMAL"
       },
       {
-        "minute": 33,
-        "scorer": "J. Doku",
+        "minute": 66,
+        "injuryTime": null,
+        "scorer": "M. Hany",
         "team": "Belgium",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 35,
-        "scorer": "Y. Tielemans",
-        "team": "Belgium",
-        "type": "NORMAL"
+        "type": "OWN"
       }
     ],
     "stats": {
-      "homePossession": 59,
-      "awayPossession": 41,
-      "homeShotsOnTarget": 6,
-      "awayShotsOnTarget": 1,
-      "homeTotalShots": 9,
-      "awayTotalShots": 8,
+      "homePossession": 53.6,
+      "awayPossession": 46.4,
+      "homeShotsOnTarget": 3,
+      "awayShotsOnTarget": 3,
+      "homeTotalShots": 15,
+      "awayTotalShots": 14,
       "homeCorners": 2,
-      "awayCorners": 4
+      "awayCorners": 7
     }
   },
   "17": {
-    "homeScore": 1,
-    "awayScore": 0,
+    "homeScore": 3,
+    "awayScore": 1,
     "goals": [
       {
-        "minute": 86,
+        "minute": 66,
+        "injuryTime": null,
+        "scorer": "K. Mbappé",
+        "team": "France",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 82,
+        "injuryTime": null,
+        "scorer": "B. Barcola",
+        "team": "France",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 5,
+        "scorer": "I. Mbaye",
+        "team": "Senegal",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 6,
         "scorer": "K. Mbappé",
         "team": "France",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 55,
-      "awayPossession": 45,
-      "homeShotsOnTarget": 4,
-      "awayShotsOnTarget": 0,
-      "homeTotalShots": 7,
-      "awayTotalShots": 8,
-      "homeCorners": 8,
-      "awayCorners": 2
+      "homePossession": 53.4,
+      "awayPossession": 46.6,
+      "homeShotsOnTarget": 8,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 11,
+      "awayTotalShots": 6,
+      "homeCorners": 6,
+      "awayCorners": 4
     }
   },
   "18": {
-    "homeScore": 2,
-    "awayScore": 0,
+    "homeScore": 1,
+    "awayScore": 4,
     "goals": [
       {
-        "minute": 77,
-        "scorer": "I. Player 3",
+        "minute": 29,
+        "injuryTime": null,
+        "scorer": "E. Haaland",
+        "team": "Norway",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 39,
+        "injuryTime": null,
+        "scorer": "A. Hussein",
         "team": "Iraq",
         "type": "NORMAL"
       },
       {
-        "minute": 83,
-        "scorer": "I. Player 9",
-        "team": "Iraq",
-        "type": "NORMAL"
-      }
-    ],
-    "stats": {
-      "homePossession": 55,
-      "awayPossession": 45,
-      "homeShotsOnTarget": 3,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 9,
-      "awayTotalShots": 8,
-      "homeCorners": 5,
-      "awayCorners": 3
-    }
-  },
-  "19": {
-    "homeScore": 2,
-    "awayScore": 2,
-    "goals": [
-      {
-        "minute": 7,
-        "scorer": "J. Álvarez",
-        "team": "Argentina",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 27,
-        "scorer": "R. De Paul",
-        "team": "Argentina",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 52,
-        "scorer": "A. Player 4",
-        "team": "Algeria",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 78,
-        "scorer": "A. Player 9",
-        "team": "Algeria",
-        "type": "NORMAL"
-      }
-    ],
-    "stats": {
-      "homePossession": 53,
-      "awayPossession": 47,
-      "homeShotsOnTarget": 4,
-      "awayShotsOnTarget": 2,
-      "homeTotalShots": 7,
-      "awayTotalShots": 6,
-      "homeCorners": 8,
-      "awayCorners": 7
-    }
-  },
-  "20": {
-    "homeScore": 3,
-    "awayScore": 2,
-    "goals": [
-      {
-        "minute": 3,
-        "scorer": "A. Player 11",
-        "team": "Austria",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 24,
-        "scorer": "A. Player 6",
-        "team": "Austria",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 54,
-        "scorer": "A. Player 8",
-        "team": "Austria",
+        "minute": 43,
+        "injuryTime": null,
+        "scorer": "E. Haaland",
+        "team": "Norway",
         "type": "NORMAL"
       },
       {
         "minute": 76,
-        "scorer": "J. Player 5",
-        "team": "Jordan",
+        "injuryTime": null,
+        "scorer": "L. Østigard",
+        "team": "Norway",
         "type": "NORMAL"
       },
       {
-        "minute": 86,
-        "scorer": "J. Player 3",
-        "team": "Jordan",
+        "minute": 90,
+        "injuryTime": 6,
+        "scorer": "A. Hussein",
+        "team": "Norway",
+        "type": "OWN"
+      }
+    ],
+    "stats": {
+      "homePossession": 38.7,
+      "awayPossession": 61.3,
+      "homeShotsOnTarget": 1,
+      "awayShotsOnTarget": 5,
+      "homeTotalShots": 11,
+      "awayTotalShots": 12,
+      "homeCorners": 2,
+      "awayCorners": 5
+    }
+  },
+  "19": {
+    "homeScore": 3,
+    "awayScore": 0,
+    "goals": [
+      {
+        "minute": 17,
+        "injuryTime": null,
+        "scorer": "L. Messi",
+        "team": "Argentina",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 60,
+        "injuryTime": null,
+        "scorer": "L. Messi",
+        "team": "Argentina",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 76,
+        "injuryTime": null,
+        "scorer": "L. Messi",
+        "team": "Argentina",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 50,
-      "awayPossession": 50,
+      "homePossession": 47.8,
+      "awayPossession": 52.2,
       "homeShotsOnTarget": 6,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 14,
-      "awayTotalShots": 8,
-      "homeCorners": 5,
+      "awayShotsOnTarget": 1,
+      "homeTotalShots": 10,
+      "awayTotalShots": 7,
+      "homeCorners": 2,
+      "awayCorners": 2
+    }
+  },
+  "20": {
+    "homeScore": 3,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 21,
+        "injuryTime": null,
+        "scorer": "R. Schmid",
+        "team": "Austria",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 50,
+        "injuryTime": null,
+        "scorer": "A. Olwan",
+        "team": "Jordan",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 76,
+        "injuryTime": null,
+        "scorer": "Y. Al-Arab",
+        "team": "Austria",
+        "type": "OWN"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 12,
+        "scorer": "M. Arnautovic",
+        "team": "Austria",
+        "type": "PENALTY"
+      }
+    ],
+    "stats": {
+      "homePossession": 63.2,
+      "awayPossession": 36.8,
+      "homeShotsOnTarget": 4,
+      "awayShotsOnTarget": 4,
+      "homeTotalShots": 11,
+      "awayTotalShots": 11,
+      "homeCorners": 4,
       "awayCorners": 3
     }
   },
   "21": {
-    "homeScore": 0,
+    "homeScore": 1,
     "awayScore": 0,
-    "goals": [],
+    "goals": [
+      {
+        "minute": 90,
+        "injuryTime": 5,
+        "scorer": "C. Yirenkyi",
+        "team": "Ghana",
+        "type": "NORMAL"
+      }
+    ],
     "stats": {
-      "homePossession": 47,
-      "awayPossession": 53,
-      "homeShotsOnTarget": 0,
-      "awayShotsOnTarget": 2,
-      "homeTotalShots": 8,
-      "awayTotalShots": 5,
-      "homeCorners": 6,
-      "awayCorners": 6
+      "homePossession": 38,
+      "awayPossession": 62,
+      "homeShotsOnTarget": 2,
+      "awayShotsOnTarget": 4,
+      "homeTotalShots": 7,
+      "awayTotalShots": 11,
+      "homeCorners": 2,
+      "awayCorners": 2
     }
   },
   "22": {
-    "homeScore": 1,
+    "homeScore": 4,
     "awayScore": 2,
     "goals": [
       {
-        "minute": 26,
+        "minute": 12,
+        "injuryTime": null,
+        "scorer": "H. Kane",
+        "team": "England",
+        "type": "PENALTY"
+      },
+      {
+        "minute": 36,
+        "injuryTime": null,
+        "scorer": "M. Baturina",
+        "team": "Croatia",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 42,
+        "injuryTime": null,
+        "scorer": "H. Kane",
+        "team": "England",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 45,
+        "injuryTime": 5,
+        "scorer": "P. Musa",
+        "team": "Croatia",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 47,
+        "injuryTime": null,
         "scorer": "J. Bellingham",
         "team": "England",
         "type": "NORMAL"
       },
       {
-        "minute": 55,
-        "scorer": "L. Majer",
-        "team": "Croatia",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 82,
-        "scorer": "M. Kovačić",
-        "team": "Croatia",
+        "minute": 85,
+        "injuryTime": null,
+        "scorer": "M. Rashford",
+        "team": "England",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 50,
-      "awayPossession": 50,
-      "homeShotsOnTarget": 2,
-      "awayShotsOnTarget": 4,
-      "homeTotalShots": 7,
-      "awayTotalShots": 12,
+      "homePossession": 51.7,
+      "awayPossession": 48.3,
+      "homeShotsOnTarget": 11,
+      "awayShotsOnTarget": 5,
+      "homeTotalShots": 22,
+      "awayTotalShots": 10,
       "homeCorners": 8,
       "awayCorners": 2
     }
@@ -690,308 +838,348 @@
     "awayScore": 1,
     "goals": [
       {
-        "minute": 41,
-        "scorer": "C. Player 8",
-        "team": "Congo DR",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 71,
-        "scorer": "Bruno Fernandes",
+        "minute": 6,
+        "injuryTime": null,
+        "scorer": "J. Neves",
         "team": "Portugal",
         "type": "NORMAL"
-      }
-    ],
-    "stats": {
-      "homePossession": 51,
-      "awayPossession": 49,
-      "homeShotsOnTarget": 3,
-      "awayShotsOnTarget": 4,
-      "homeTotalShots": 6,
-      "awayTotalShots": 12,
-      "homeCorners": 3,
-      "awayCorners": 2
-    }
-  },
-  "24": {
-    "homeScore": 2,
-    "awayScore": 2,
-    "goals": [
-      {
-        "minute": 12,
-        "scorer": "Y. Asprilla",
-        "team": "Colombia",
-        "type": "NORMAL"
       },
       {
-        "minute": 32,
-        "scorer": "U. Player 3",
-        "team": "Uzbekistan",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 52,
-        "scorer": "J. Rodríguez",
-        "team": "Colombia",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 71,
-        "scorer": "U. Player 9",
-        "team": "Uzbekistan",
+        "minute": 45,
+        "injuryTime": 5,
+        "scorer": "Y. Wissa",
+        "team": "Congo DR",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 47,
-      "awayPossession": 53,
-      "homeShotsOnTarget": 3,
+      "homePossession": 75.4,
+      "awayPossession": 24.6,
+      "homeShotsOnTarget": 1,
       "awayShotsOnTarget": 2,
       "homeTotalShots": 7,
       "awayTotalShots": 8,
-      "homeCorners": 8,
-      "awayCorners": 8
-    }
-  },
-  "25": {
-    "homeScore": 2,
-    "awayScore": 1,
-    "goals": [
-      {
-        "minute": 18,
-        "scorer": "A. Hložek",
-        "team": "Czechia",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 24,
-        "scorer": "E. Makgopa",
-        "team": "South Africa",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 49,
-        "scorer": "T. Souček",
-        "team": "Czechia",
-        "type": "NORMAL"
-      }
-    ],
-    "stats": {
-      "homePossession": 50,
-      "awayPossession": 50,
-      "homeShotsOnTarget": 4,
-      "awayShotsOnTarget": 1,
-      "homeTotalShots": 12,
-      "awayTotalShots": 5,
       "homeCorners": 5,
-      "awayCorners": 7
+      "awayCorners": 4
     }
   },
-  "26": {
+  "24": {
     "homeScore": 1,
-    "awayScore": 0,
+    "awayScore": 3,
     "goals": [
       {
-        "minute": 77,
-        "scorer": "X. Shaqiri",
-        "team": "Switzerland",
-        "type": "NORMAL"
-      }
-    ],
-    "stats": {
-      "homePossession": 55,
-      "awayPossession": 45,
-      "homeShotsOnTarget": 2,
-      "awayShotsOnTarget": 2,
-      "homeTotalShots": 7,
-      "awayTotalShots": 7,
-      "homeCorners": 3,
-      "awayCorners": 3
-    }
-  },
-  "27": {
-    "homeScore": 3,
-    "awayScore": 2,
-    "goals": [
-      {
-        "minute": 10,
-        "scorer": "Almoez Ali",
-        "team": "Qatar",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 11,
-        "scorer": "I. Koné",
-        "team": "Canada",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 38,
-        "scorer": "Yusuf Abdurisag",
-        "team": "Qatar",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 49,
-        "scorer": "I. Koné",
-        "team": "Canada",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 73,
-        "scorer": "C. Larin",
-        "team": "Canada",
-        "type": "NORMAL"
-      }
-    ],
-    "stats": {
-      "homePossession": 59,
-      "awayPossession": 41,
-      "homeShotsOnTarget": 6,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 9,
-      "awayTotalShots": 6,
-      "homeCorners": 7,
-      "awayCorners": 8
-    }
-  },
-  "28": {
-    "homeScore": 2,
-    "awayScore": 0,
-    "goals": [
-      {
-        "minute": 35,
-        "scorer": "S. Giménez",
-        "team": "Mexico",
+        "minute": 40,
+        "injuryTime": null,
+        "scorer": "D. Muñoz",
+        "team": "Colombia",
         "type": "NORMAL"
       },
       {
         "minute": 60,
-        "scorer": "S. Giménez",
+        "injuryTime": null,
+        "scorer": "A. Fayzullaev",
+        "team": "Uzbekistan",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 65,
+        "injuryTime": null,
+        "scorer": "L. Díaz",
+        "team": "Colombia",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 9,
+        "scorer": "J. Campaz",
+        "team": "Colombia",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 38.6,
+      "awayPossession": 61.4,
+      "homeShotsOnTarget": 2,
+      "awayShotsOnTarget": 4,
+      "homeTotalShots": 8,
+      "awayTotalShots": 15,
+      "homeCorners": 3,
+      "awayCorners": 4
+    }
+  },
+  "25": {
+    "homeScore": 1,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 6,
+        "injuryTime": null,
+        "scorer": "M. Sadílek",
+        "team": "Czechia",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 83,
+        "injuryTime": null,
+        "scorer": "T. Mokoena",
+        "team": "South Africa",
+        "type": "PENALTY"
+      }
+    ],
+    "stats": {
+      "homePossession": 38.3,
+      "awayPossession": 61.7,
+      "homeShotsOnTarget": 3,
+      "awayShotsOnTarget": 4,
+      "homeTotalShots": 14,
+      "awayTotalShots": 17,
+      "homeCorners": 5,
+      "awayCorners": 5
+    }
+  },
+  "26": {
+    "homeScore": 4,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 74,
+        "injuryTime": null,
+        "scorer": "J. Manzambi",
+        "team": "Switzerland",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 84,
+        "injuryTime": null,
+        "scorer": "R. Vargas",
+        "team": "Switzerland",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": null,
+        "scorer": "J. Manzambi",
+        "team": "Switzerland",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 3,
+        "scorer": "E. Mahmic",
+        "team": "Bosnia and Herzegovina",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 7,
+        "scorer": "G. Xhaka",
+        "team": "Switzerland",
+        "type": "PENALTY"
+      }
+    ],
+    "stats": {
+      "homePossession": 62.3,
+      "awayPossession": 37.7,
+      "homeShotsOnTarget": 7,
+      "awayShotsOnTarget": 3,
+      "homeTotalShots": 13,
+      "awayTotalShots": 5,
+      "homeCorners": 7,
+      "awayCorners": 3
+    }
+  },
+  "27": {
+    "homeScore": 6,
+    "awayScore": 0,
+    "goals": [
+      {
+        "minute": 16,
+        "injuryTime": null,
+        "scorer": "C. Larin",
+        "team": "Canada",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 29,
+        "injuryTime": null,
+        "scorer": "J. David",
+        "team": "Canada",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 45,
+        "injuryTime": 3,
+        "scorer": "J. David",
+        "team": "Canada",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 64,
+        "injuryTime": null,
+        "scorer": "N. Saliba",
+        "team": "Canada",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 75,
+        "injuryTime": null,
+        "scorer": "M. Manai",
+        "team": "Canada",
+        "type": "OWN"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 2,
+        "scorer": "J. David",
+        "team": "Canada",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 79,
+      "awayPossession": 21,
+      "homeShotsOnTarget": 10,
+      "awayShotsOnTarget": 0,
+      "homeTotalShots": 32,
+      "awayTotalShots": 2,
+      "homeCorners": 19,
+      "awayCorners": 1
+    }
+  },
+  "28": {
+    "homeScore": 1,
+    "awayScore": 0,
+    "goals": [
+      {
+        "minute": 50,
+        "injuryTime": null,
+        "scorer": "L. Romo",
         "team": "Mexico",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 53,
-      "awayPossession": 47,
-      "homeShotsOnTarget": 3,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 7,
-      "awayTotalShots": 11,
-      "homeCorners": 7,
-      "awayCorners": 6
+      "homePossession": 42.4,
+      "awayPossession": 57.6,
+      "homeShotsOnTarget": 4,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 8,
+      "awayTotalShots": 9,
+      "homeCorners": 1,
+      "awayCorners": 2
     }
   },
   "29": {
-    "homeScore": 1,
-    "awayScore": 1,
+    "homeScore": 3,
+    "awayScore": 0,
     "goals": [
       {
-        "minute": 53,
-        "scorer": "H. Player 1",
-        "team": "Haiti",
+        "minute": 23,
+        "injuryTime": null,
+        "scorer": "M. Cunha",
+        "team": "Brazil",
         "type": "NORMAL"
       },
       {
-        "minute": 63,
-        "scorer": "Bruno Guimarães",
+        "minute": 36,
+        "injuryTime": null,
+        "scorer": "M. Cunha",
+        "team": "Brazil",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 45,
+        "injuryTime": 3,
+        "scorer": "Vinícius Júnior",
         "team": "Brazil",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 49,
-      "awayPossession": 51,
-      "homeShotsOnTarget": 4,
+      "homePossession": 56.7,
+      "awayPossession": 43.3,
+      "homeShotsOnTarget": 5,
       "awayShotsOnTarget": 3,
-      "homeTotalShots": 7,
-      "awayTotalShots": 11,
-      "homeCorners": 2,
-      "awayCorners": 7
+      "homeTotalShots": 8,
+      "awayTotalShots": 7,
+      "homeCorners": 4,
+      "awayCorners": 4
     }
   },
   "30": {
-    "homeScore": 2,
+    "homeScore": 0,
     "awayScore": 1,
     "goals": [
       {
-        "minute": 26,
-        "scorer": "H. Ziyech",
+        "minute": 2,
+        "injuryTime": null,
+        "scorer": "I. Saibari",
         "team": "Morocco",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 34,
-        "scorer": "S. Player 3",
-        "team": "Scotland",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 44,
-        "scorer": "S. Player 9",
-        "team": "Scotland",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 59,
-      "awayPossession": 41,
-      "homeShotsOnTarget": 2,
-      "awayShotsOnTarget": 4,
-      "homeTotalShots": 8,
+      "homePossession": 41.1,
+      "awayPossession": 58.9,
+      "homeShotsOnTarget": 0,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 6,
       "awayTotalShots": 12,
-      "homeCorners": 3,
-      "awayCorners": 8
+      "homeCorners": 2,
+      "awayCorners": 5
     }
   },
   "31": {
     "homeScore": 0,
-    "awayScore": 0,
-    "goals": [],
-    "stats": {
-      "homePossession": 48,
-      "awayPossession": 52,
-      "homeShotsOnTarget": 1,
-      "awayShotsOnTarget": 1,
-      "homeTotalShots": 5,
-      "awayTotalShots": 6,
-      "homeCorners": 6,
-      "awayCorners": 8
-    }
-  },
-  "32": {
-    "homeScore": 1,
-    "awayScore": 2,
+    "awayScore": 1,
     "goals": [
       {
-        "minute": 20,
-        "scorer": "W. McKennie",
-        "team": "United States",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 41,
-        "scorer": "A. Player 3",
-        "team": "Australia",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 83,
-        "scorer": "A. Player 9",
-        "team": "Australia",
+        "minute": 2,
+        "injuryTime": null,
+        "scorer": "M. Galarza",
+        "team": "Paraguay",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 44,
-      "awayPossession": 56,
-      "homeShotsOnTarget": 1,
+      "homePossession": 78.5,
+      "awayPossession": 21.5,
+      "homeShotsOnTarget": 5,
       "awayShotsOnTarget": 2,
-      "homeTotalShots": 8,
+      "homeTotalShots": 32,
       "awayTotalShots": 7,
-      "homeCorners": 3,
-      "awayCorners": 7
+      "homeCorners": 12,
+      "awayCorners": 0
+    }
+  },
+  "32": {
+    "homeScore": 2,
+    "awayScore": 0,
+    "goals": [
+      {
+        "minute": 11,
+        "injuryTime": null,
+        "scorer": "C. Burgess",
+        "team": "United States",
+        "type": "OWN"
+      },
+      {
+        "minute": 43,
+        "injuryTime": null,
+        "scorer": "A. Freeman",
+        "team": "United States",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 61.9,
+      "awayPossession": 38.1,
+      "homeShotsOnTarget": 2,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 10,
+      "awayTotalShots": 5,
+      "homeCorners": 7,
+      "awayCorners": 4
     }
   },
   "33": {
@@ -999,141 +1187,153 @@
     "awayScore": 1,
     "goals": [
       {
-        "minute": 54,
-        "scorer": "C. Player 10",
+        "minute": 30,
+        "injuryTime": null,
+        "scorer": "F. Kessié",
         "team": "Cote d'Ivoire",
         "type": "NORMAL"
       },
       {
-        "minute": 56,
-        "scorer": "F. Wirtz",
+        "minute": 68,
+        "injuryTime": null,
+        "scorer": "D. Undav",
         "team": "Germany",
         "type": "NORMAL"
       },
       {
-        "minute": 85,
-        "scorer": "K. Havertz",
+        "minute": 90,
+        "injuryTime": 4,
+        "scorer": "D. Undav",
         "team": "Germany",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 56,
-      "awayPossession": 44,
-      "homeShotsOnTarget": 2,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 10,
-      "awayTotalShots": 8,
-      "homeCorners": 5,
-      "awayCorners": 6
+      "homePossession": 59.5,
+      "awayPossession": 40.5,
+      "homeShotsOnTarget": 7,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 16,
+      "awayTotalShots": 9,
+      "homeCorners": 8,
+      "awayCorners": 3
     }
   },
   "34": {
-    "homeScore": 1,
-    "awayScore": 2,
-    "goals": [
-      {
-        "minute": 45,
-        "scorer": "M. Caicedo",
-        "team": "Ecuador",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 58,
-        "scorer": "C. Player 4",
-        "team": "Curacao",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 76,
-        "scorer": "C. Player 11",
-        "team": "Curacao",
-        "type": "NORMAL"
-      }
-    ],
+    "homeScore": 0,
+    "awayScore": 0,
+    "goals": [],
     "stats": {
-      "homePossession": 46,
-      "awayPossession": 54,
-      "homeShotsOnTarget": 2,
+      "homePossession": 74.6,
+      "awayPossession": 25.4,
+      "homeShotsOnTarget": 15,
       "awayShotsOnTarget": 3,
-      "homeTotalShots": 6,
-      "awayTotalShots": 6,
-      "homeCorners": 4,
-      "awayCorners": 2
+      "homeTotalShots": 27,
+      "awayTotalShots": 10,
+      "homeCorners": 9,
+      "awayCorners": 0
     }
   },
   "35": {
-    "homeScore": 0,
-    "awayScore": 2,
+    "homeScore": 5,
+    "awayScore": 1,
     "goals": [
       {
+        "minute": 5,
+        "injuryTime": null,
+        "scorer": "B. Brobbey",
+        "team": "Netherlands",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 17,
+        "injuryTime": null,
+        "scorer": "B. Brobbey",
+        "team": "Netherlands",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 47,
+        "injuryTime": null,
+        "scorer": "C. Gakpo",
+        "team": "Netherlands",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 54,
+        "injuryTime": null,
+        "scorer": "C. Gakpo",
+        "team": "Netherlands",
+        "type": "NORMAL"
+      },
+      {
         "minute": 59,
-        "scorer": "S. Player 8",
+        "injuryTime": null,
+        "scorer": "A. Elanga",
         "team": "Sweden",
         "type": "NORMAL"
       },
       {
-        "minute": 71,
-        "scorer": "S. Player 7",
-        "team": "Sweden",
+        "minute": 89,
+        "injuryTime": null,
+        "scorer": "C. Summerville",
+        "team": "Netherlands",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 49,
-      "awayPossession": 51,
-      "homeShotsOnTarget": 2,
-      "awayShotsOnTarget": 5,
-      "homeTotalShots": 6,
-      "awayTotalShots": 13,
-      "homeCorners": 4,
-      "awayCorners": 6
+      "homePossession": 50.9,
+      "awayPossession": 49.1,
+      "homeShotsOnTarget": 7,
+      "awayShotsOnTarget": 8,
+      "homeTotalShots": 10,
+      "awayTotalShots": 16,
+      "homeCorners": 2,
+      "awayCorners": 5
     }
   },
   "36": {
-    "homeScore": 3,
-    "awayScore": 2,
+    "homeScore": 0,
+    "awayScore": 4,
     "goals": [
       {
         "minute": 4,
-        "scorer": "S. Jaziri",
-        "team": "Tunisia",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 51,
-        "scorer": "A. Ueda",
-        "team": "Japan",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 57,
-        "scorer": "Y. Msakni",
-        "team": "Tunisia",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 76,
+        "injuryTime": null,
         "scorer": "D. Kamada",
         "team": "Japan",
         "type": "NORMAL"
       },
       {
-        "minute": 79,
-        "scorer": "A. Ben Slimane",
-        "team": "Tunisia",
+        "minute": 31,
+        "injuryTime": null,
+        "scorer": "A. Ueda",
+        "team": "Japan",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 69,
+        "injuryTime": null,
+        "scorer": "J. Ito",
+        "team": "Japan",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 83,
+        "injuryTime": null,
+        "scorer": "A. Ueda",
+        "team": "Japan",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 54,
-      "awayPossession": 46,
-      "homeShotsOnTarget": 5,
+      "homePossession": 37.9,
+      "awayPossession": 62.1,
+      "homeShotsOnTarget": 0,
       "awayShotsOnTarget": 5,
-      "homeTotalShots": 10,
-      "awayTotalShots": 12,
-      "homeCorners": 5,
-      "awayCorners": 4
+      "homeTotalShots": 2,
+      "awayTotalShots": 11,
+      "homeCorners": 3,
+      "awayCorners": 5
     }
   },
   "37": {
@@ -1141,562 +1341,649 @@
     "awayScore": 2,
     "goals": [
       {
-        "minute": 34,
-        "scorer": "D. Núñez",
-        "team": "Uruguay",
+        "minute": 21,
+        "injuryTime": null,
+        "scorer": "K. Pina",
+        "team": "Cabo Verde",
         "type": "NORMAL"
       },
       {
-        "minute": 43,
-        "scorer": "F. Valverde",
+        "minute": 44,
+        "injuryTime": null,
+        "scorer": "M. Araújo",
         "team": "Uruguay",
         "type": "NORMAL"
       },
       {
         "minute": 45,
-        "scorer": "C. Player 2",
-        "team": "Cabo Verde",
+        "injuryTime": 6,
+        "scorer": "A. Canobbio",
+        "team": "Uruguay",
         "type": "NORMAL"
       },
       {
-        "minute": 49,
-        "scorer": "C. Player 2",
+        "minute": 61,
+        "injuryTime": null,
+        "scorer": "H. Varela",
         "team": "Cabo Verde",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 54,
-      "awayPossession": 46,
+      "homePossession": 65.2,
+      "awayPossession": 34.8,
       "homeShotsOnTarget": 2,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 10,
-      "awayTotalShots": 9,
-      "homeCorners": 2,
-      "awayCorners": 2
+      "awayShotsOnTarget": 4,
+      "homeTotalShots": 17,
+      "awayTotalShots": 12,
+      "homeCorners": 11,
+      "awayCorners": 4
     }
   },
   "38": {
-    "homeScore": 3,
-    "awayScore": 2,
+    "homeScore": 4,
+    "awayScore": 0,
     "goals": [
       {
-        "minute": 17,
-        "scorer": "Ferran Torres",
+        "minute": 10,
+        "injuryTime": null,
+        "scorer": "L. Yamal",
         "team": "Spain",
         "type": "NORMAL"
       },
       {
-        "minute": 40,
-        "scorer": "Nico Williams",
+        "minute": 21,
+        "injuryTime": null,
+        "scorer": "M. Oyarzabal",
         "team": "Spain",
         "type": "NORMAL"
       },
       {
-        "minute": 44,
-        "scorer": "Saleh Al-Shehri",
-        "team": "Saudi Arabia",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 46,
-        "scorer": "Firas Al-Buraikan",
-        "team": "Saudi Arabia",
+        "minute": 24,
+        "injuryTime": null,
+        "scorer": "M. Oyarzabal",
+        "team": "Spain",
         "type": "NORMAL"
       },
       {
         "minute": 49,
-        "scorer": "Ferran Torres",
+        "injuryTime": null,
+        "scorer": "H. Al-Tambakti",
         "team": "Spain",
-        "type": "NORMAL"
+        "type": "OWN"
       }
     ],
     "stats": {
-      "homePossession": 53,
-      "awayPossession": 47,
-      "homeShotsOnTarget": 3,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 9,
-      "awayTotalShots": 11,
-      "homeCorners": 5,
-      "awayCorners": 7
+      "homePossession": 67.1,
+      "awayPossession": 32.9,
+      "homeShotsOnTarget": 8,
+      "awayShotsOnTarget": 1,
+      "homeTotalShots": 22,
+      "awayTotalShots": 3,
+      "homeCorners": 6,
+      "awayCorners": 1
     }
   },
   "39": {
     "homeScore": 0,
+    "awayScore": 0,
+    "goals": [],
+    "stats": {
+      "homePossession": 70.1,
+      "awayPossession": 29.9,
+      "homeShotsOnTarget": 7,
+      "awayShotsOnTarget": 3,
+      "homeTotalShots": 23,
+      "awayTotalShots": 7,
+      "homeCorners": 4,
+      "awayCorners": 2
+    }
+  },
+  "40": {
+    "homeScore": 1,
+    "awayScore": 3,
+    "goals": [
+      {
+        "minute": 15,
+        "injuryTime": null,
+        "scorer": "F. Surman",
+        "team": "New Zealand",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 58,
+        "injuryTime": null,
+        "scorer": "M. Zico",
+        "team": "Egypt",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 67,
+        "injuryTime": null,
+        "scorer": "M. Salah",
+        "team": "Egypt",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 82,
+        "injuryTime": null,
+        "scorer": "Trézéguet",
+        "team": "Egypt",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 44.4,
+      "awayPossession": 55.6,
+      "homeShotsOnTarget": 5,
+      "awayShotsOnTarget": 7,
+      "homeTotalShots": 11,
+      "awayTotalShots": 19,
+      "homeCorners": 4,
+      "awayCorners": 4
+    }
+  },
+  "41": {
+    "homeScore": 3,
+    "awayScore": 2,
+    "goals": [
+      {
+        "minute": 43,
+        "injuryTime": null,
+        "scorer": "M. Holmgren Pedersen",
+        "team": "Norway",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 48,
+        "injuryTime": null,
+        "scorer": "E. Haaland",
+        "team": "Norway",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 53,
+        "injuryTime": null,
+        "scorer": "I. Sarr",
+        "team": "Senegal",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 58,
+        "injuryTime": null,
+        "scorer": "E. Haaland",
+        "team": "Norway",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 3,
+        "scorer": "I. Sarr",
+        "team": "Senegal",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 41.7,
+      "awayPossession": 58.3,
+      "homeShotsOnTarget": 7,
+      "awayShotsOnTarget": 4,
+      "homeTotalShots": 13,
+      "awayTotalShots": 16,
+      "homeCorners": 5,
+      "awayCorners": 4
+    }
+  },
+  "42": {
+    "homeScore": 3,
+    "awayScore": 0,
+    "goals": [
+      {
+        "minute": 14,
+        "injuryTime": null,
+        "scorer": "K. Mbappé",
+        "team": "France",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 54,
+        "injuryTime": null,
+        "scorer": "K. Mbappé",
+        "team": "France",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 66,
+        "injuryTime": null,
+        "scorer": "O. Dembélé",
+        "team": "France",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 55.6,
+      "awayPossession": 44.4,
+      "homeShotsOnTarget": 5,
+      "awayShotsOnTarget": 0,
+      "homeTotalShots": 19,
+      "awayTotalShots": 4,
+      "homeCorners": 4,
+      "awayCorners": 2
+    }
+  },
+  "43": {
+    "homeScore": 2,
+    "awayScore": 0,
+    "goals": [
+      {
+        "minute": 38,
+        "injuryTime": null,
+        "scorer": "L. Messi",
+        "team": "Argentina",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 5,
+        "scorer": "L. Messi",
+        "team": "Argentina",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 53.6,
+      "awayPossession": 46.4,
+      "homeShotsOnTarget": 5,
+      "awayShotsOnTarget": 1,
+      "homeTotalShots": 12,
+      "awayTotalShots": 6,
+      "homeCorners": 1,
+      "awayCorners": 3
+    }
+  },
+  "44": {
+    "homeScore": 1,
+    "awayScore": 2,
+    "goals": [
+      {
+        "minute": 36,
+        "injuryTime": null,
+        "scorer": "N. Al-Rashdan",
+        "team": "Jordan",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 69,
+        "injuryTime": null,
+        "scorer": "N. Benbouali",
+        "team": "Algeria",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 82,
+        "injuryTime": null,
+        "scorer": "A. Gouiri",
+        "team": "Algeria",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 27.9,
+      "awayPossession": 72.1,
+      "homeShotsOnTarget": 4,
+      "awayShotsOnTarget": 8,
+      "homeTotalShots": 8,
+      "awayTotalShots": 17,
+      "homeCorners": 1,
+      "awayCorners": 10
+    }
+  },
+  "45": {
+    "homeScore": 0,
+    "awayScore": 0,
+    "goals": [],
+    "stats": {
+      "homePossession": 78.9,
+      "awayPossession": 21.1,
+      "homeShotsOnTarget": 3,
+      "awayShotsOnTarget": 1,
+      "homeTotalShots": 19,
+      "awayTotalShots": 2,
+      "homeCorners": 9,
+      "awayCorners": 2
+    }
+  },
+  "46": {
+    "homeScore": 0,
     "awayScore": 1,
     "goals": [
       {
-        "minute": 76,
-        "scorer": "I. Player 8",
-        "team": "IR Iran",
+        "minute": 54,
+        "injuryTime": null,
+        "scorer": "A. Budimir",
+        "team": "Croatia",
         "type": "NORMAL"
       }
     ],
     "stats": {
       "homePossession": 42,
       "awayPossession": 58,
-      "homeShotsOnTarget": 3,
-      "awayShotsOnTarget": 2,
-      "homeTotalShots": 10,
-      "awayTotalShots": 7,
-      "homeCorners": 5,
-      "awayCorners": 6
-    }
-  },
-  "40": {
-    "homeScore": 3,
-    "awayScore": 0,
-    "goals": [
-      {
-        "minute": 2,
-        "scorer": "N. Player 8",
-        "team": "New Zealand",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 70,
-        "scorer": "N. Player 2",
-        "team": "New Zealand",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 85,
-        "scorer": "N. Player 1",
-        "team": "New Zealand",
-        "type": "NORMAL"
-      }
-    ],
-    "stats": {
-      "homePossession": 60,
-      "awayPossession": 40,
-      "homeShotsOnTarget": 6,
-      "awayShotsOnTarget": 1,
-      "homeTotalShots": 10,
-      "awayTotalShots": 4,
-      "homeCorners": 8,
-      "awayCorners": 5
-    }
-  },
-  "41": {
-    "homeScore": 1,
-    "awayScore": 0,
-    "goals": [
-      {
-        "minute": 80,
-        "scorer": "A. Donnum",
-        "team": "Norway",
-        "type": "NORMAL"
-      }
-    ],
-    "stats": {
-      "homePossession": 61,
-      "awayPossession": 39,
       "homeShotsOnTarget": 1,
-      "awayShotsOnTarget": 0,
+      "awayShotsOnTarget": 2,
       "homeTotalShots": 8,
       "awayTotalShots": 6,
-      "homeCorners": 3,
-      "awayCorners": 2
-    }
-  },
-  "42": {
-    "homeScore": 0,
-    "awayScore": 1,
-    "goals": [
-      {
-        "minute": 58,
-        "scorer": "I. Player 5",
-        "team": "Iraq",
-        "type": "NORMAL"
-      }
-    ],
-    "stats": {
-      "homePossession": 47,
-      "awayPossession": 53,
-      "homeShotsOnTarget": 2,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 8,
-      "awayTotalShots": 9,
-      "homeCorners": 5,
-      "awayCorners": 6
-    }
-  },
-  "43": {
-    "homeScore": 2,
-    "awayScore": 2,
-    "goals": [
-      {
-        "minute": 25,
-        "scorer": "A. Mac Allister",
-        "team": "Argentina",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 31,
-        "scorer": "A. Player 2",
-        "team": "Austria",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 38,
-        "scorer": "L. Messi",
-        "team": "Argentina",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 61,
-        "scorer": "A. Player 7",
-        "team": "Austria",
-        "type": "NORMAL"
-      }
-    ],
-    "stats": {
-      "homePossession": 49,
-      "awayPossession": 51,
-      "homeShotsOnTarget": 4,
-      "awayShotsOnTarget": 5,
-      "homeTotalShots": 7,
-      "awayTotalShots": 9,
-      "homeCorners": 5,
-      "awayCorners": 7
-    }
-  },
-  "44": {
-    "homeScore": 2,
-    "awayScore": 0,
-    "goals": [
-      {
-        "minute": 37,
-        "scorer": "J. Player 10",
-        "team": "Jordan",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 55,
-        "scorer": "J. Player 8",
-        "team": "Jordan",
-        "type": "NORMAL"
-      }
-    ],
-    "stats": {
-      "homePossession": 59,
-      "awayPossession": 41,
-      "homeShotsOnTarget": 4,
-      "awayShotsOnTarget": 2,
-      "homeTotalShots": 9,
-      "awayTotalShots": 5,
-      "homeCorners": 6,
-      "awayCorners": 3
-    }
-  },
-  "45": {
-    "homeScore": 2,
-    "awayScore": 2,
-    "goals": [
-      {
-        "minute": 16,
-        "scorer": "G. Player 2",
-        "team": "Ghana",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 30,
-        "scorer": "H. Kane",
-        "team": "England",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 65,
-        "scorer": "G. Player 10",
-        "team": "Ghana",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 89,
-        "scorer": "M. Rashford",
-        "team": "England",
-        "type": "NORMAL"
-      }
-    ],
-    "stats": {
-      "homePossession": 51,
-      "awayPossession": 49,
-      "homeShotsOnTarget": 4,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 7,
-      "awayTotalShots": 7,
-      "homeCorners": 3,
-      "awayCorners": 8
-    }
-  },
-  "46": {
-    "homeScore": 0,
-    "awayScore": 2,
-    "goals": [
-      {
-        "minute": 9,
-        "scorer": "M. Pašalić",
-        "team": "Croatia",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 17,
-        "scorer": "M. Pašalić",
-        "team": "Croatia",
-        "type": "NORMAL"
-      }
-    ],
-    "stats": {
-      "homePossession": 48,
-      "awayPossession": 52,
-      "homeShotsOnTarget": 1,
-      "awayShotsOnTarget": 5,
-      "homeTotalShots": 5,
-      "awayTotalShots": 11,
-      "homeCorners": 2,
+      "homeCorners": 7,
       "awayCorners": 2
     }
   },
   "47": {
-    "homeScore": 1,
+    "homeScore": 5,
     "awayScore": 0,
     "goals": [
       {
         "minute": 6,
-        "scorer": "Bruno Fernandes",
+        "injuryTime": null,
+        "scorer": "C. Ronaldo",
+        "team": "Portugal",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 17,
+        "injuryTime": null,
+        "scorer": "N. Mendes",
+        "team": "Portugal",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 39,
+        "injuryTime": null,
+        "scorer": "C. Ronaldo",
+        "team": "Portugal",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 60,
+        "injuryTime": null,
+        "scorer": "A. Nematov",
+        "team": "Portugal",
+        "type": "OWN"
+      },
+      {
+        "minute": 87,
+        "injuryTime": null,
+        "scorer": "R. Leão",
         "team": "Portugal",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 51,
-      "awayPossession": 49,
-      "homeShotsOnTarget": 3,
-      "awayShotsOnTarget": 0,
-      "homeTotalShots": 8,
-      "awayTotalShots": 8,
-      "homeCorners": 7,
-      "awayCorners": 7
+      "homePossession": 65.9,
+      "awayPossession": 34.1,
+      "homeShotsOnTarget": 9,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 17,
+      "awayTotalShots": 7,
+      "homeCorners": 3,
+      "awayCorners": 2
     }
   },
   "48": {
-    "homeScore": 0,
-    "awayScore": 2,
+    "homeScore": 1,
+    "awayScore": 0,
     "goals": [
       {
-        "minute": 11,
-        "scorer": "C. Player 10",
-        "team": "Congo DR",
+        "minute": 76,
+        "injuryTime": null,
+        "scorer": "D. Muñoz",
+        "team": "Colombia",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 63.5,
+      "awayPossession": 36.5,
+      "homeShotsOnTarget": 9,
+      "awayShotsOnTarget": 1,
+      "homeTotalShots": 20,
+      "awayTotalShots": 7,
+      "homeCorners": 5,
+      "awayCorners": 4
+    }
+  },
+  "49": {
+    "homeScore": 0,
+    "awayScore": 3,
+    "goals": [
+      {
+        "minute": 7,
+        "injuryTime": null,
+        "scorer": "Vinícius Júnior",
+        "team": "Brazil",
         "type": "NORMAL"
       },
       {
-        "minute": 59,
-        "scorer": "C. Player 6",
-        "team": "Congo DR",
+        "minute": 45,
+        "injuryTime": 3,
+        "scorer": "Vinícius Júnior",
+        "team": "Brazil",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 60,
+        "injuryTime": null,
+        "scorer": "M. Cunha",
+        "team": "Brazil",
         "type": "NORMAL"
       }
     ],
     "stats": {
       "homePossession": 46,
       "awayPossession": 54,
-      "homeShotsOnTarget": 2,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 5,
-      "awayTotalShots": 8,
-      "homeCorners": 6,
+      "homeShotsOnTarget": 5,
+      "awayShotsOnTarget": 9,
+      "homeTotalShots": 14,
+      "awayTotalShots": 21,
+      "homeCorners": 7,
       "awayCorners": 7
     }
   },
-  "49": {
-    "homeScore": 3,
-    "awayScore": 1,
-    "goals": [
-      {
-        "minute": 48,
-        "scorer": "Vinícius Jr.",
-        "team": "Brazil",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 51,
-        "scorer": "S. Player 7",
-        "team": "Scotland",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 84,
-        "scorer": "S. Player 5",
-        "team": "Scotland",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 86,
-        "scorer": "S. Player 4",
-        "team": "Scotland",
-        "type": "NORMAL"
-      }
-    ],
-    "stats": {
-      "homePossession": 58,
-      "awayPossession": 42,
-      "homeShotsOnTarget": 5,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 10,
-      "awayTotalShots": 10,
-      "homeCorners": 3,
-      "awayCorners": 3
-    }
-  },
   "50": {
-    "homeScore": 1,
-    "awayScore": 1,
+    "homeScore": 4,
+    "awayScore": 2,
     "goals": [
       {
-        "minute": 4,
-        "scorer": "Y. En-Nesyri",
+        "minute": 10,
+        "injuryTime": null,
+        "scorer": "Y. Bounou",
+        "team": "Haiti",
+        "type": "OWN"
+      },
+      {
+        "minute": 39,
+        "injuryTime": null,
+        "scorer": "A. Hakimi",
         "team": "Morocco",
         "type": "NORMAL"
       },
       {
-        "minute": 29,
-        "scorer": "H. Player 5",
+        "minute": 43,
+        "injuryTime": null,
+        "scorer": "W. Isidor",
         "team": "Haiti",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 45,
+        "injuryTime": 1,
+        "scorer": "I. Saibari",
+        "team": "Morocco",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 78,
+        "injuryTime": null,
+        "scorer": "S. Rahimi",
+        "team": "Morocco",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 89,
+        "injuryTime": null,
+        "scorer": "G. Yassine",
+        "team": "Morocco",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 48,
-      "awayPossession": 52,
-      "homeShotsOnTarget": 4,
-      "awayShotsOnTarget": 1,
-      "homeTotalShots": 10,
+      "homePossession": 69.1,
+      "awayPossession": 30.9,
+      "homeShotsOnTarget": 11,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 22,
       "awayTotalShots": 9,
-      "homeCorners": 4,
-      "awayCorners": 4
+      "homeCorners": 9,
+      "awayCorners": 1
     }
   },
   "51": {
-    "homeScore": 0,
-    "awayScore": 0,
-    "goals": [],
+    "homeScore": 2,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 46,
+        "injuryTime": null,
+        "scorer": "R. Vargas",
+        "team": "Switzerland",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 57,
+        "injuryTime": null,
+        "scorer": "J. Manzambi",
+        "team": "Switzerland",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 76,
+        "injuryTime": null,
+        "scorer": "P. David",
+        "team": "Canada",
+        "type": "NORMAL"
+      }
+    ],
     "stats": {
-      "homePossession": 48,
-      "awayPossession": 52,
-      "homeShotsOnTarget": 1,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 8,
-      "awayTotalShots": 7,
-      "homeCorners": 8,
-      "awayCorners": 8
+      "homePossession": 55.3,
+      "awayPossession": 44.7,
+      "homeShotsOnTarget": 4,
+      "awayShotsOnTarget": 7,
+      "homeTotalShots": 6,
+      "awayTotalShots": 13,
+      "homeCorners": 2,
+      "awayCorners": 7
     }
   },
   "52": {
-    "homeScore": 2,
-    "awayScore": 0,
+    "homeScore": 3,
+    "awayScore": 1,
     "goals": [
       {
-        "minute": 59,
-        "scorer": "A. Krunić",
+        "minute": 29,
+        "injuryTime": null,
+        "scorer": "K. Alajbegovic",
         "team": "Bosnia and Herzegovina",
         "type": "NORMAL"
       },
       {
-        "minute": 59,
-        "scorer": "E. Demirović",
+        "minute": 34,
+        "injuryTime": null,
+        "scorer": "M. Abunada",
+        "team": "Bosnia and Herzegovina",
+        "type": "OWN"
+      },
+      {
+        "minute": 42,
+        "injuryTime": null,
+        "scorer": "H. Al-Haydos",
+        "team": "Qatar",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 80,
+        "injuryTime": null,
+        "scorer": "E. Mahmic",
         "team": "Bosnia and Herzegovina",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 53,
-      "awayPossession": 47,
-      "homeShotsOnTarget": 4,
-      "awayShotsOnTarget": 2,
-      "homeTotalShots": 9,
-      "awayTotalShots": 10,
-      "homeCorners": 6,
-      "awayCorners": 4
+      "homePossession": 54.4,
+      "awayPossession": 45.6,
+      "homeShotsOnTarget": 5,
+      "awayShotsOnTarget": 3,
+      "homeTotalShots": 14,
+      "awayTotalShots": 9,
+      "homeCorners": 5,
+      "awayCorners": 5
     }
   },
   "53": {
-    "homeScore": 2,
-    "awayScore": 2,
+    "homeScore": 0,
+    "awayScore": 3,
     "goals": [
       {
-        "minute": 12,
-        "scorer": "V. Černý",
-        "team": "Czechia",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 13,
-        "scorer": "E. Álvarez",
+        "minute": 55,
+        "injuryTime": null,
+        "scorer": "M. Chávez",
         "team": "Mexico",
         "type": "NORMAL"
       },
       {
-        "minute": 26,
-        "scorer": "U. Antuna",
+        "minute": 61,
+        "injuryTime": null,
+        "scorer": "J. Quiñones",
         "team": "Mexico",
         "type": "NORMAL"
       },
       {
-        "minute": 82,
-        "scorer": "T. Souček",
-        "team": "Czechia",
+        "minute": 90,
+        "injuryTime": 4,
+        "scorer": "Á. Fidalgo",
+        "team": "Mexico",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 50,
-      "awayPossession": 50,
-      "homeShotsOnTarget": 4,
-      "awayShotsOnTarget": 3,
-      "homeTotalShots": 8,
+      "homePossession": 51.9,
+      "awayPossession": 48.1,
+      "homeShotsOnTarget": 1,
+      "awayShotsOnTarget": 5,
+      "homeTotalShots": 13,
       "awayTotalShots": 11,
-      "homeCorners": 2,
-      "awayCorners": 6
+      "homeCorners": 5,
+      "awayCorners": 1
     }
   },
   "54": {
-    "homeScore": 2,
-    "awayScore": 2,
+    "homeScore": 1,
+    "awayScore": 0,
     "goals": [
       {
-        "minute": 12,
-        "scorer": "K. I. Lee",
-        "team": "Korea Republic",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 26,
-        "scorer": "T. Zwane",
+        "minute": 63,
+        "injuryTime": null,
+        "scorer": "T. Maseko",
         "team": "South Africa",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 37,
-        "scorer": "M. Mayambela",
-        "team": "South Africa",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 67,
-        "scorer": "G. S. Cho",
-        "team": "Korea Republic",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 47,
-      "awayPossession": 53,
-      "homeShotsOnTarget": 5,
+      "homePossession": 31.6,
+      "awayPossession": 68.4,
+      "homeShotsOnTarget": 4,
       "awayShotsOnTarget": 3,
-      "homeTotalShots": 8,
+      "homeTotalShots": 13,
       "awayTotalShots": 8,
       "homeCorners": 4,
-      "awayCorners": 2
+      "awayCorners": 6
     }
   },
   "55": {
@@ -1704,113 +1991,191 @@
     "awayScore": 2,
     "goals": [
       {
-        "minute": 3,
-        "scorer": "C. Player 7",
+        "minute": 7,
+        "injuryTime": null,
+        "scorer": "N. Pépé",
         "team": "Cote d'Ivoire",
         "type": "NORMAL"
       },
       {
-        "minute": 53,
-        "scorer": "C. Player 2",
+        "minute": 64,
+        "injuryTime": null,
+        "scorer": "N. Pépé",
         "team": "Cote d'Ivoire",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 43,
-      "awayPossession": 57,
-      "homeShotsOnTarget": 3,
-      "awayShotsOnTarget": 4,
-      "homeTotalShots": 9,
-      "awayTotalShots": 11,
-      "homeCorners": 8,
-      "awayCorners": 2
+      "homePossession": 36.7,
+      "awayPossession": 63.3,
+      "homeShotsOnTarget": 2,
+      "awayShotsOnTarget": 3,
+      "homeTotalShots": 11,
+      "awayTotalShots": 7,
+      "homeCorners": 4,
+      "awayCorners": 6
     }
   },
   "56": {
-    "homeScore": 3,
-    "awayScore": 0,
+    "homeScore": 2,
+    "awayScore": 1,
     "goals": [
       {
-        "minute": 10,
-        "scorer": "M. Caicedo",
+        "minute": 2,
+        "injuryTime": null,
+        "scorer": "L. Sané",
+        "team": "Germany",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 9,
+        "injuryTime": null,
+        "scorer": "N. Angulo",
         "team": "Ecuador",
         "type": "NORMAL"
       },
       {
-        "minute": 38,
-        "scorer": "K. Rodríguez",
-        "team": "Ecuador",
-        "type": "NORMAL"
-      },
-      {
-        "minute": 51,
-        "scorer": "K. Rodríguez",
+        "minute": 77,
+        "injuryTime": null,
+        "scorer": "G. Plata",
         "team": "Ecuador",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 51,
-      "awayPossession": 49,
+      "homePossession": 38.9,
+      "awayPossession": 61.1,
       "homeShotsOnTarget": 3,
-      "awayShotsOnTarget": 2,
-      "homeTotalShots": 11,
-      "awayTotalShots": 5,
+      "awayShotsOnTarget": 3,
+      "homeTotalShots": 7,
+      "awayTotalShots": 11,
       "homeCorners": 3,
-      "awayCorners": 7
+      "awayCorners": 2
     }
   },
   "57": {
-    "homeScore": 0,
-    "awayScore": 0,
-    "goals": [],
+    "homeScore": 1,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 56,
+        "injuryTime": null,
+        "scorer": "D. Maeda",
+        "team": "Japan",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 62,
+        "injuryTime": null,
+        "scorer": "A. Elanga",
+        "team": "Sweden",
+        "type": "NORMAL"
+      }
+    ],
     "stats": {
-      "homePossession": 53,
-      "awayPossession": 47,
-      "homeShotsOnTarget": 2,
-      "awayShotsOnTarget": 0,
-      "homeTotalShots": 10,
-      "awayTotalShots": 5,
-      "homeCorners": 8,
-      "awayCorners": 2
+      "homePossession": 52.3,
+      "awayPossession": 47.7,
+      "homeShotsOnTarget": 3,
+      "awayShotsOnTarget": 5,
+      "homeTotalShots": 8,
+      "awayTotalShots": 11,
+      "homeCorners": 2,
+      "awayCorners": 8
     }
   },
   "58": {
     "homeScore": 1,
-    "awayScore": 0,
+    "awayScore": 3,
     "goals": [
       {
-        "minute": 18,
-        "scorer": "Y. Msakni",
+        "minute": 3,
+        "injuryTime": null,
+        "scorer": "E. Skhiri",
+        "team": "Netherlands",
+        "type": "OWN"
+      },
+      {
+        "minute": 7,
+        "injuryTime": null,
+        "scorer": "B. Brobbey",
+        "team": "Netherlands",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 54,
+        "injuryTime": null,
+        "scorer": "H. Mastouri",
         "team": "Tunisia",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 62,
+        "injuryTime": null,
+        "scorer": "J. van Hecke",
+        "team": "Netherlands",
         "type": "NORMAL"
       }
     ],
     "stats": {
-      "homePossession": 59,
-      "awayPossession": 41,
+      "homePossession": 28.6,
+      "awayPossession": 71.4,
       "homeShotsOnTarget": 4,
-      "awayShotsOnTarget": 2,
-      "homeTotalShots": 11,
-      "awayTotalShots": 8,
-      "homeCorners": 2,
-      "awayCorners": 4
+      "awayShotsOnTarget": 7,
+      "homeTotalShots": 10,
+      "awayTotalShots": 20,
+      "homeCorners": 4,
+      "awayCorners": 6
     }
   },
   "59": {
-    "homeScore": 0,
-    "awayScore": 0,
-    "goals": [],
+    "homeScore": 3,
+    "awayScore": 2,
+    "goals": [
+      {
+        "minute": 3,
+        "injuryTime": null,
+        "scorer": "A. Trusty",
+        "team": "United States",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 10,
+        "injuryTime": null,
+        "scorer": "A. Güler",
+        "team": "Turkiye",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 31,
+        "injuryTime": null,
+        "scorer": "B. Yilmaz",
+        "team": "Turkiye",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 49,
+        "injuryTime": null,
+        "scorer": "S. Berhalter",
+        "team": "United States",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 8,
+        "scorer": "K. Ayhan",
+        "team": "Turkiye",
+        "type": "NORMAL"
+      }
+    ],
     "stats": {
-      "homePossession": 54,
-      "awayPossession": 46,
-      "homeShotsOnTarget": 1,
-      "awayShotsOnTarget": 2,
-      "homeTotalShots": 4,
-      "awayTotalShots": 9,
-      "homeCorners": 7,
-      "awayCorners": 7
+      "homePossession": 47.4,
+      "awayPossession": 52.6,
+      "homeShotsOnTarget": 3,
+      "awayShotsOnTarget": 7,
+      "homeTotalShots": 9,
+      "awayTotalShots": 18,
+      "homeCorners": 2,
+      "awayCorners": 9
     }
   },
   "60": {
@@ -1818,14 +2183,264 @@
     "awayScore": 0,
     "goals": [],
     "stats": {
-      "homePossession": 49,
-      "awayPossession": 51,
-      "homeShotsOnTarget": 1,
-      "awayShotsOnTarget": 0,
+      "homePossession": 44,
+      "awayPossession": 56,
+      "homeShotsOnTarget": 2,
+      "awayShotsOnTarget": 5,
       "homeTotalShots": 7,
-      "awayTotalShots": 3,
-      "homeCorners": 3,
+      "awayTotalShots": 12,
+      "homeCorners": 1,
+      "awayCorners": 3
+    }
+  },
+  "61": {
+    "homeScore": 1,
+    "awayScore": 4,
+    "goals": [
+      {
+        "minute": 7,
+        "injuryTime": null,
+        "scorer": "O. Dembélé",
+        "team": "France",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 20,
+        "injuryTime": null,
+        "scorer": "O. Dembélé",
+        "team": "France",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 21,
+        "injuryTime": null,
+        "scorer": "T. Aasgaard",
+        "team": "Norway",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 32,
+        "injuryTime": null,
+        "scorer": "O. Dembélé",
+        "team": "France",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 4,
+        "scorer": "D. Doué",
+        "team": "France",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 42.9,
+      "awayPossession": 57.1,
+      "homeShotsOnTarget": 4,
+      "awayShotsOnTarget": 9,
+      "homeTotalShots": 10,
+      "awayTotalShots": 18,
+      "homeCorners": 4,
       "awayCorners": 5
+    }
+  },
+  "62": {
+    "homeScore": 5,
+    "awayScore": 0,
+    "goals": [
+      {
+        "minute": 4,
+        "injuryTime": null,
+        "scorer": "H. Diarra",
+        "team": "Senegal",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 56,
+        "injuryTime": null,
+        "scorer": "I. Sarr",
+        "team": "Senegal",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 59,
+        "injuryTime": null,
+        "scorer": "P. Gueye",
+        "team": "Senegal",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 71,
+        "injuryTime": null,
+        "scorer": "P. Gueye",
+        "team": "Senegal",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 82,
+        "injuryTime": null,
+        "scorer": "I. Ndiaye",
+        "team": "Senegal",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 68.9,
+      "awayPossession": 31.1,
+      "homeShotsOnTarget": 10,
+      "awayShotsOnTarget": 1,
+      "homeTotalShots": 26,
+      "awayTotalShots": 6,
+      "homeCorners": 12,
+      "awayCorners": 3
+    }
+  },
+  "63": {
+    "homeScore": 2,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 27,
+        "scorer": "Mostafa Mohamed",
+        "team": "Egypt",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 39,
+        "scorer": "M. Taremi",
+        "team": "IR Iran",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 66,
+        "scorer": "M. Salah",
+        "team": "Egypt",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 52,
+      "awayPossession": 48,
+      "homeShotsOnTarget": 5,
+      "awayShotsOnTarget": 1,
+      "homeTotalShots": 10,
+      "awayTotalShots": 5,
+      "homeCorners": 3,
+      "awayCorners": 7
+    }
+  },
+  "64": {
+    "homeScore": 3,
+    "awayScore": 2,
+    "goals": [
+      {
+        "minute": 11,
+        "scorer": "Y. Tielemans",
+        "team": "Belgium",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 68,
+        "scorer": "L. Trossard",
+        "team": "Belgium",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 76,
+        "scorer": "S. Singh",
+        "team": "New Zealand",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 82,
+        "scorer": "K. Barbarouses",
+        "team": "New Zealand",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 85,
+        "scorer": "K. Barbarouses",
+        "team": "New Zealand",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 52,
+      "awayPossession": 48,
+      "homeShotsOnTarget": 6,
+      "awayShotsOnTarget": 5,
+      "homeTotalShots": 10,
+      "awayTotalShots": 11,
+      "homeCorners": 6,
+      "awayCorners": 8
+    }
+  },
+  "65": {
+    "homeScore": 1,
+    "awayScore": 2,
+    "goals": [
+      {
+        "minute": 16,
+        "scorer": "Firas Al-Buraikan",
+        "team": "Saudi Arabia",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 55,
+        "scorer": "Ryan Mendes",
+        "team": "Cabo Verde",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 70,
+        "scorer": "Saleh Al-Shehri",
+        "team": "Saudi Arabia",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 46,
+      "awayPossession": 54,
+      "homeShotsOnTarget": 3,
+      "awayShotsOnTarget": 3,
+      "homeTotalShots": 11,
+      "awayTotalShots": 9,
+      "homeCorners": 6,
+      "awayCorners": 6
+    }
+  },
+  "66": {
+    "homeScore": 1,
+    "awayScore": 2,
+    "goals": [
+      {
+        "minute": 9,
+        "scorer": "Ferran Torres",
+        "team": "Spain",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 47,
+        "scorer": "N. De La Cruz",
+        "team": "Uruguay",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 52,
+        "scorer": "Pedri",
+        "team": "Spain",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 46,
+      "awayPossession": 54,
+      "homeShotsOnTarget": 3,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 8,
+      "awayTotalShots": 5,
+      "homeCorners": 7,
+      "awayCorners": 6
     }
   }
 }

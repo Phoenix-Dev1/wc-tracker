@@ -446,7 +446,7 @@ export const getProcessedMatches = (systemTimeStr: string, rawFixturesInput?: Fi
 
   return rawFixtures.map((fixture) => {
     const kickoffTime = new Date(fixture.kickoffUtc).getTime();
-    const durationMs = 105 * 60 * 1000; // 105 minutes (90 mins + halftime + added time)
+    const durationMs = 120 * 60 * 1000; // 120 minutes (2 hours TV broadcast window)
     const timeDiff = systemTime - kickoffTime;
 
     const isHomePlaceholder = isPlaceholderTeam(fixture.homeTeam);
@@ -466,13 +466,24 @@ export const getProcessedMatches = (systemTimeStr: string, rawFixturesInput?: Fi
     if (isKnockoutPlaceholder) {
       status = 'UPCOMING';
     } else {
-      // Date gating logic:
-      if (timeDiff < 0) {
-        status = 'UPCOMING';
-      } else if (timeDiff < durationMs) {
-        status = 'LIVE';
+      if (isRealTime && fixture.apiStatus) {
+        // At real-time, override date logic with actual state from ESPN API
+        if (fixture.apiStatus === 'LIVE') {
+          status = 'LIVE';
+        } else if (fixture.apiStatus === 'COMPLETED') {
+          status = 'COMPLETED';
+        } else {
+          status = 'UPCOMING';
+        }
       } else {
-        status = 'COMPLETED';
+        // Date gating logic for simulation / offline mode:
+        if (timeDiff < 0) {
+          status = 'UPCOMING';
+        } else if (timeDiff < durationMs) {
+          status = 'LIVE';
+        } else {
+          status = 'COMPLETED';
+        }
       }
     }
 
