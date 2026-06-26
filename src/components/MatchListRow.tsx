@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Shield, MapPin, CheckCircle2 } from "lucide-react";
 import { ProcessedMatch, isPlaceholderTeam } from "@/data/worldcup";
 import { cn } from "@/utils/cn";
+import MatchProgressCircle from "@/components/MatchProgressCircle";
 
 interface MatchListRowProps {
   match: ProcessedMatch;
@@ -17,6 +19,10 @@ const formatCityName = (city: string) => {
 };
 
 export default function MatchListRow({ match }: MatchListRowProps) {
+  const searchParams = useSearchParams();
+  const isMock = searchParams?.get("mock") === "true";
+  const mockQuery = isMock ? "?mock=true" : "";
+
   // Determine color theme based on game status
   const isLive = match.status === "LIVE";
   const isCompleted = match.status === "COMPLETED";
@@ -94,7 +100,7 @@ export default function MatchListRow({ match }: MatchListRowProps) {
               </>
             ) : (
               <Link
-                href={`/team/${encodeURIComponent(match.homeTeam)}`}
+                href={`/team/${encodeURIComponent(match.homeTeam)}${mockQuery}`}
                 className="flex items-center gap-3 justify-end group/link hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors max-w-full"
               >
                 <span className={teamTextClasses}>
@@ -112,23 +118,15 @@ export default function MatchListRow({ match }: MatchListRowProps) {
           </div>
 
           {/* Scores or VS indicator */}
-          <div className="flex items-center justify-center min-w-[70px] bg-bg-900 border border-border px-3 py-1.5 rounded-lg shadow-inner">
+          <div className="flex items-center justify-center min-w-[70px]">
             {isCompleted || isLive ? (
-              <div className="flex items-center gap-2 font-mono text-base sm:text-lg font-bold">
-                <span className={isLive ? "text-emerald-600 flex items-baseline gap-1" : "text-text-primary flex items-baseline gap-1"}>
-                  {match.homeScore}
-                  {match.shootoutScore && <span className="text-[9px] text-text-secondary/70">({match.shootoutScore.home})</span>}
-                </span>
-                <span className="text-text-secondary/40 font-light">:</span>
-                <span className={isLive ? "text-emerald-600 flex items-baseline gap-1" : "text-text-primary flex items-baseline gap-1"}>
-                  {match.shootoutScore && <span className="text-[9px] text-text-secondary/70">({match.shootoutScore.away})</span>}
-                  {match.awayScore}
+              <MatchProgressCircle match={match} size={56} />
+            ) : (
+              <div className="flex items-center justify-center min-w-[70px] bg-bg-900 border border-border px-3 py-1.5 rounded-lg shadow-inner">
+                <span className="text-[10px] font-mono tracking-widest text-cyan-600 dark:text-cyan-400 font-bold uppercase">
+                  {match.formattedTimeJerusalem}
                 </span>
               </div>
-            ) : (
-              <span className="text-[10px] font-mono tracking-widest text-cyan-600 dark:text-cyan-400 font-bold uppercase">
-                {match.formattedTimeJerusalem}
-              </span>
             )}
           </div>
 
@@ -148,7 +146,7 @@ export default function MatchListRow({ match }: MatchListRowProps) {
               </>
             ) : (
               <Link
-                href={`/team/${encodeURIComponent(match.awayTeam)}`}
+                href={`/team/${encodeURIComponent(match.awayTeam)}${mockQuery}`}
                 className="flex items-center gap-3 group/link hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors max-w-full"
               >
                 <span className="text-xl sm:text-2xl" role="img" aria-label={`${match.awayTeam} Flag`}>

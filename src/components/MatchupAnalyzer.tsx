@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import {
   RadarChart,
   Radar,
@@ -65,13 +66,13 @@ function TeamSelect({ label, accent, value, onChange, exclude, recentForm = [], 
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className={`w-full appearance-none rounded-xl border bg-bg-800/80 backdrop-blur-sm px-3.5 py-2.5 pr-9 text-sm font-semibold text-text-primary border-border shadow-sm focus:outline-none focus:ring-2 transition-all ${borderClass}`}
+          className={`w-full appearance-none rounded-xl border bg-bg-800/80 backdrop-blur-sm px-3.5 py-2.5 pr-9 text-sm font-semibold text-text-primary border-border shadow-sm focus:outline-none focus:ring-2 transition-all cursor-pointer ${borderClass}`}
         >
-          <option value="" className="bg-bg-800 text-text-primary">— Select a team —</option>
+          <option value="" className="bg-bg-800 text-text-primary cursor-pointer">— Select a team —</option>
           {allTeams.filter((t) => t !== exclude).map((team) => {
             const info = getTeamInfo(team);
             return (
-              <option key={team} value={team} className="bg-bg-800 text-text-primary">
+              <option key={team} value={team} className="bg-bg-800 text-text-primary cursor-pointer">
                 {info.flag} {team} ({info.code})
               </option>
             );
@@ -239,6 +240,9 @@ interface MatchupAnalyzerProps {
 export default function MatchupAnalyzer({ matches }: MatchupAnalyzerProps) {
   const [teamA, setTeamA] = useState<string>("");
   const [teamB, setTeamB] = useState<string>("");
+  const searchParams = useSearchParams();
+  const isMock = searchParams?.get("mock") === "true";
+  const mockQuery = isMock ? "?mock=true" : "";
 
   const allTeams = useMemo(() => {
     const teamsSet = new Set<string>();
@@ -337,7 +341,7 @@ export default function MatchupAnalyzer({ matches }: MatchupAnalyzerProps) {
                 return (
                   <Link
                     key={stats.teamName}
-                    href={`/team/${encodeURIComponent(stats.teamName)}`}
+                    href={`/team/${encodeURIComponent(stats.teamName)}${mockQuery}`}
                     className={`flex items-center gap-2 px-3 py-1.5 rounded-full border cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md ${bgClass} ${borderClass}`}
                   >
                     <span className="text-lg">{info.flag}</span>

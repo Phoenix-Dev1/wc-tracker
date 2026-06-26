@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Shield, MapPin, Activity, ChevronDown } from "lucide-react";
 import { ProcessedMatch, isPlaceholderTeam } from "@/data/worldcup";
+import MatchProgressCircle from "@/components/MatchProgressCircle";
 
 interface LiveActionCardProps {
   match: ProcessedMatch;
@@ -13,6 +15,9 @@ interface LiveActionCardProps {
 
 export default function LiveActionCard({ match, index }: LiveActionCardProps) {
   const [isDeepScanOpen, setIsDeepScanOpen] = useState(false);
+  const searchParams = useSearchParams();
+  const isMock = searchParams?.get("mock") === "true";
+  const mockQuery = isMock ? "?mock=true" : "";
 
   return (
     <motion.div
@@ -24,81 +29,66 @@ export default function LiveActionCard({ match, index }: LiveActionCardProps) {
       {/* Ambient glow blob */}
       <div className="absolute -top-8 -right-8 w-32 h-32 bg-emerald-400/10 rounded-full blur-2xl pointer-events-none" />
 
-      {/* Top row: match number + live badge */}
+      {/* Top row: match number */}
       <div className="flex items-center justify-between mb-4">
         <span className="text-[10px] font-mono font-semibold tracking-wider text-text-secondary bg-bg-900 border border-border px-2 py-0.5 rounded">
           MATCH {match.matchNumber}
         </span>
-        <span className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-300 dark:border-emerald-800/50 px-2.5 py-0.5 rounded-full">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-          {match.displayClock === "HT" ? "LIVE · HT" : `LIVE · ${match.displayClock}'`}
-        </span>
       </div>
 
-      {/* Teams + score */}
-      <div className="space-y-3 my-4">
+      {/* Teams + score (Horizontal Layout with circular progress) */}
+      <div className="flex items-center justify-between gap-4 my-6">
         {/* Home Team */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col items-center flex-1 min-w-0">
           {isPlaceholderTeam(match.homeTeam) ? (
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-bg-900 border border-border flex items-center justify-center">
-                <Shield size={15} className="text-text-secondary/60" />
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-bg-900 border border-border flex items-center justify-center shadow-sm">
+                <Shield size={24} className="text-text-secondary/60" />
               </div>
-              <span className="text-sm font-bold text-text-primary">{match.homeTeam || "TBD"}</span>
+              <span className="text-xs sm:text-sm font-bold text-text-primary text-center truncate w-full">{match.homeTeam || "TBD"}</span>
             </div>
           ) : (
             <Link
-              href={`/team/${encodeURIComponent(match.homeTeam)}`}
-              className="flex items-center gap-2.5 group/link hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+              href={`/team/${encodeURIComponent(match.homeTeam)}${mockQuery}`}
+              className="flex flex-col items-center gap-2 group/link w-full"
             >
-              <span className="text-2xl" role="img" aria-label={`${match.homeTeam} Flag`}>
+              <span className="text-4xl sm:text-5xl hover:scale-105 active:scale-95 transition-transform" role="img" aria-label={`${match.homeTeam} Flag`}>
                 {match.homeFlag}
               </span>
-              <span className="text-sm font-bold text-text-primary group-hover/link:text-cyan-600 dark:group-hover/link:text-cyan-400 transition-colors">
+              <span className="text-xs sm:text-sm font-extrabold text-text-primary text-center truncate w-full group-hover/link:text-cyan-600 dark:group-hover/link:text-cyan-400 transition-colors">
                 {match.homeTeam}
               </span>
             </Link>
           )}
-          <span className="text-2xl font-black text-emerald-600 dark:text-emerald-450 font-mono flex items-baseline gap-1">
-            {match.homeScore}
-            {match.shootoutScore && <span className="text-[10px] text-emerald-500/70 dark:text-emerald-400/60">({match.shootoutScore.home})</span>}
-          </span>
         </div>
 
-        {/* Divider */}
-        <div className="relative flex items-center justify-center">
-          <div className="w-full border-t border-emerald-200/60 dark:border-emerald-800/40" />
-          <span className="relative z-10 px-2 bg-bg-800 border border-emerald-200/60 dark:border-emerald-800/40 rounded-full text-[9px] font-mono tracking-widest text-emerald-600 dark:text-emerald-450 font-bold uppercase shadow-sm">
-            VS
-          </span>
+        {/* Center Progress Circle */}
+        <div className="flex-shrink-0">
+          <MatchProgressCircle match={match} size={96} />
         </div>
 
         {/* Away Team */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col items-center flex-1 min-w-0">
           {isPlaceholderTeam(match.awayTeam) ? (
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-bg-900 border border-border flex items-center justify-center">
-                <Shield size={15} className="text-text-secondary/60" />
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-bg-900 border border-border flex items-center justify-center shadow-sm">
+                <Shield size={24} className="text-text-secondary/60" />
               </div>
-              <span className="text-sm font-bold text-text-primary">{match.awayTeam || "TBD"}</span>
+              <span className="text-xs sm:text-sm font-bold text-text-primary text-center truncate w-full">{match.awayTeam || "TBD"}</span>
             </div>
           ) : (
             <Link
-              href={`/team/${encodeURIComponent(match.awayTeam)}`}
-              className="flex items-center gap-2.5 group/link hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+              href={`/team/${encodeURIComponent(match.awayTeam)}${mockQuery}`}
+              className="flex flex-col items-center gap-2 group/link w-full"
             >
-              <span className="text-2xl" role="img" aria-label={`${match.awayTeam} Flag`}>
+              <span className="text-4xl sm:text-5xl hover:scale-105 active:scale-95 transition-transform" role="img" aria-label={`${match.awayTeam} Flag`}>
                 {match.awayFlag}
               </span>
-              <span className="text-sm font-bold text-text-primary group-hover/link:text-cyan-600 dark:group-hover/link:text-cyan-400 transition-colors">
+              <span className="text-xs sm:text-sm font-extrabold text-text-primary text-center truncate w-full group-hover/link:text-cyan-600 dark:group-hover/link:text-cyan-400 transition-colors">
                 {match.awayTeam}
               </span>
             </Link>
           )}
-          <span className="text-2xl font-black text-emerald-600 dark:text-emerald-450 font-mono flex items-baseline gap-1">
-            {match.shootoutScore && <span className="text-[10px] text-emerald-500/70 dark:text-emerald-400/60">({match.shootoutScore.away})</span>}
-            {match.awayScore}
-          </span>
         </div>
       </div>
 
@@ -153,7 +143,7 @@ export default function LiveActionCard({ match, index }: LiveActionCardProps) {
         <>
           <button
             onClick={() => setIsDeepScanOpen((o) => !o)}
-            className="mt-4 w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl border border-emerald-200/70 dark:border-emerald-800/40 bg-emerald-50/60 dark:bg-emerald-950/20 hover:bg-emerald-100/70 dark:hover:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[11px] font-bold tracking-wide transition-all"
+            className="mt-4 w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl border border-emerald-200/70 dark:border-emerald-800/40 bg-emerald-50/60 dark:bg-emerald-950/20 hover:bg-emerald-100/70 dark:hover:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[11px] font-bold tracking-wide transition-all cursor-pointer"
           >
             <Activity size={13} className={`transition-transform duration-300 ${isDeepScanOpen ? "rotate-12" : ""}`} />
             <span>{isDeepScanOpen ? "Hide Stats" : "Deep Scan"}</span>

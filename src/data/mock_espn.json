@@ -1,12 +1,12 @@
 {
-  "instructions": "To test a live goal on the UI, copy-paste this goal object inside the 'details' array of a match: { \"type\": { \"id\": \"70\", \"text\": \"Goal\" }, \"clock\": { \"value\": 900, \"displayValue\": \"15'\" }, \"team\": { \"id\": \"10\" }, \"scoringPlay\": true, \"athletesInvolved\": [ { \"shortName\": \"K. Mbappé\" } ] }",
+  "instructions": "Mock scoreboards matching fixtures 56 (Ecuador vs Germany) and 53 (Czechia vs Mexico).",
   "events": [
     {
       "id": "101",
-      "date": "2026-06-16T19:00:00Z",
+      "date": "2026-06-25T20:00:00Z",
       "status": {
-        "clock": 900.0,
-        "displayClock": "15'",
+        "clock": 2294.0,
+        "displayClock": "38:14",
         "type": {
           "id": "2",
           "name": "STATUS_IN_PROGRESS",
@@ -19,26 +19,35 @@
           "id": "101",
           "competitors": [
             {
-              "id": "10",
+              "id": "11",
               "homeAway": "home",
               "score": "1",
-              "team": { "id": "10", "displayName": "France" }
+              "team": { "id": "11", "displayName": "Ecuador" }
             },
             {
-              "id": "11",
+              "id": "10",
               "homeAway": "away",
-              "score": "0",
-              "team": { "id": "11", "displayName": "Senegal" }
+              "score": "1",
+              "team": { "id": "10", "displayName": "Germany" }
             }
           ],
           "details": [
             {
               "type": { "id": "70", "text": "Goal" },
               "clock": { "value": 900, "displayValue": "15'" },
+              "team": { "id": "11" },
+              "scoringPlay": true,
+              "athletesInvolved": [
+                { "shortName": "C. Tenorio" }
+              ]
+            },
+            {
+              "type": { "id": "70", "text": "Goal" },
+              "clock": { "value": 2280, "displayValue": "38'" },
               "team": { "id": "10" },
               "scoringPlay": true,
               "athletesInvolved": [
-                { "shortName": "K. Mbappé" }
+                { "shortName": "M. Klose" }
               ]
             }
           ]
@@ -47,13 +56,13 @@
     },
     {
       "id": "102",
-      "date": "2026-06-28T19:00:00Z",
+      "date": "2026-06-25T01:00:00Z",
       "status": {
-        "clock": 7200.0,
-        "displayClock": "FT-PEN",
+        "clock": 5400.0,
+        "displayClock": "FT",
         "type": {
-          "id": "18",
-          "name": "STATUS_SHOOTOUT",
+          "id": "7",
+          "name": "STATUS_FULLTIME",
           "state": "post",
           "completed": true
         }
@@ -63,23 +72,47 @@
           "id": "102",
           "competitors": [
             {
-              "id": "205",
+              "id": "12",
               "homeAway": "home",
-              "score": "1",
-              "shootoutScore": "4",
-              "winner": true,
-              "team": { "id": "205", "displayName": "Brazil" }
+              "score": "0",
+              "team": { "id": "12", "displayName": "Czechia" }
             },
             {
-              "id": "206",
+              "id": "13",
               "homeAway": "away",
-              "score": "1",
-              "shootoutScore": "2",
-              "winner": false,
-              "team": { "id": "206", "displayName": "Canada" }
+              "score": "3",
+              "team": { "id": "13", "displayName": "Mexico" }
             }
           ],
-          "details": []
+          "details": [
+            {
+              "type": { "id": "70", "text": "Goal" },
+              "clock": { "value": 720, "displayValue": "12'" },
+              "team": { "id": "13" },
+              "scoringPlay": true,
+              "athletesInvolved": [
+                { "shortName": "J. Hernandez" }
+              ]
+            },
+            {
+              "type": { "id": "70", "text": "Goal" },
+              "clock": { "value": 3300, "displayValue": "55'" },
+              "team": { "id": "13" },
+              "scoringPlay": true,
+              "athletesInvolved": [
+                { "shortName": "C. Vela" }
+              ]
+            },
+            {
+              "type": { "id": "70", "text": "Goal" },
+              "clock": { "value": 4680, "displayValue": "78'" },
+              "team": { "id": "13" },
+              "scoringPlay": true,
+              "athletesInvolved": [
+                { "shortName": "H. Lozano" }
+              ]
+            }
+          ]
         }
       ]
     }

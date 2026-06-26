@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import {
   Calendar,
   MapPin,
@@ -56,6 +56,9 @@ export default function TeamPageClient({
 }: TeamPageClientProps) {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
+  const searchParams = useSearchParams();
+  const isMock = searchParams?.get("mock") === "true";
+  const mockQuery = isMock ? "?mock=true" : "";
 
   useEffect(() => {
     setMounted(true);
@@ -86,7 +89,7 @@ export default function TeamPageClient({
         {/* Back Link */}
         <div className="mb-6">
           <Link
-            href="/"
+            href={`/${mockQuery}`}
             className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors font-medium group"
           >
             <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
@@ -183,7 +186,7 @@ export default function TeamPageClient({
                           </td>
                           <td className="py-3.5 px-4">
                             <Link
-                              href={`/team/${encodeURIComponent(row.team.name)}`}
+                              href={`/team/${encodeURIComponent(row.team.name)}${mockQuery}`}
                               className="flex items-center gap-2 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors group cursor-pointer"
                             >
                               {row.team.crest ? (
@@ -302,7 +305,7 @@ export default function TeamPageClient({
                       <div className="flex items-center justify-between md:justify-center gap-4 md:w-1/3 my-2 md:my-0">
                         {/* Home Team */}
                         <Link
-                          href={`/team/${encodeURIComponent(match.homeTeam.name)}`}
+                          href={`/team/${encodeURIComponent(match.homeTeam.name)}${mockQuery}`}
                           className="flex items-center gap-2.5 w-5/12 justify-end hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors group cursor-pointer"
                         >
                           <span className={cn(teamTextClasses, "group-hover:underline")}>
@@ -349,7 +352,7 @@ export default function TeamPageClient({
 
                         {/* Away Team */}
                         <Link
-                          href={`/team/${encodeURIComponent(match.awayTeam.name)}`}
+                          href={`/team/${encodeURIComponent(match.awayTeam.name)}${mockQuery}`}
                           className="flex items-center gap-2.5 w-5/12 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors group cursor-pointer"
                         >
                           {match.awayTeam.crest ? (
