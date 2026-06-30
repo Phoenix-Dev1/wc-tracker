@@ -2294,5 +2294,300 @@
       "homeCorners": 12,
       "awayCorners": 3
     }
+  },
+  "63": {
+    "homeScore": 1,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 5,
+        "injuryTime": null,
+        "scorer": "M. Saber",
+        "team": "Egypt",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 14,
+        "injuryTime": null,
+        "scorer": "R. Rezaeian",
+        "team": "IR Iran",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 61.4,
+      "awayPossession": 38.6,
+      "homeShotsOnTarget": 3,
+      "awayShotsOnTarget": 4,
+      "homeTotalShots": 15,
+      "awayTotalShots": 13,
+      "homeCorners": 8,
+      "awayCorners": 2
+    }
+  },
+  "64": {
+    "homeScore": 1,
+    "awayScore": 5,
+    "goals": [
+      {
+        "minute": 28,
+        "injuryTime": null,
+        "scorer": "L. Trossard",
+        "team": "Belgium",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 50,
+        "injuryTime": null,
+        "scorer": "L. Trossard",
+        "team": "Belgium",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 66,
+        "injuryTime": null,
+        "scorer": "K. De Bruyne",
+        "team": "Belgium",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 84,
+        "injuryTime": null,
+        "scorer": "E. Just",
+        "team": "New Zealand",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 86,
+        "injuryTime": null,
+        "scorer": "R. Lukaku",
+        "team": "Belgium",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 4,
+        "scorer": "A. Saelemaekers",
+        "team": "Belgium",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 45.5,
+      "awayPossession": 54.5,
+      "homeShotsOnTarget": 2,
+      "awayShotsOnTarget": 10,
+      "homeTotalShots": 6,
+      "awayTotalShots": 35,
+      "homeCorners": 5,
+      "awayCorners": 8
+    }
+  },
+  "65": {
+    "homeScore": 0,
+    "awayScore": 0,
+    "goals": [],
+    "stats": {
+      "homePossession": 51,
+      "awayPossession": 49,
+      "homeShotsOnTarget": 2,
+      "awayShotsOnTarget": 3,
+      "homeTotalShots": 15,
+      "awayTotalShots": 7,
+      "homeCorners": 4,
+      "awayCorners": 2
+    }
+  },
+  "66": {
+    "homeScore": 0,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 42,
+        "injuryTime": null,
+        "scorer": "Á. Baena",
+        "team": "Spain",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 33.1,
+      "awayPossession": 66.9,
+      "homeShotsOnTarget": 1,
+      "awayShotsOnTarget": 1,
+      "homeTotalShots": 5,
+      "awayTotalShots": 6,
+      "homeCorners": 1,
+      "awayCorners": 6
+    }
+  },
+  "67": {
+    "homeScore": 0,
+    "awayScore": 2,
+    "goals": [
+      {
+        "minute": 62,
+        "injuryTime": null,
+        "scorer": "J. Bellingham",
+        "team": "England",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 67,
+        "injuryTime": null,
+        "scorer": "H. Kane",
+        "team": "England",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 32.9,
+      "awayPossession": 67.1,
+      "homeShotsOnTarget": 2,
+      "awayShotsOnTarget": 6,
+      "homeTotalShots": 13,
+      "awayTotalShots": 17,
+      "homeCorners": 3,
+      "awayCorners": 7
+    }
+  },
+  "68": {
+    "homeScore": 2,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 31,
+        "injuryTime": null,
+        "scorer": "P. Sucic",
+        "team": "Croatia",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 73,
+        "injuryTime": null,
+        "scorer": "D. Luckassen",
+        "team": "Ghana",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 83,
+        "injuryTime": null,
+        "scorer": "N. Vlasic",
+        "team": "Croatia",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 53.3,
+      "awayPossession": 46.7,
+      "homeShotsOnTarget": 4,
+      "awayShotsOnTarget": 1,
+      "homeTotalShots": 8,
+      "awayTotalShots": 6,
+      "homeCorners": 3,
+      "awayCorners": 2
+    }
+  },
+  "69": {
+    "homeScore": 3,
+    "awayScore": 3,
+    "goals": [
+      {
+        "minute": 28,
+        "injuryTime": null,
+        "scorer": "M. Arnautovic",
+        "team": "Austria",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 45,
+        "injuryTime": null,
+        "scorer": "R. Belghali",
+        "team": "Algeria",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 55,
+        "injuryTime": null,
+        "scorer": "M. Sabitzer",
+        "team": "Austria",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 60,
+        "injuryTime": null,
+        "scorer": "R. Mahrez",
+        "team": "Algeria",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 3,
+        "scorer": "R. Mahrez",
+        "team": "Algeria",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 6,
+        "scorer": "S. Kalajdzic",
+        "team": "Austria",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 65,
+      "awayPossession": 35,
+      "homeShotsOnTarget": 5,
+      "awayShotsOnTarget": 3,
+      "homeTotalShots": 12,
+      "awayTotalShots": 10,
+      "homeCorners": 0,
+      "awayCorners": 3
+    }
+  },
+  "70": {
+    "homeScore": 1,
+    "awayScore": 3,
+    "goals": [
+      {
+        "minute": 19,
+        "injuryTime": null,
+        "scorer": "G. Lo Celso",
+        "team": "Argentina",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 31,
+        "injuryTime": null,
+        "scorer": "L. Martínez",
+        "team": "Argentina",
+        "type": "PENALTY"
+      },
+      {
+        "minute": 55,
+        "injuryTime": null,
+        "scorer": "M. Al-Tamari",
+        "team": "Jordan",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 80,
+        "injuryTime": null,
+        "scorer": "L. Messi",
+        "team": "Argentina",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 26.7,
+      "awayPossession": 73.3,
+      "homeShotsOnTarget": 1,
+      "awayShotsOnTarget": 4,
+      "homeTotalShots": 5,
+      "awayTotalShots": 12,
+      "homeCorners": 2,
+      "awayCorners": 6
+    }
   }
 }
