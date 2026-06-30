@@ -1,16 +1,13 @@
-import { Fixture, StandingGroup, StandingTeam } from "./types";
+import { Fixture, ProcessedMatch, StandingGroup, StandingTeam } from "./types";
 import { getTeamInfo } from "./teams";
 import { getProcessedMatches } from "./processing";
 
-export function calculateGroupStandings(
-  systemTimeStr: string,
-  groupLetter: string,
-  rawFixturesInput?: Fixture[]
+export function calculateGroupStandingsFromMatches(
+  matches: ProcessedMatch[],
+  groupLetter: string
 ): StandingGroup | null {
   if (!groupLetter) return null;
 
-  const matches = getProcessedMatches(systemTimeStr, rawFixturesInput);
-  
   // Find all matches belonging to this group
   const groupMatches = matches.filter(
     (m) => m.stage === "group-stage" && m.group && m.group.toUpperCase() === groupLetter.toUpperCase()
@@ -81,12 +78,10 @@ export function calculateGroupStandings(
         tableMap[away].draw += 1;
         tableMap[away].points += 1;
       }
-    }
-  });
 
-  // Calculate goal differences
-  teams.forEach((t) => {
-    tableMap[t].goalDifference = tableMap[t].goalsFor - tableMap[t].goalsAgainst;
+      tableMap[home].goalDifference = tableMap[home].goalsFor - tableMap[home].goalsAgainst;
+      tableMap[away].goalDifference = tableMap[away].goalsFor - tableMap[away].goalsAgainst;
+    }
   });
 
   // Sort teams by points desc, goalDifference desc, goalsFor desc, then name asc
@@ -106,4 +101,13 @@ export function calculateGroupStandings(
     groupName: `Group ${groupLetter.toUpperCase()}`,
     table: sortedTeams,
   };
+}
+
+export function calculateGroupStandings(
+  systemTimeStr: string,
+  groupLetter: string,
+  rawFixturesInput?: Fixture[]
+): StandingGroup | null {
+  const matches = getProcessedMatches(systemTimeStr, rawFixturesInput);
+  return calculateGroupStandingsFromMatches(matches, groupLetter);
 }

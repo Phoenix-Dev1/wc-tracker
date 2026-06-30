@@ -15,7 +15,13 @@ export const parseEspnGoals = (
   for (const event of details) {
     const text = (event.type?.text || "").toLowerCase();
     const isGoal = event.scoringPlay === true || text.includes("goal") || text.includes("penalty");
-    const isShootout = text.includes("shootout");
+    const isShootout = 
+      event.shootout === true ||
+      text.includes("shootout") || 
+      text.includes("shoot-out") || 
+      text.includes("penalty shootout") || 
+      text.includes("penalties") || 
+      event.period?.number === 5;
 
     if (isGoal && !isShootout) {
       const minuteStr = event.clock?.displayValue || "";
@@ -46,12 +52,14 @@ export const parseEspnGoals = (
       }
 
       const scorerName = event.athletesInvolved?.[0]?.shortName || event.athletesInvolved?.[0]?.displayName || "Unknown";
-      const teamId = event.team?.id?.toString();
+      const teamId = event.team?.id ? String(event.team.id).trim() : "";
+      const homeIdStr = homeTeamId ? String(homeTeamId).trim() : "";
+      const awayIdStr = awayTeamId ? String(awayTeamId).trim() : "";
 
       let teamName = "Unknown";
-      if (teamId === homeTeamId) {
+      if (teamId && teamId === homeIdStr) {
         teamName = localHomeName;
-      } else if (teamId === awayTeamId) {
+      } else if (teamId && teamId === awayIdStr) {
         teamName = localAwayName;
       } else if (event.team?.displayName) {
         const normEv = normalizeTeamName(event.team.displayName);

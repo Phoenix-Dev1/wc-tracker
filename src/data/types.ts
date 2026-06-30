@@ -73,6 +73,10 @@ export interface EspnEventDetail {
     id?: string | number;
     displayName?: string;
   };
+  period?: {
+    number?: number;
+  };
+  shootout?: boolean;
 }
 
 export interface TournamentTeamStats {

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   Calendar,
-  MapPin,
   Clock,
   ArrowLeft,
   AlertTriangle,
@@ -274,6 +273,16 @@ export default function TeamPageClient({
                   isCompleted ? "text-text-secondary" : "text-text-primary"
                 );
 
+                const isHomeWinner = isCompleted && (
+                  (match.score.home ?? 0) > (match.score.away ?? 0) ||
+                  (match.score.home === match.score.away && match.shootoutScore && match.shootoutScore.home > match.shootoutScore.away)
+                );
+
+                const isAwayWinner = isCompleted && (
+                  (match.score.away ?? 0) > (match.score.home ?? 0) ||
+                  (match.score.home === match.score.away && match.shootoutScore && match.shootoutScore.away > match.shootoutScore.home)
+                );
+
                 return (
                   <div
                     key={match.id}
@@ -311,7 +320,11 @@ export default function TeamPageClient({
                           href={`/team/${encodeURIComponent(match.homeTeam.name)}${mockQuery}`}
                           className="flex items-center gap-2.5 w-5/12 justify-end hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors group cursor-pointer"
                         >
-                          <span className={cn(teamTextClasses, "group-hover:underline")}>
+                          <span className={cn(
+                            teamTextClasses, 
+                            "group-hover:underline",
+                            isHomeWinner && "font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-cyan-500 to-purple-500 dark:from-cyan-400 dark:via-cyan-300 dark:to-purple-400"
+                          )}>
                             {match.homeTeam.name}
                           </span>
                           <span className="text-text-secondary/70 font-bold text-xs sm:hidden font-mono">
@@ -333,15 +346,26 @@ export default function TeamPageClient({
                         </Link>
 
                         {/* Score Indicator */}
-                        <div className="flex items-center justify-center min-w-[65px] bg-bg-900 border border-border px-2.5 py-1.5 rounded-lg shadow-inner">
+                        <div className={cn(
+                          "flex items-center justify-center bg-bg-900 border border-border px-2.5 py-1.5 rounded-lg shadow-inner shrink-0",
+                          match.shootoutScore ? "min-w-[90px]" : "min-w-[65px]"
+                        )}>
                           {isCompleted || isLive ? (
                             <div className="flex items-center gap-1.5 font-mono text-base font-bold">
-                              <span className={isLive ? "text-emerald-600 flex items-baseline gap-0.5" : "text-text-primary flex items-baseline gap-0.5"}>
+                              <span className={cn(
+                                isLive ? "text-emerald-600" : "text-text-primary",
+                                "flex items-baseline gap-0.5",
+                                isHomeWinner && "text-cyan-600 dark:text-cyan-400 font-extrabold"
+                              )}>
                                 {match.score.home ?? 0}
                                 {match.shootoutScore && <span className="text-[8px] text-text-secondary">({match.shootoutScore.home})</span>}
                               </span>
                               <span className="text-text-secondary/40 font-light">:</span>
-                              <span className={isLive ? "text-emerald-600 flex items-baseline gap-0.5" : "text-text-primary flex items-baseline gap-0.5"}>
+                              <span className={cn(
+                                isLive ? "text-emerald-600" : "text-text-primary",
+                                "flex items-baseline gap-0.5",
+                                isAwayWinner && "text-cyan-600 dark:text-cyan-400 font-extrabold"
+                              )}>
                                 {match.shootoutScore && <span className="text-[8px] text-text-secondary">({match.shootoutScore.away})</span>}
                                 {match.score.away ?? 0}
                               </span>
@@ -371,7 +395,11 @@ export default function TeamPageClient({
                           ) : (
                             <span className="text-2xl select-none transition-transform group-hover:scale-105">{awayMeta.flag}</span>
                           )}
-                          <span className={cn(teamTextClasses, "group-hover:underline")}>
+                          <span className={cn(
+                            teamTextClasses, 
+                            "group-hover:underline",
+                            isAwayWinner && "font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-cyan-500 to-purple-500 dark:from-cyan-400 dark:via-cyan-300 dark:to-purple-400"
+                          )}>
                             {match.awayTeam.name}
                           </span>
                           <span className="text-text-secondary/70 font-bold text-xs sm:hidden font-mono">
@@ -381,18 +409,13 @@ export default function TeamPageClient({
                       </div>
 
                       {/* Right: Venue Info */}
-                      <div className="flex flex-col gap-1 items-start md:items-end justify-center text-xs text-text-secondary md:w-1/3">
-                        <div className="flex items-center gap-1.5">
-                          <MapPin size={13} className="text-slate-400 shrink-0" />
-                          <span className="font-medium text-slate-600 truncate max-w-[150px] sm:max-w-none">
-                            {match.stadium}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1.5 pl-5 md:pl-0">
-                          <span className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
-                            {formatCityName(match.hostCity)}
-                          </span>
-                        </div>
+                      <div className="flex flex-col gap-0.5 items-start md:items-end justify-center text-xs text-text-secondary md:w-1/3">
+                        <span className="font-medium text-text-secondary truncate max-w-full" title={match.stadium}>
+                          {match.stadium}
+                        </span>
+                        <span className="text-[10px] uppercase tracking-wider text-text-secondary/80 font-semibold">
+                          {formatCityName(match.hostCity)}
+                        </span>
                       </div>
                     </div>
 
@@ -439,6 +462,15 @@ export default function TeamPageClient({
                               );
                             })}
                         </div>
+                      </div>
+                    )}
+
+                    {/* Shootout Winner Badge */}
+                    {isCompleted && match.shootoutScore && (
+                      <div className="mt-3 pt-2 border-t border-dashed border-border flex justify-center">
+                        <span className="text-[10px] font-bold text-purple-600 dark:text-purple-400 bg-purple-500/5 border border-purple-500/10 px-3 py-1 rounded-xl uppercase tracking-wider font-mono">
+                          🏆 {match.shootoutScore.home > match.shootoutScore.away ? match.homeTeam.name : match.awayTeam.name} won on penalties ({match.shootoutScore.home} - {match.shootoutScore.away})
+                        </span>
                       </div>
                     )}
 

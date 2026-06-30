@@ -53,6 +53,16 @@ export default function MatchListRow({ match }: MatchListRowProps) {
     isCompleted ? "text-text-secondary" : "text-text-primary"
   );
 
+  const isHomeWinner = isCompleted && (
+    (match.homeScore ?? 0) > (match.awayScore ?? 0) ||
+    (match.homeScore === match.awayScore && match.shootoutScore && match.shootoutScore.home > match.shootoutScore.away)
+  );
+
+  const isAwayWinner = isCompleted && (
+    (match.awayScore ?? 0) > (match.homeScore ?? 0) ||
+    (match.homeScore === match.awayScore && match.shootoutScore && match.shootoutScore.away > match.shootoutScore.home)
+  );
+
   return (
     <div
       data-aos="fade-up"
@@ -106,7 +116,10 @@ export default function MatchListRow({ match }: MatchListRowProps) {
                 href={`/team/${encodeURIComponent(match.homeTeam)}${finalQuery}`}
                 className="flex items-center gap-3 justify-end group/link hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors max-w-full"
               >
-                <span className={teamTextClasses}>
+                <span className={cn(
+                  teamTextClasses,
+                  isHomeWinner && "font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-cyan-500 to-purple-500 dark:from-cyan-400 dark:via-cyan-300 dark:to-purple-400 !text-transparent"
+                )}>
                   {match.homeTeam}
                 </span>
 
@@ -156,7 +169,10 @@ export default function MatchListRow({ match }: MatchListRowProps) {
                   {match.awayFlag}
                 </span>
 
-                <span className={teamTextClasses}>
+                <span className={cn(
+                  teamTextClasses,
+                  isAwayWinner && "font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-cyan-500 to-purple-500 dark:from-cyan-400 dark:via-cyan-300 dark:to-purple-400 !text-transparent"
+                )}>
                   {match.awayTeam}
                 </span>
                 <span className="text-text-secondary/70 font-bold text-xs sm:hidden font-mono">
@@ -185,6 +201,15 @@ export default function MatchListRow({ match }: MatchListRowProps) {
         </div>
 
       </div>
+
+      {/* Shootout Winner Badge */}
+      {isCompleted && match.shootoutScore && (
+        <div className="mt-3 pt-2 border-t border-dashed border-border flex justify-center">
+          <span className="text-[10px] font-bold text-purple-600 dark:text-purple-400 bg-purple-500/5 border border-purple-500/10 px-3 py-1 rounded-xl uppercase tracking-wider font-mono">
+            🏆 {match.shootoutScore.home > match.shootoutScore.away ? match.homeTeam : match.awayTeam} won on penalties ({match.shootoutScore.home} - {match.shootoutScore.away})
+          </span>
+        </div>
+      )}
     </div>
   );
 }

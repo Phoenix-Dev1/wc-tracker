@@ -135,3 +135,57 @@ export function calculateMatchupProbabilities(
 
   return { teamA: normA, draw: normDraw, teamB: normB };
 }
+
+export interface GoalLeader {
+  rank: number;
+  name: string;
+  team: string;
+  count: number;
+}
+
+export function getGoalLeaders(matches: ProcessedMatch[]): GoalLeader[] {
+  const goalCounts: Record<string, { name: string; team: string; count: number }> = {};
+
+  matches.forEach((m) => {
+    if ((m.status === "COMPLETED" || m.status === "LIVE") && m.goals) {
+      m.goals.forEach((g) => {
+        if (g.type === "OWN") return;
+        const key = `${g.scorer}_${g.team}`;
+        if (!goalCounts[key]) {
+          goalCounts[key] = {
+            name: g.scorer,
+            team: g.team,
+            count: 0,
+          };
+        }
+        goalCounts[key].count++;
+      });
+    }
+  });
+
+  const sortedList = Object.values(goalCounts)
+    .sort((a, b) => {
+      if (b.count !== a.count) return b.count - a.count;
+      return a.name.localeCompare(b.name);
+    });
+
+  const leaders: GoalLeader[] = [];
+  let currentRank = 1;
+  let prevCount = -1;
+
+  sortedList.forEach((item, idx) => {
+    if (idx > 0 && item.count < prevCount) {
+      currentRank = idx + 1;
+    }
+    leaders.push({
+      rank: currentRank,
+      name: item.name,
+      team: item.team,
+      count: item.count,
+    });
+    prevCount = item.count;
+  });
+
+  return leaders;
+}
+

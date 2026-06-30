@@ -1,6 +1,7 @@
-import { Fixture, ProcessedMatch, Goal, MatchStats } from "./types";
+import { Fixture, ProcessedMatch, Goal, MatchStats, StandingGroup } from "./types";
 import { isPlaceholderTeam, getTeamInfo, normalizeTeamName } from "./teams";
 import { formatJerusalemTime, formatJerusalemDate } from "./helpers";
+import { calculateGroupStandingsFromMatches } from "./standings";
 import fixturesData from "./fixtures.json";
 import simulationDb from "./simulation-database.json";
 
@@ -25,7 +26,7 @@ export const getProcessedMatches = (systemTimeStr: string, rawFixturesInput?: Fi
   // Sort raw fixtures chronologically by kickoffUtc ascending before processing
   rawFixtures.sort((a, b) => new Date(a.kickoffUtc).getTime() - new Date(b.kickoffUtc).getTime());
 
-  return rawFixtures.map((fixture) => {
+  const processed = rawFixtures.map((fixture) => {
     const kickoffTime = new Date(fixture.kickoffUtc).getTime();
     const durationMs = 120 * 60 * 1000; // 120 minutes (2 hours TV broadcast window)
     const timeDiff = systemTime - kickoffTime;
@@ -191,6 +192,7 @@ export const getProcessedMatches = (systemTimeStr: string, rawFixturesInput?: Fi
       formattedDateJerusalem: formatJerusalemDate(fixture.kickoffUtc),
     };
   });
+  return resolveKnockoutPlaceholders(processed, systemTimeStr, rawFixturesInput);
 };
 
 export const getNextThreeUpcoming = (systemTimeStr: string, rawFixturesInput?: Fixture[]): ProcessedMatch[] => {
@@ -199,4 +201,212 @@ export const getNextThreeUpcoming = (systemTimeStr: string, rawFixturesInput?: F
     .filter((m) => m.status === 'UPCOMING')
     .sort((a, b) => new Date(a.kickoffUtc).getTime() - new Date(b.kickoffUtc).getTime())
     .slice(0, 3);
+};
+
+// Helper function to resolve placeholders dynamically based on simulation time
+export const resolveKnockoutPlaceholders = (
+  matches: ProcessedMatch[],
+  systemTimeStr: string,
+  _rawFixturesInput?: Fixture[]
+): ProcessedMatch[] => {
+  const groupLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
+  const groupStandings: Record<string, StandingGroup | null> = {};
+  groupLetters.forEach((letter) => {
+    groupStandings[letter] = calculateGroupStandingsFromMatches(matches, letter);
+  });
+
+  const getMatchWinner = (match: ProcessedMatch): string | null => {
+    if (match.status !== "COMPLETED") return null;
+    const homeS = match.homeScore ?? 0;
+    const awayS = match.awayScore ?? 0;
+    if (homeS > awayS) return match.homeTeam;
+    if (homeS < awayS) return match.awayTeam;
+    if (match.shootoutScore) {
+      if (match.shootoutScore.home > match.shootoutScore.away) return match.homeTeam;
+      return match.awayTeam;
+    }
+    return match.homeTeam;
+  };
+
+  const getMatchLoser = (match: ProcessedMatch): string | null => {
+    if (match.status !== "COMPLETED") return null;
+    const homeS = match.homeScore ?? 0;
+    const awayS = match.awayScore ?? 0;
+    if (homeS < awayS) return match.homeTeam;
+    if (homeS > awayS) return match.awayTeam;
+    if (match.shootoutScore) {
+      if (match.shootoutScore.home < match.shootoutScore.away) return match.homeTeam;
+      return match.awayTeam;
+    }
+    return match.awayTeam;
+  };
+
+  const getGroupTeam = (group: string, rank: 1 | 2): string | null => {
+    const standings = groupStandings[group.toUpperCase()];
+    if (!standings || !standings.table || standings.table.length < 2) return null;
+    const entry = standings.table[rank - 1];
+    return entry ? entry.team.name : null;
+  };
+
+  const resolvedMatches = matches.map(m => ({ ...m }));
+
+  resolvedMatches.forEach((m) => {
+    if (m.matchNumber >= 73) {
+      if (isPlaceholderTeam(m.homeTeam)) {
+        const oldHome = m.homeTeam;
+        const resolved = resolveTeamName(m.homeTeam, resolvedMatches, m.matchNumber);
+        if (resolved) {
+          m.homeTeam = resolved;
+          const info = getTeamInfo(resolved);
+          m.homeFlag = info.flag;
+          m.homeCode = info.code;
+          // Update corresponding goal team names
+          if (m.goals) {
+            m.goals.forEach((g) => {
+              if (g.team === oldHome) {
+                g.team = resolved;
+              }
+            });
+          }
+        }
+      }
+      if (isPlaceholderTeam(m.awayTeam)) {
+        const oldAway = m.awayTeam;
+        const resolved = resolveTeamName(m.awayTeam, resolvedMatches, m.matchNumber);
+        if (resolved) {
+          m.awayTeam = resolved;
+          const info = getTeamInfo(resolved);
+          m.awayFlag = info.flag;
+          m.awayCode = info.code;
+          // Update corresponding goal team names
+          if (m.goals) {
+            m.goals.forEach((g) => {
+              if (g.team === oldAway) {
+                g.team = resolved;
+              }
+            });
+          }
+        }
+      }
+
+      const isHomePlaceholder = isPlaceholderTeam(m.homeTeam);
+      const isAwayPlaceholder = isPlaceholderTeam(m.awayTeam);
+      if (!isHomePlaceholder && !isAwayPlaceholder) {
+        const systemTime = new Date(systemTimeStr).getTime();
+        const kickoffTime = new Date(m.kickoffUtc).getTime();
+        const durationMs = 120 * 60 * 1000;
+        const timeDiff = systemTime - kickoffTime;
+
+        if (timeDiff < 0) {
+          m.status = 'UPCOMING';
+          m.homeScore = undefined;
+          m.awayScore = undefined;
+          m.goals = [];
+          m.stats = undefined;
+        } else if (timeDiff < durationMs) {
+          m.status = 'LIVE';
+        } else {
+          m.status = 'COMPLETED';
+        }
+
+        if (m.status === 'COMPLETED' && m.homeScore === undefined) {
+          const homeLen = m.homeTeam ? m.homeTeam.length : 0;
+          const awayLen = m.awayTeam ? m.awayTeam.length : 0;
+          let finalHome = (m.matchNumber * 3 + homeLen) % 4;
+          const finalAway = (m.matchNumber * 7 + awayLen) % 3;
+          if (m.stage === 'final' && finalHome === finalAway) finalHome += 1;
+          m.homeScore = finalHome;
+          m.awayScore = finalAway;
+          m.goals = [];
+          m.stats = {
+            homePossession: 50,
+            awayPossession: 50,
+            homeShotsOnTarget: 4,
+            awayShotsOnTarget: 3,
+            homeTotalShots: 10,
+            awayTotalShots: 8,
+            homeCorners: 5,
+            awayCorners: 4
+          };
+          if (m.homeScore === m.awayScore) {
+            m.shootoutScore = {
+              home: m.matchNumber % 2 === 0 ? 4 : 3,
+              away: m.matchNumber % 2 === 0 ? 3 : 4
+            };
+          }
+        }
+      }
+    }
+  });
+
+  return resolvedMatches;
+
+  function resolveTeamName(placeholder: string, currentMatches: ProcessedMatch[], currentMatchNum: number): string | null {
+    const clean = placeholder.trim().toLowerCase();
+    
+    if (clean.startsWith("winner match")) {
+      const matchNum = parseInt(clean.replace("winner match", "").trim(), 10);
+      if (!isNaN(matchNum)) {
+        const found = currentMatches.find(x => x.matchNumber === matchNum);
+        if (found) return getMatchWinner(found);
+      }
+    }
+    
+    if (clean.startsWith("loser match")) {
+      const matchNum = parseInt(clean.replace("loser match", "").trim(), 10);
+      if (!isNaN(matchNum)) {
+        const found = currentMatches.find(x => x.matchNumber === matchNum);
+        if (found) return getMatchLoser(found);
+      }
+    }
+
+    if (clean.startsWith("group ") && (clean.endsWith("winners") || clean.endsWith("runners-up"))) {
+      const parts = clean.split(" ");
+      const groupLetter = parts[1];
+      const rank = clean.endsWith("winners") ? 1 : 2;
+      return getGroupTeam(groupLetter, rank);
+    }
+
+    if (clean.includes("third place")) {
+      const groupsMentioned = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"]
+        .filter(g => clean.includes(g));
+
+      const thirdPlaceTeams: { team: string; points: number; gd: number; gf: number }[] = [];
+      groupsMentioned.forEach(g => {
+        const standings = groupStandings[g.toUpperCase()];
+        if (standings && standings.table && standings.table.length >= 3) {
+          const t = standings.table[2];
+          thirdPlaceTeams.push({
+            team: t.team.name,
+            points: t.points,
+            gd: t.goalDifference,
+            gf: t.goalsFor
+          });
+        }
+      });
+
+      if (thirdPlaceTeams.length > 0) {
+        thirdPlaceTeams.sort((a, b) => {
+          if (b.points !== a.points) return b.points - a.points;
+          if (b.gd !== a.gd) return b.gd - a.gd;
+          return b.gf - a.gf;
+        });
+
+        for (const candidate of thirdPlaceTeams) {
+          const teamName = candidate.team;
+          const alreadyUsed = currentMatches.some(m => 
+            m.matchNumber >= 73 && 
+            m.matchNumber < currentMatchNum &&
+            (m.homeTeam === teamName || m.awayTeam === teamName)
+          );
+          if (!alreadyUsed) {
+            return teamName;
+          }
+        }
+        return thirdPlaceTeams[0].team;
+      }
+    }
+
+    return null;
+  }
 };

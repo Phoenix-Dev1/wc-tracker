@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useDeferredValue } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Calendar,
@@ -85,6 +86,7 @@ export default function MonPageClient({ initialFixtures }: { initialFixtures?: F
   const [isPastTournament, setIsPastTournament] = useState<boolean>(false);
   const [isDatePickerOpen, setIsDatePickerOpen] = useState<boolean>(false);
   const [tempDateTime, setTempDateTime] = useState<string>("");
+  const [isMock, setIsMock] = useState<boolean>(false);
 
   useEffect(() => {
     if (isDatePickerOpen) {
@@ -140,6 +142,7 @@ export default function MonPageClient({ initialFixtures }: { initialFixtures?: F
     setMounted(true);
     
     const params = new URLSearchParams(window.location.search);
+    setIsMock(params.get("mock") === "true");
     const simTimeParam = params.get("simTime");
     const past = new Date().getTime() > new Date("2026-07-20T00:00:00Z").getTime();
     setIsPastTournament(past);
@@ -414,6 +417,29 @@ export default function MonPageClient({ initialFixtures }: { initialFixtures?: F
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-8 pb-24">
+
+        {/* Global Navigation Bar */}
+        <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-200/50 dark:border-slate-800/50">
+          <div className="flex items-center gap-2">
+            <span className="text-xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-purple-600 dark:from-cyan-400 dark:to-purple-400">
+              ⚡ WC26.TRACKER
+            </span>
+          </div>
+          <div className="flex items-center gap-6 text-sm font-semibold">
+            <Link
+              href={`/${(isMock || isSimMode) ? "?" : ""}${isMock ? "mock=true" : ""}${isMock && isSimMode ? "&" : ""}${isSimMode ? `simTime=${encodeURIComponent(systemTime)}` : ""}`}
+              className="text-cyan-600 dark:text-cyan-400 border-b-2 border-cyan-500 pb-1"
+            >
+              Matches & Standings
+            </Link>
+            <Link
+              href={`/knockouts${(isMock || isSimMode) ? "?" : ""}${isMock ? "mock=true" : ""}${isMock && isSimMode ? "&" : ""}${isSimMode ? `simTime=${encodeURIComponent(systemTime)}` : ""}`}
+              className="text-text-secondary hover:text-text-primary transition-colors pb-1 border-b-2 border-transparent"
+            >
+              Knockout Bracket
+            </Link>
+          </div>
+        </div>
 
         {/* Header Title Section */}
         <div className="text-center mb-12" data-aos="fade-down" data-aos-duration="1000">
