@@ -25,8 +25,10 @@ import {
   calculateTournamentStats,
   calculateMatchupProbabilities,
   calculateKnockoutProbabilities,
+  generateScorelinePredictions,
   getTeamInfo,
   isPlaceholderTeam,
+  ScorelinePrediction,
 } from "@/data/worldcup";
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -282,6 +284,11 @@ export default function MatchupAnalyzer({ matches }: MatchupAnalyzerProps) {
     if (!prediction) return null;
     return calculateKnockoutProbabilities(prediction);
   }, [prediction]);
+
+  const scorelinePredictions = useMemo(() => {
+    if (!teamA || !teamB || isPlaceholderTeam(teamA) || isPlaceholderTeam(teamB)) return null;
+    return generateScorelinePredictions(teamA, teamB, matches, 5);
+  }, [teamA, teamB, matches]);
 
   /* Merge the two radarData arrays into a single one Recharts can use */
   const mergedRadar = useMemo(() => {
@@ -583,6 +590,26 @@ export default function MatchupAnalyzer({ matches }: MatchupAnalyzerProps) {
                         </span>
                       </div>
                     </>
+                  )}
+
+                  {/* Predicted Scores grid section */}
+                  {scorelinePredictions && scorelinePredictions.length > 0 && (
+                    <div className="mt-6 pt-6 border-t border-border/60">
+                      <p className="text-[10px] font-bold tracking-widest text-text-secondary uppercase mb-3">
+                        Most Likely Scorelines
+                      </p>
+                      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                        {scorelinePredictions.map((p) => (
+                          <div
+                            key={`${p.home}-${p.away}`}
+                            className="flex flex-col items-center justify-center p-3 rounded-xl bg-bg-900/60 border border-border/80 shadow-sm"
+                          >
+                            <span className="text-base font-bold text-text-primary font-mono">{p.home} - {p.away}</span>
+                            <span className="text-[11px] font-semibold text-cyan-600 dark:text-cyan-400 font-mono mt-0.5">{p.probability}%</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   )}
                 </div>
               )}

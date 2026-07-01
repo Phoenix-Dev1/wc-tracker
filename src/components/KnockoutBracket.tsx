@@ -34,12 +34,11 @@ export default function KnockoutBracket({ matches, queryStr = "" }: KnockoutBrac
   const isProgrammaticScrollRef = useRef(false);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Precompute scoreline predictions for all upcoming matches with resolved teams
+  // Precompute scoreline predictions for all resolved matches (upcoming or completed)
   const predictionsMap = useMemo(() => {
     const map: Record<number, ReturnType<typeof generateScorelinePredictions>> = {};
     for (const m of matches) {
       if (
-        m.status === 'UPCOMING' &&
         m.matchNumber >= 73 &&
         !isPlaceholderTeam(m.homeTeam) &&
         !isPlaceholderTeam(m.awayTeam)
@@ -112,32 +111,44 @@ export default function KnockoutBracket({ matches, queryStr = "" }: KnockoutBrac
     const container = containerRef.current;
     if (!container) return;
 
+    let scrollTimeout: NodeJS.Timeout | null = null;
+
     const handleScroll = () => {
       if (isProgrammaticScrollRef.current) return;
 
-      const containerWidth = container.offsetWidth;
-      const containerCenter = container.scrollLeft + containerWidth / 2;
-      const children = Array.from(container.children) as HTMLElement[];
+      // If the container fits all columns without scrolling or is wide viewport,
+      // do not auto-change active tab focus.
+      if (container.offsetWidth > 768 || container.scrollWidth <= container.clientWidth) return;
 
-      let closestIdx = 0;
-      let minDistance = Infinity;
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
 
-      children.forEach((child, idx) => {
-        const childCenter = child.offsetLeft + child.offsetWidth / 2;
-        const distance = Math.abs(containerCenter - childCenter);
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestIdx = idx;
-        }
-      });
+      scrollTimeout = setTimeout(() => {
+        const containerWidth = container.offsetWidth;
+        const containerCenter = container.scrollLeft + containerWidth / 2;
+        const children = Array.from(container.children) as HTMLElement[];
 
-      setActiveRoundIdx(closestIdx);
+        let closestIdx = 0;
+        let minDistance = Infinity;
+
+        children.forEach((child, idx) => {
+          const childCenter = child.offsetLeft + child.offsetWidth / 2;
+          const distance = Math.abs(containerCenter - childCenter);
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestIdx = idx;
+          }
+        });
+
+        setActiveRoundIdx(closestIdx);
+      }, 100); // 100ms debounce
     };
 
     container.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       container.removeEventListener("scroll", handleScroll);
-      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
     };
   }, []);
 
@@ -203,7 +214,9 @@ export default function KnockoutBracket({ matches, queryStr = "" }: KnockoutBrac
               key={round.id}
               className={cn(
                 "snap-center min-w-[300px] sm:min-w-[320px] max-w-[350px] shrink-0 flex flex-col gap-6 items-center transition-all duration-300",
-                !isActive && "opacity-35 scale-95"
+                isActive 
+                  ? "opacity-100 scale-100" 
+                  : "opacity-35 scale-95 md:opacity-100 md:scale-100"
               )}
             >
               {/* Stage Header */}

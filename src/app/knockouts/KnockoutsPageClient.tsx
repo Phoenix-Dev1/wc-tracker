@@ -258,10 +258,10 @@ export default function KnockoutsPageClient({ initialFixtures }: { initialFixtur
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f080_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f080_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1e293b80_1px,transparent_1px),linear-gradient(to_bottom,#1e293b80_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-8 pb-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-16 sm:pt-8 pb-24">
         
         {/* Global Navigation Header */}
-        <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-200/50 dark:border-slate-800/50">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 pb-4 border-b border-slate-200/50 dark:border-slate-800/50">
           <div className="flex items-center gap-2">
             <span className="text-xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-purple-600 dark:from-cyan-400 dark:to-purple-400">
               ⚡ WC26.TRACKER
@@ -272,13 +272,15 @@ export default function KnockoutsPageClient({ initialFixtures }: { initialFixtur
               href={`/${finalQuery}`}
               className="text-text-secondary hover:text-text-primary transition-colors pb-1 border-b-2 border-transparent"
             >
-              Matches & Standings
+              <span className="sm:inline hidden">Matches & Standings</span>
+              <span className="sm:hidden">Fixtures</span>
             </Link>
             <Link
               href={`/knockouts${finalQuery}`}
               className="text-cyan-600 dark:text-cyan-400 border-b-2 border-cyan-500 pb-1"
             >
-              Knockout Bracket
+              <span className="sm:inline hidden">Knockout Bracket</span>
+              <span className="sm:hidden">Bracket</span>
             </Link>
           </div>
         </div>
@@ -289,7 +291,7 @@ export default function KnockoutsPageClient({ initialFixtures }: { initialFixtur
             <span className="w-2 h-2 rounded-full bg-purple-600 animate-ping" />
             Knockouts & Leaders
           </div>
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-950 via-slate-800 to-slate-700 dark:from-white dark:via-slate-200 dark:to-slate-400">
+          <h1 className="text-3xl sm:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-950 via-slate-800 to-slate-700 dark:from-white dark:via-slate-200 dark:to-slate-400">
             Knockout Phase Bracket
           </h1>
           <p className="mt-3 text-text-secondary max-w-xl mx-auto text-sm sm:text-base font-light">

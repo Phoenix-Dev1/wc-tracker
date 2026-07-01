@@ -26,7 +26,7 @@ export default function ThemeToggler() {
     <button
       onClick={toggleTheme}
       aria-label={theme === "light" ? "Switch to dark theme" : "Switch to light theme"}
-      className="fixed top-5 right-5 z-50 flex items-center justify-center w-10 h-10 rounded-full border bg-white/85 dark:bg-slate-900/85 backdrop-blur-md text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-800 shadow-md hover:scale-105 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500/50 cursor-pointer"
+      className="fixed top-4 right-4 sm:top-5 sm:right-5 z-50 flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full border bg-white/85 dark:bg-slate-900/85 backdrop-blur-md text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-800 shadow-md hover:scale-105 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500/50 cursor-pointer"
     >
       {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
     </button>

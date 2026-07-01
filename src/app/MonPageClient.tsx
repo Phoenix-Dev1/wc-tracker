@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useDeferredValue } from "react";
+import { useState, useEffect, useDeferredValue, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -25,6 +25,9 @@ import {
   getProcessedMatches,
   getNextThreeUpcoming,
   getStageDisplayName,
+  generateScorelinePredictions,
+  isPlaceholderTeam,
+  ScorelinePrediction,
 } from "@/data/worldcup";
 import MatchupAnalyzer from "@/components/MatchupAnalyzer";
 import HeroSkeleton from "@/components/HeroSkeleton";
@@ -259,6 +262,20 @@ export default function MonPageClient({ initialFixtures }: { initialFixtures?: F
   // Parse matches based on active system time
   const matches = getProcessedMatches(systemTime, initialFixtures);
 
+  // Precompute scoreline predictions for all resolved matches (upcoming or completed)
+  const predictionsMap = useMemo(() => {
+    const map: Record<number, ScorelinePrediction[]> = {};
+    for (const m of matches) {
+      if (
+        !isPlaceholderTeam(m.homeTeam) &&
+        !isPlaceholderTeam(m.awayTeam)
+      ) {
+        map[m.matchNumber] = generateScorelinePredictions(m.homeTeam, m.awayTeam, matches);
+      }
+    }
+    return map;
+  }, [matches]);
+
   // Extract matches that are currently live (IN_PLAY or PAUSED)
   const liveMatches = matches.filter((m) => m.status === "LIVE");
   const liveMatchIds = new Set(liveMatches.map((m) => m.matchNumber));
@@ -416,10 +433,10 @@ export default function MonPageClient({ initialFixtures }: { initialFixtures?: F
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f080_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f080_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1e293b80_1px,transparent_1px),linear-gradient(to_bottom,#1e293b80_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-8 pb-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-16 sm:pt-8 pb-24">
 
         {/* Global Navigation Bar */}
-        <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-200/50 dark:border-slate-800/50">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 pb-4 border-b border-slate-200/50 dark:border-slate-800/50">
           <div className="flex items-center gap-2">
             <span className="text-xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-purple-600 dark:from-cyan-400 dark:to-purple-400">
               ⚡ WC26.TRACKER
@@ -430,13 +447,15 @@ export default function MonPageClient({ initialFixtures }: { initialFixtures?: F
               href={`/${(isMock || isSimMode) ? "?" : ""}${isMock ? "mock=true" : ""}${isMock && isSimMode ? "&" : ""}${isSimMode ? `simTime=${encodeURIComponent(systemTime)}` : ""}`}
               className="text-cyan-600 dark:text-cyan-400 border-b-2 border-cyan-500 pb-1"
             >
-              Matches & Standings
+              <span className="sm:inline hidden">Matches & Standings</span>
+              <span className="sm:hidden">Fixtures</span>
             </Link>
             <Link
               href={`/knockouts${(isMock || isSimMode) ? "?" : ""}${isMock ? "mock=true" : ""}${isMock && isSimMode ? "&" : ""}${isSimMode ? `simTime=${encodeURIComponent(systemTime)}` : ""}`}
               className="text-text-secondary hover:text-text-primary transition-colors pb-1 border-b-2 border-transparent"
             >
-              Knockout Bracket
+              <span className="sm:inline hidden">Knockout Bracket</span>
+              <span className="sm:hidden">Bracket</span>
             </Link>
           </div>
         </div>
@@ -447,7 +466,7 @@ export default function MonPageClient({ initialFixtures }: { initialFixtures?: F
             <span className="w-2 h-2 rounded-full bg-cyan-600 animate-ping" />
             2026 FIFA World Cup Live Tracker
           </div>
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-950 via-slate-800 to-slate-700 dark:from-white dark:via-slate-200 dark:to-slate-400">
+          <h1 className="text-3xl sm:text-6xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-950 via-slate-800 to-slate-700 dark:from-white dark:via-slate-200 dark:to-slate-400">
             Tournament World Cup Live Hub
           </h1>
           <p className="mt-3 text-text-secondary max-w-xl mx-auto text-sm sm:text-base font-light">
@@ -942,7 +961,11 @@ export default function MonPageClient({ initialFixtures }: { initialFixtures?: F
                         {/* Cards Grid */}
                         <div className="grid grid-cols-1 gap-4">
                           {groupedMatches[groupTitle].map((match) => (
-                            <MatchListRow key={match.matchNumber} match={match} />
+                            <MatchListRow
+                              key={match.matchNumber}
+                              match={match}
+                              scorePredictions={predictionsMap[match.matchNumber]}
+                            />
                           ))}
                         </div>
                       </div>

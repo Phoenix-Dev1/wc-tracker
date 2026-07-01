@@ -147,24 +147,42 @@ export default function BracketMatchCard({ match, queryStr = "", scorePrediction
         </div>
       )}
 
-      {/* Scoreline Predictions (upcoming knockout matches only) */}
+      {/* Scoreline Predictions */}
       {scorePredictions && scorePredictions.length > 0 && (
         <div className="flex flex-col gap-1.5 pt-1">
-          <span className="text-[8px] font-bold tracking-widest text-text-muted uppercase text-center select-none">
-            Predicted Scores
+          <span className="text-[10px] font-bold tracking-widest text-text-muted uppercase text-center select-none">
+            {isCompleted ? "Prediction Accuracy" : "Predicted Scores"}
           </span>
           <div className="flex flex-wrap justify-center gap-1">
-            {scorePredictions.map((p) => (
-              <span
-                key={`${p.home}-${p.away}`}
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-cyan-50/60 dark:bg-cyan-950/20 border border-cyan-200/40 dark:border-cyan-800/30 text-[9px] font-bold text-cyan-700 dark:text-cyan-400 font-mono select-none"
-              >
-                {p.home}-{p.away}
-                <span className="text-[8px] font-semibold text-cyan-500/70 dark:text-cyan-500/50">
-                  {p.probability}%
+            {scorePredictions.map((p) => {
+              const isCorrect = isCompleted && p.home === match.homeScore && p.away === match.awayScore;
+              return (
+                <span
+                  key={`${p.home}-${p.away}`}
+                  className={cn(
+                    "inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-mono select-none border transition-all duration-200",
+                    isCorrect
+                      ? "bg-emerald-500/10 dark:bg-emerald-950/30 border-emerald-500 text-emerald-700 dark:text-emerald-400 font-extrabold shadow-[0_0_8px_rgba(16,185,129,0.15)]"
+                      : isCompleted
+                        ? "bg-slate-100/50 dark:bg-slate-900/30 border-slate-200/40 dark:border-slate-800/30 text-text-secondary/50 opacity-55 saturate-50"
+                        : "bg-cyan-50/60 dark:bg-cyan-950/20 border-cyan-200/40 dark:border-cyan-800/30 text-cyan-700 dark:text-cyan-400 font-bold"
+                  )}
+                >
+                  {isCorrect && <span className="text-emerald-500 font-black mr-0.5">✓</span>}
+                  {p.home}-{p.away}
+                  <span className={cn(
+                    "text-[9px] font-semibold",
+                    isCorrect
+                      ? "text-emerald-600 dark:text-emerald-500/80"
+                      : isCompleted
+                        ? "text-text-secondary/35"
+                        : "text-cyan-500/70 dark:text-cyan-500/50"
+                  )}>
+                    {p.probability}%
+                  </span>
                 </span>
-              </span>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}

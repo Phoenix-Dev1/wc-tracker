@@ -3,12 +3,13 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Shield, MapPin, CheckCircle2 } from "lucide-react";
-import { ProcessedMatch, isPlaceholderTeam } from "@/data/worldcup";
+import { ProcessedMatch, isPlaceholderTeam, ScorelinePrediction } from "@/data/worldcup";
 import { cn } from "@/utils/cn";
 import MatchProgressCircle from "@/components/MatchProgressCircle";
 
 interface MatchListRowProps {
   match: ProcessedMatch;
+  scorePredictions?: ScorelinePrediction[];
 }
 
 const formatCityName = (city: string) => {
@@ -18,7 +19,7 @@ const formatCityName = (city: string) => {
     .join(" ");
 };
 
-export default function MatchListRow({ match }: MatchListRowProps) {
+export default function MatchListRow({ match, scorePredictions }: MatchListRowProps) {
   const searchParams = useSearchParams();
   const isMock = searchParams?.get("mock") === "true";
   const simTime = searchParams?.get("simTime");
@@ -208,6 +209,46 @@ export default function MatchListRow({ match }: MatchListRowProps) {
           <span className="text-[10px] font-bold text-purple-600 dark:text-purple-400 bg-purple-500/5 border border-purple-500/10 px-3 py-1 rounded-xl uppercase tracking-wider font-mono">
             🏆 {match.shootoutScore.home > match.shootoutScore.away ? match.homeTeam : match.awayTeam} won on penalties ({match.shootoutScore.home} - {match.shootoutScore.away})
           </span>
+        </div>
+      )}
+
+      {/* Scoreline Predictions */}
+      {scorePredictions && scorePredictions.length > 0 && (
+        <div className="mt-3 pt-2 border-t border-dashed border-border flex flex-col sm:flex-row items-center justify-between gap-2">
+          <span className="text-[11px] font-bold tracking-widest text-text-secondary uppercase select-none">
+            {isCompleted ? "Prediction Accuracy" : "Predicted Scores"}
+          </span>
+          <div className="flex flex-wrap gap-1.5 justify-center">
+            {scorePredictions.map((p) => {
+              const isCorrect = isCompleted && p.home === match.homeScore && p.away === match.awayScore;
+              return (
+                <span
+                  key={`${p.home}-${p.away}`}
+                  className={cn(
+                    "inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono select-none border transition-all duration-200",
+                    isCorrect
+                      ? "bg-emerald-500/10 dark:bg-emerald-950/30 border-emerald-500 text-emerald-700 dark:text-emerald-400 font-extrabold shadow-[0_0_8px_rgba(16,185,129,0.15)]"
+                      : isCompleted
+                        ? "bg-slate-100/50 dark:bg-slate-900/30 border-slate-200/40 dark:border-slate-800/30 text-text-secondary/50 opacity-55 saturate-50"
+                        : "bg-cyan-55 dark:bg-cyan-950/20 border border-cyan-200/40 dark:border-cyan-800/30 text-cyan-700 dark:text-cyan-400 font-bold"
+                  )}
+                >
+                  {isCorrect && <span className="text-emerald-500 font-black mr-0.5">✓</span>}
+                  {p.home}-{p.away}
+                  <span className={cn(
+                    "text-[10px] font-semibold",
+                    isCorrect
+                      ? "text-emerald-600 dark:text-emerald-500/80"
+                      : isCompleted
+                        ? "text-text-secondary/35"
+                        : "text-cyan-500/70 dark:text-cyan-500/50"
+                  )}>
+                    {p.probability}%
+                  </span>
+                </span>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
