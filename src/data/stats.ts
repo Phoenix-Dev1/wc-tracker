@@ -1,4 +1,4 @@
-import { ProcessedMatch, TournamentTeamStats, MatchupProbabilities } from "./types";
+import { ProcessedMatch, TournamentTeamStats, MatchupProbabilities, KnockoutProbabilities } from "./types";
 import { normalizeTeamName, isPlaceholderTeam } from "./teams";
 
 const factorial = (n: number): number => (n <= 1 ? 1 : n * factorial(n - 1));
@@ -134,6 +134,18 @@ export function calculateMatchupProbabilities(
   const normDraw = 100 - normA - normB; // remainder avoids rounding drift
 
   return { teamA: normA, draw: normDraw, teamB: normB };
+}
+
+export function calculateKnockoutProbabilities(
+  probs: MatchupProbabilities
+): KnockoutProbabilities {
+  // Redistribute draw % proportionally based on each team's win share
+  const winTotal = probs.teamA + probs.teamB;
+  if (winTotal === 0) return { teamA: 50, teamB: 50 };
+
+  const koA = Math.round(probs.teamA + probs.draw * (probs.teamA / winTotal));
+  const koB = 100 - koA; // remainder avoids rounding drift
+  return { teamA: koA, teamB: koB };
 }
 
 export interface GoalLeader {

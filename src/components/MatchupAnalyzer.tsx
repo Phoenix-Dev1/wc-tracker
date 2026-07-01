@@ -24,6 +24,7 @@ import {
   TournamentTeamStats,
   calculateTournamentStats,
   calculateMatchupProbabilities,
+  calculateKnockoutProbabilities,
   getTeamInfo,
   isPlaceholderTeam,
 } from "@/data/worldcup";
@@ -240,6 +241,7 @@ interface MatchupAnalyzerProps {
 export default function MatchupAnalyzer({ matches }: MatchupAnalyzerProps) {
   const [teamA, setTeamA] = useState<string>("");
   const [teamB, setTeamB] = useState<string>("");
+  const [predictionMode, setPredictionMode] = useState<'group' | 'knockout'>('knockout');
   const searchParams = useSearchParams();
   const isMock = searchParams?.get("mock") === "true";
   const mockQuery = isMock ? "?mock=true" : "";
@@ -275,6 +277,11 @@ export default function MatchupAnalyzer({ matches }: MatchupAnalyzerProps) {
     if (!statsA || !statsB || statsA.gamesPlayed === 0 || statsB.gamesPlayed === 0) return null;
     return calculateMatchupProbabilities(statsA, statsB);
   }, [statsA, statsB]);
+
+  const knockoutPred = useMemo(() => {
+    if (!prediction) return null;
+    return calculateKnockoutProbabilities(prediction);
+  }, [prediction]);
 
   /* Merge the two radarData arrays into a single one Recharts can use */
   const mergedRadar = useMemo(() => {
@@ -489,47 +496,94 @@ export default function MatchupAnalyzer({ matches }: MatchupAnalyzerProps) {
               {/* ─── Match Prediction ─── */}
               {prediction && (
                 <div className="w-full mt-8 pt-6 border-t border-border">
-                  <p className="text-[10px] font-bold tracking-widest text-text-secondary uppercase mb-3">
-                    Match Prediction
-                  </p>
+                  {/* Header row with toggle */}
+                  <div className="flex items-center justify-between mb-3">
+                    <p className="text-[10px] font-bold tracking-widest text-text-secondary uppercase">
+                      Match Prediction
+                    </p>
+                    <div className="flex items-center bg-bg-900/80 border border-border rounded-full p-0.5 gap-0.5">
+                      {(['group', 'knockout'] as const).map((mode) => (
+                        <button
+                          key={mode}
+                          onClick={() => setPredictionMode(mode)}
+                          className={`px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase transition-all duration-200 ${
+                            predictionMode === mode
+                              ? 'bg-bg-700 text-text-primary shadow-sm'
+                              : 'text-text-secondary hover:text-text-primary'
+                          }`}
+                        >
+                          {mode === 'group' ? '⚽ Group' : '🏆 Knockout'}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
 
                   {/* Probability bar */}
-                  <div className="h-8 w-full rounded-xl overflow-hidden flex font-bold text-sm text-white shadow-sm bg-bg-600">
-                    <div
-                      className="bg-emerald-500 flex items-center justify-center transition-all duration-500"
-                      style={{ width: `${prediction.teamA}%` }}
-                    >
-                      {prediction.teamA >= 8 && `${prediction.teamA}%`}
-                    </div>
-                    <div
-                      className="bg-bg-600 dark:bg-bg-700 text-text-primary flex items-center justify-center transition-all duration-500 border-x border-border/10"
-                      style={{ width: `${prediction.draw}%` }}
-                    >
-                      {prediction.draw >= 8 && `${prediction.draw}%`}
-                    </div>
-                    <div
-                      className="bg-violet-500 flex items-center justify-center transition-all duration-500"
-                      style={{ width: `${prediction.teamB}%` }}
-                    >
-                      {prediction.teamB >= 8 && `${prediction.teamB}%`}
-                    </div>
-                  </div>
-
-                  {/* Legend */}
-                  <div className="flex items-center justify-between mt-2.5 px-1">
-                    <span className="flex items-center gap-1.5 text-xs font-semibold text-text-secondary uppercase tracking-wider">
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                      {infoA!.code} Win
-                    </span>
-                    <span className="flex items-center gap-1.5 text-xs font-semibold text-text-secondary uppercase tracking-wider">
-                      <span className="w-2.5 h-2.5 rounded-full bg-bg-600 dark:bg-bg-700 border border-border/10" />
-                      Draw
-                    </span>
-                    <span className="flex items-center gap-1.5 text-xs font-semibold text-text-secondary uppercase tracking-wider">
-                      <span className="w-2.5 h-2.5 rounded-full bg-violet-500" />
-                      {infoB!.code} Win
-                    </span>
-                  </div>
+                  {predictionMode === 'knockout' && knockoutPred ? (
+                    <>
+                      <div className="h-8 w-full rounded-xl overflow-hidden flex font-bold text-sm text-white shadow-sm bg-bg-600">
+                        <div
+                          className="bg-emerald-500 flex items-center justify-center transition-all duration-500"
+                          style={{ width: `${knockoutPred.teamA}%` }}
+                        >
+                          {knockoutPred.teamA >= 8 && `${knockoutPred.teamA}%`}
+                        </div>
+                        <div
+                          className="bg-violet-500 flex items-center justify-center transition-all duration-500"
+                          style={{ width: `${knockoutPred.teamB}%` }}
+                        >
+                          {knockoutPred.teamB >= 8 && `${knockoutPred.teamB}%`}
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between mt-2.5 px-1">
+                        <span className="flex items-center gap-1.5 text-xs font-semibold text-text-secondary uppercase tracking-wider">
+                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                          {infoA!.code} Win
+                        </span>
+                        <span className="flex items-center gap-1.5 text-xs font-semibold text-text-secondary uppercase tracking-wider">
+                          <span className="w-2.5 h-2.5 rounded-full bg-violet-500" />
+                          {infoB!.code} Win
+                        </span>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="h-8 w-full rounded-xl overflow-hidden flex font-bold text-sm text-white shadow-sm bg-bg-600">
+                        <div
+                          className="bg-emerald-500 flex items-center justify-center transition-all duration-500"
+                          style={{ width: `${prediction.teamA}%` }}
+                        >
+                          {prediction.teamA >= 8 && `${prediction.teamA}%`}
+                        </div>
+                        <div
+                          className="bg-bg-600 dark:bg-bg-700 text-text-primary flex items-center justify-center transition-all duration-500 border-x border-border/10"
+                          style={{ width: `${prediction.draw}%` }}
+                        >
+                          {prediction.draw >= 8 && `${prediction.draw}%`}
+                        </div>
+                        <div
+                          className="bg-violet-500 flex items-center justify-center transition-all duration-500"
+                          style={{ width: `${prediction.teamB}%` }}
+                        >
+                          {prediction.teamB >= 8 && `${prediction.teamB}%`}
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between mt-2.5 px-1">
+                        <span className="flex items-center gap-1.5 text-xs font-semibold text-text-secondary uppercase tracking-wider">
+                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                          {infoA!.code} Win
+                        </span>
+                        <span className="flex items-center gap-1.5 text-xs font-semibold text-text-secondary uppercase tracking-wider">
+                          <span className="w-2.5 h-2.5 rounded-full bg-bg-600 dark:bg-bg-700 border border-border/10" />
+                          Draw
+                        </span>
+                        <span className="flex items-center gap-1.5 text-xs font-semibold text-text-secondary uppercase tracking-wider">
+                          <span className="w-2.5 h-2.5 rounded-full bg-violet-500" />
+                          {infoB!.code} Win
+                        </span>
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
             </>

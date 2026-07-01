@@ -99,6 +99,11 @@ export interface MatchupProbabilities {
   teamB: number;
 }
 
+export interface KnockoutProbabilities {
+  teamA: number; // whole-number percentage (e.g. 56)
+  teamB: number; // always sums to 100 with teamA
+}
+
 export interface StandingTeam {
   position: number;
   team: {
