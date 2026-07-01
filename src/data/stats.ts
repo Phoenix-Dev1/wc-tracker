@@ -1,4 +1,4 @@
-import { ProcessedMatch, TournamentTeamStats, MatchupProbabilities, KnockoutProbabilities } from "./types";
+import { ProcessedMatch, TournamentTeamStats, MatchupProbabilities, KnockoutProbabilities, ScorelinePrediction } from "./types";
 import { normalizeTeamName, isPlaceholderTeam } from "./teams";
 
 const factorial = (n: number): number => (n <= 1 ? 1 : n * factorial(n - 1));
@@ -146,6 +146,36 @@ export function calculateKnockoutProbabilities(
   const koA = Math.round(probs.teamA + probs.draw * (probs.teamA / winTotal));
   const koB = 100 - koA; // remainder avoids rounding drift
   return { teamA: koA, teamB: koB };
+}
+
+export function generateScorelinePredictions(
+  homeTeamName: string,
+  awayTeamName: string,
+  allMatches: ProcessedMatch[],
+  topN: number = 5
+): ScorelinePrediction[] {
+  const homeStats = calculateTournamentStats(homeTeamName, allMatches);
+  const awayStats = calculateTournamentStats(awayTeamName, allMatches);
+
+  // Need completed games for both teams to generate meaningful predictions
+  if (homeStats.gamesPlayed === 0 || awayStats.gamesPlayed === 0) return [];
+
+  // Derive expected goals (lambda) for each side
+  const lambdaHome = (homeStats.avgGoalsScored + awayStats.avgGoalsConceded) / 2 || 0.1;
+  const lambdaAway = (awayStats.avgGoalsScored + homeStats.avgGoalsConceded) / 2 || 0.1;
+
+  // Build 0-4 × 0-4 scoreline matrix
+  const scorelines: ScorelinePrediction[] = [];
+  for (let h = 0; h <= 4; h++) {
+    for (let a = 0; a <= 4; a++) {
+      const prob = poisson(h, lambdaHome) * poisson(a, lambdaAway) * 100;
+      scorelines.push({ home: h, away: a, probability: Math.round(prob * 10) / 10 });
+    }
+  }
+
+  // Sort by probability descending, return top N
+  scorelines.sort((a, b) => b.probability - a.probability);
+  return scorelines.slice(0, topN);
 }
 
 export interface GoalLeader {

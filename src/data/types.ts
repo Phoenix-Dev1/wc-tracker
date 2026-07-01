@@ -104,6 +104,12 @@ export interface KnockoutProbabilities {
   teamB: number; // always sums to 100 with teamA
 }
 
+export interface ScorelinePrediction {
+  home: number;        // e.g. 2
+  away: number;        // e.g. 1
+  probability: number; // percentage e.g. 14.3
+}
+
 export interface StandingTeam {
   position: number;
   team: {

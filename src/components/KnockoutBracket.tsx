@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { ChevronLeft, ChevronRight, HelpCircle } from "lucide-react";
 import { ProcessedMatch } from "@/data/types";
+import { isPlaceholderTeam } from "@/data/teams";
+import { generateScorelinePredictions } from "@/data/stats";
 import BracketMatchCard from "./BracketMatchCard";
 import { cn } from "@/utils/cn";
 
@@ -31,6 +33,22 @@ export default function KnockoutBracket({ matches, queryStr = "" }: KnockoutBrac
   const containerRef = useRef<HTMLDivElement>(null);
   const isProgrammaticScrollRef = useRef(false);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Precompute scoreline predictions for all upcoming matches with resolved teams
+  const predictionsMap = useMemo(() => {
+    const map: Record<number, ReturnType<typeof generateScorelinePredictions>> = {};
+    for (const m of matches) {
+      if (
+        m.status === 'UPCOMING' &&
+        m.matchNumber >= 73 &&
+        !isPlaceholderTeam(m.homeTeam) &&
+        !isPlaceholderTeam(m.awayTeam)
+      ) {
+        map[m.matchNumber] = generateScorelinePredictions(m.homeTeam, m.awayTeam, matches);
+      }
+    }
+    return map;
+  }, [matches]);
 
   // Group processed matches by round using our visual tree ordering
   const getMatchesForRound = (roundId: string) => {
@@ -202,7 +220,11 @@ export default function KnockoutBracket({ matches, queryStr = "" }: KnockoutBrac
                     key={m.matchNumber}
                     className="flex justify-center transition-transform hover:scale-[1.03] duration-200"
                   >
-                    <BracketMatchCard match={m} queryStr={queryStr} />
+                    <BracketMatchCard
+                      match={m}
+                      queryStr={queryStr}
+                      scorePredictions={predictionsMap[m.matchNumber]}
+                    />
                   </div>
                 ))}
               </div>

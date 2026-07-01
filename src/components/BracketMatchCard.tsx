@@ -2,16 +2,17 @@
 
 import Link from "next/link";
 import { Shield } from "lucide-react";
-import { ProcessedMatch } from "@/data/types";
+import { ProcessedMatch, ScorelinePrediction } from "@/data/types";
 import { isPlaceholderTeam } from "@/data/teams";
 import { cn } from "@/utils/cn";
 
 interface BracketMatchCardProps {
   match: ProcessedMatch;
   queryStr?: string;
+  scorePredictions?: ScorelinePrediction[];
 }
 
-export default function BracketMatchCard({ match, queryStr = "" }: BracketMatchCardProps) {
+export default function BracketMatchCard({ match, queryStr = "", scorePredictions }: BracketMatchCardProps) {
   const isLive = match.status === "LIVE";
   const isCompleted = match.status === "COMPLETED";
 
@@ -143,6 +144,28 @@ export default function BracketMatchCard({ match, queryStr = "" }: BracketMatchC
       {isCompleted && match.shootoutScore && (
         <div className="text-[9px] text-center font-semibold text-purple-600 dark:text-purple-400 bg-purple-50/50 dark:bg-purple-950/20 py-0.5 rounded-lg border border-purple-100 dark:border-purple-900/30 font-mono uppercase tracking-wider select-none">
           Penalties: {match.shootoutScore.home} - {match.shootoutScore.away}
+        </div>
+      )}
+
+      {/* Scoreline Predictions (upcoming knockout matches only) */}
+      {scorePredictions && scorePredictions.length > 0 && (
+        <div className="flex flex-col gap-1.5 pt-1">
+          <span className="text-[8px] font-bold tracking-widest text-text-muted uppercase text-center select-none">
+            Predicted Scores
+          </span>
+          <div className="flex flex-wrap justify-center gap-1">
+            {scorePredictions.map((p) => (
+              <span
+                key={`${p.home}-${p.away}`}
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-cyan-50/60 dark:bg-cyan-950/20 border border-cyan-200/40 dark:border-cyan-800/30 text-[9px] font-bold text-cyan-700 dark:text-cyan-400 font-mono select-none"
+              >
+                {p.home}-{p.away}
+                <span className="text-[8px] font-semibold text-cyan-500/70 dark:text-cyan-500/50">
+                  {p.probability}%
+                </span>
+              </span>
+            ))}
+          </div>
         </div>
       )}
 
