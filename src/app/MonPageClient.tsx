@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useDeferredValue, useMemo } from "react";
+import { useState, useEffect, useDeferredValue, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -246,6 +246,8 @@ export default function MonPageClient({ initialFixtures }: { initialFixtures?: F
     return () => clearInterval(interval);
   }, [router, isSimMode]);
 
+  const scheduleRef = useRef<HTMLDivElement>(null);
+
   const [searchQuery, setSearchQuery] = useState("");
   // Deferred value: the input updates instantly while the heavy
   // array filtering only runs when the main thread has idle time.
@@ -258,6 +260,24 @@ export default function MonPageClient({ initialFixtures }: { initialFixtures?: F
   const [groupingMode, setGroupingMode] = useState<"date" | "group">("date");
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);
   const [viewMode, setViewMode] = useState<"SCHEDULE" | "ANALYSIS">("SCHEDULE");
+
+  // Smooth scroll back to the top of the schedule/analysis container when tabs or views change
+  // to prevent jarring screen jumps when list heights collapse.
+  useEffect(() => {
+    if (scheduleRef.current && mounted) {
+      const rect = scheduleRef.current.getBoundingClientRect();
+      const offset = 80; // height buffer for top section/navbar
+      const targetY = window.pageYOffset + rect.top - offset;
+
+      // Only scroll if we are currently scrolled past the target section
+      if (window.pageYOffset > targetY) {
+        window.scrollTo({
+          top: targetY,
+          behavior: "smooth",
+        });
+      }
+    }
+  }, [selectedStatus, viewMode, mounted]);
 
   // Parse matches based on active system time
   const matches = getProcessedMatches(systemTime, initialFixtures);
@@ -728,7 +748,7 @@ export default function MonPageClient({ initialFixtures }: { initialFixtures?: F
         </section>
 
         {/* FULL SCHEDULE SECTION */}
-        <section className="relative">
+        <section className="relative" ref={scheduleRef}>
 
           {/* Header with View Toggle */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6" data-aos="fade-right">
@@ -937,7 +957,7 @@ export default function MonPageClient({ initialFixtures }: { initialFixtures?: F
                 </div>
 
                 {/* SCHEDULE LIST GRID GROUPINGS */}
-                <div className={cn("space-y-12 transition-opacity duration-300", isStale && "opacity-50 pointer-events-none")}>
+                <div className={cn("space-y-12 transition-opacity duration-300 min-h-[500px]", isStale && "opacity-50 pointer-events-none")}>
                   {!mounted ? (
                     <div className="space-y-4">
                       <div className="flex items-center gap-3 pl-1">
