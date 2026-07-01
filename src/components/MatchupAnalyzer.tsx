@@ -277,8 +277,8 @@ export default function MatchupAnalyzer({ matches }: MatchupAnalyzerProps) {
 
   const prediction = useMemo(() => {
     if (!statsA || !statsB || statsA.gamesPlayed === 0 || statsB.gamesPlayed === 0) return null;
-    return calculateMatchupProbabilities(statsA, statsB);
-  }, [statsA, statsB]);
+    return calculateMatchupProbabilities(statsA, statsB, matches);
+  }, [statsA, statsB, matches]);
 
   const knockoutPred = useMemo(() => {
     if (!prediction) return null;

@@ -6,12 +6,14 @@ import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Shield, Clock, Calendar, MapPin } from "lucide-react";
 import { ProcessedMatch, isPlaceholderTeam } from "@/data/worldcup";
+import { ScorelinePrediction } from "@/data/types";
 import { cn } from "@/utils/cn";
 
 interface HeroMatchCardProps {
   match: ProcessedMatch;
   index: number;
   systemTime: string;
+  scorePredictions?: ScorelinePrediction[];
 }
 
 const formatCityName = (city: string) => {
@@ -21,7 +23,7 @@ const formatCityName = (city: string) => {
     .join(" ");
 };
 
-export default function HeroMatchCard({ match, index, systemTime }: HeroMatchCardProps) {
+export default function HeroMatchCard({ match, index, systemTime, scorePredictions }: HeroMatchCardProps) {
   const [countdownText, setCountdownText] = useState("");
   const isLive = match.status === "LIVE";
   const searchParams = useSearchParams();
@@ -184,6 +186,28 @@ export default function HeroMatchCard({ match, index, systemTime }: HeroMatchCar
           )}
         </div>
       </div>
+
+      {/* Scoreline Predictions */}
+      {scorePredictions && scorePredictions.length > 0 && (
+        <div className="mt-4 pt-3 border-t border-dashed border-border/70 flex flex-col gap-1.5 w-full">
+          <span className="text-[9px] sm:text-[10px] font-bold tracking-widest text-text-secondary uppercase select-none">
+            Predicted Scores
+          </span>
+          <div className="flex flex-wrap gap-1.5 w-full">
+            {scorePredictions.map((p) => (
+              <span
+                key={`${p.home}-${p.away}`}
+                className="inline-flex items-center gap-1 px-2 py-0.5 sm:px-2.5 sm:py-0.5 rounded-full text-[11px] sm:text-xs font-mono select-none border border-cyan-200/40 dark:border-cyan-800/30 bg-cyan-50/60 dark:bg-cyan-950/20 text-cyan-700 dark:text-cyan-400 font-bold transition-all duration-200"
+              >
+                {p.home}-{p.away}
+                <span className="text-[9px] sm:text-[10px] font-semibold text-cyan-500/70 dark:text-cyan-500/50">
+                  {p.probability}%
+                </span>
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Card Footer Details */}
       <div className="pt-4 mt-4 border-t border-border text-xs space-y-2.5">

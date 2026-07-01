@@ -711,7 +711,13 @@ export default function MonPageClient({ initialFixtures }: { initialFixtures?: F
               </>
             ) : upcomingThree.length > 0 ? (
               upcomingThree.map((match, idx) => (
-                <HeroMatchCard key={match.matchNumber} match={match} index={idx} systemTime={systemTime} />
+                <HeroMatchCard
+                  key={match.matchNumber}
+                  match={match}
+                  index={idx}
+                  systemTime={systemTime}
+                  scorePredictions={predictionsMap[match.matchNumber]}
+                />
               ))
             ) : (
               <div className="col-span-3 w-full py-10 rounded-2xl border border-dashed border-border text-center text-text-secondary bg-bg-700/50 backdrop-blur-sm">
