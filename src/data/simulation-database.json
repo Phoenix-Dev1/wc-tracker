@@ -2589,5 +2589,729 @@
       "homeCorners": 2,
       "awayCorners": 6
     }
+  },
+  "71": {
+    "homeScore": 1,
+    "awayScore": 2,
+    "goals": [
+      {
+        "minute": 34,
+        "injuryTime": null,
+        "scorer": "J. Díaz",
+        "team": "Colombia",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 61,
+        "injuryTime": null,
+        "scorer": "B. Fernandes",
+        "team": "Portugal",
+        "type": "PENALTY"
+      },
+      {
+        "minute": 82,
+        "injuryTime": null,
+        "scorer": "R. Leão",
+        "team": "Portugal",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 44.2,
+      "awayPossession": 55.8,
+      "homeShotsOnTarget": 3,
+      "awayShotsOnTarget": 6,
+      "homeTotalShots": 9,
+      "awayTotalShots": 14,
+      "homeCorners": 4,
+      "awayCorners": 7
+    }
+  },
+  "72": {
+    "homeScore": 0,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 70,
+        "injuryTime": null,
+        "scorer": "K. Makhkamov",
+        "team": "Uzbekistan",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 52.3,
+      "awayPossession": 47.7,
+      "homeShotsOnTarget": 2,
+      "awayShotsOnTarget": 4,
+      "homeTotalShots": 8,
+      "awayTotalShots": 9,
+      "homeCorners": 5,
+      "awayCorners": 3
+    }
+  },
+  "73": {
+    "homeScore": 1,
+    "awayScore": 2,
+    "goals": [
+      {
+        "minute": 29,
+        "injuryTime": null,
+        "scorer": "D. Coman",
+        "team": "Group A runners-up",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 55,
+        "injuryTime": null,
+        "scorer": "C. Larin",
+        "team": "Group B runners-up",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 88,
+        "injuryTime": null,
+        "scorer": "A. Davies",
+        "team": "Group B runners-up",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 48.0,
+      "awayPossession": 52.0,
+      "homeShotsOnTarget": 4,
+      "awayShotsOnTarget": 6,
+      "homeTotalShots": 11,
+      "awayTotalShots": 13,
+      "homeCorners": 5,
+      "awayCorners": 6
+    }
+  },
+  "74": {
+    "homeScore": 3,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 11,
+        "injuryTime": null,
+        "scorer": "K. Mbappé",
+        "team": "Group E winners",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 38,
+        "injuryTime": null,
+        "scorer": "K. Mbappé",
+        "team": "Group E winners",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 54,
+        "injuryTime": null,
+        "scorer": "O. Giroud",
+        "team": "Group A/B/C/D/F third place",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 79,
+        "injuryTime": null,
+        "scorer": "A. Griezmann",
+        "team": "Group E winners",
+        "type": "PENALTY"
+      }
+    ],
+    "stats": {
+      "homePossession": 58.4,
+      "awayPossession": 41.6,
+      "homeShotsOnTarget": 8,
+      "awayShotsOnTarget": 3,
+      "homeTotalShots": 17,
+      "awayTotalShots": 8,
+      "homeCorners": 8,
+      "awayCorners": 3
+    }
+  },
+  "75": {
+    "homeScore": 2,
+    "awayScore": 0,
+    "goals": [
+      {
+        "minute": 22,
+        "injuryTime": null,
+        "scorer": "L. Messi",
+        "team": "Group F winners",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 67,
+        "injuryTime": null,
+        "scorer": "L. Messi",
+        "team": "Group F winners",
+        "type": "PENALTY"
+      }
+    ],
+    "stats": {
+      "homePossession": 62.1,
+      "awayPossession": 37.9,
+      "homeShotsOnTarget": 7,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 16,
+      "awayTotalShots": 5,
+      "homeCorners": 9,
+      "awayCorners": 2
+    }
+  },
+  "76": {
+    "homeScore": 1,
+    "awayScore": 1,
+    "shootoutScore": {
+      "home": 4,
+      "away": 3
+    },
+    "goals": [
+      {
+        "minute": 33,
+        "injuryTime": null,
+        "scorer": "L. Modrić",
+        "team": "Group C winners",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 71,
+        "injuryTime": null,
+        "scorer": "B. Fernandes",
+        "team": "Group F runners-up",
+        "type": "PENALTY"
+      }
+    ],
+    "stats": {
+      "homePossession": 49.5,
+      "awayPossession": 50.5,
+      "homeShotsOnTarget": 5,
+      "awayShotsOnTarget": 5,
+      "homeTotalShots": 12,
+      "awayTotalShots": 11,
+      "homeCorners": 6,
+      "awayCorners": 5
+    }
+  },
+  "77": {
+    "homeScore": 2,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 18,
+        "injuryTime": null,
+        "scorer": "V. Gyökeres",
+        "team": "Group I winners",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 44,
+        "injuryTime": null,
+        "scorer": "N. Williams",
+        "team": "Group C/D/F/G/H third place",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 83,
+        "injuryTime": null,
+        "scorer": "A. Isak",
+        "team": "Group I winners",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 53.7,
+      "awayPossession": 46.3,
+      "homeShotsOnTarget": 6,
+      "awayShotsOnTarget": 4,
+      "homeTotalShots": 14,
+      "awayTotalShots": 9,
+      "homeCorners": 7,
+      "awayCorners": 4
+    }
+  },
+  "78": {
+    "homeScore": 1,
+    "awayScore": 3,
+    "goals": [
+      {
+        "minute": 9,
+        "injuryTime": null,
+        "scorer": "B. Saka",
+        "team": "Group E runners-up",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 27,
+        "injuryTime": null,
+        "scorer": "D. Undav",
+        "team": "Group I runners-up",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 58,
+        "injuryTime": null,
+        "scorer": "J. Musiala",
+        "team": "Group I runners-up",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 76,
+        "injuryTime": null,
+        "scorer": "K. Havertz",
+        "team": "Group I runners-up",
+        "type": "PENALTY"
+      }
+    ],
+    "stats": {
+      "homePossession": 42.8,
+      "awayPossession": 57.2,
+      "homeShotsOnTarget": 3,
+      "awayShotsOnTarget": 9,
+      "homeTotalShots": 9,
+      "awayTotalShots": 18,
+      "homeCorners": 3,
+      "awayCorners": 8
+    }
+  },
+  "79": {
+    "homeScore": 2,
+    "awayScore": 0,
+    "goals": [
+      {
+        "minute": 40,
+        "injuryTime": null,
+        "scorer": "T. Müller",
+        "team": "Group A winners",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 85,
+        "injuryTime": null,
+        "scorer": "K. Havertz",
+        "team": "Group A winners",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 60.3,
+      "awayPossession": 39.7,
+      "homeShotsOnTarget": 7,
+      "awayShotsOnTarget": 1,
+      "homeTotalShots": 16,
+      "awayTotalShots": 5,
+      "homeCorners": 8,
+      "awayCorners": 2
+    }
+  },
+  "80": {
+    "homeScore": 3,
+    "awayScore": 0,
+    "goals": [
+      {
+        "minute": 17,
+        "injuryTime": null,
+        "scorer": "C. Pulisic",
+        "team": "Group L winners",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 50,
+        "injuryTime": null,
+        "scorer": "F. Balogun",
+        "team": "Group L winners",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 88,
+        "injuryTime": null,
+        "scorer": "G. Reyna",
+        "team": "Group L winners",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 55.9,
+      "awayPossession": 44.1,
+      "homeShotsOnTarget": 8,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 17,
+      "awayTotalShots": 6,
+      "homeCorners": 7,
+      "awayCorners": 3
+    }
+  },
+  "81": {
+    "homeScore": 1,
+    "awayScore": 2,
+    "goals": [
+      {
+        "minute": 23,
+        "injuryTime": null,
+        "scorer": "W. McKennie",
+        "team": "Group D winners",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 49,
+        "injuryTime": null,
+        "scorer": "R. Yamal",
+        "team": "Group B/E/F/I/J third place",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 3,
+        "scorer": "P. Gavi",
+        "team": "Group B/E/F/I/J third place",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 46.1,
+      "awayPossession": 53.9,
+      "homeShotsOnTarget": 4,
+      "awayShotsOnTarget": 7,
+      "homeTotalShots": 11,
+      "awayTotalShots": 15,
+      "homeCorners": 4,
+      "awayCorners": 8
+    }
+  },
+  "82": {
+    "homeScore": 2,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 15,
+        "injuryTime": null,
+        "scorer": "I. Toney",
+        "team": "Group G winners",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 60,
+        "injuryTime": null,
+        "scorer": "V. Osimhen",
+        "team": "Group A/E/H/I/J third place",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 77,
+        "injuryTime": null,
+        "scorer": "B. Saka",
+        "team": "Group G winners",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 51.4,
+      "awayPossession": 48.6,
+      "homeShotsOnTarget": 6,
+      "awayShotsOnTarget": 4,
+      "homeTotalShots": 13,
+      "awayTotalShots": 10,
+      "homeCorners": 6,
+      "awayCorners": 5
+    }
+  },
+  "83": {
+    "homeScore": 1,
+    "awayScore": 1,
+    "shootoutScore": {
+      "home": 3,
+      "away": 4
+    },
+    "goals": [
+      {
+        "minute": 37,
+        "injuryTime": null,
+        "scorer": "R. Leão",
+        "team": "Group K runners-up",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 74,
+        "injuryTime": null,
+        "scorer": "J. Lukebakio",
+        "team": "Group L runners-up",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 50.2,
+      "awayPossession": 49.8,
+      "homeShotsOnTarget": 5,
+      "awayShotsOnTarget": 5,
+      "homeTotalShots": 12,
+      "awayTotalShots": 11,
+      "homeCorners": 5,
+      "awayCorners": 6
+    }
+  },
+  "84": {
+    "homeScore": 2,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 26,
+        "injuryTime": null,
+        "scorer": "N. Schlotterbeck",
+        "team": "Group H winners",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 55,
+        "injuryTime": null,
+        "scorer": "D. Kamada",
+        "team": "Group J runners-up",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 82,
+        "injuryTime": null,
+        "scorer": "K. Havertz",
+        "team": "Group H winners",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 54.6,
+      "awayPossession": 45.4,
+      "homeShotsOnTarget": 7,
+      "awayShotsOnTarget": 4,
+      "homeTotalShots": 15,
+      "awayTotalShots": 9,
+      "homeCorners": 7,
+      "awayCorners": 4
+    }
+  },
+  "85": {
+    "homeScore": 3,
+    "awayScore": 2,
+    "goals": [
+      {
+        "minute": 8,
+        "injuryTime": null,
+        "scorer": "L. Messi",
+        "team": "Group B winners",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 31,
+        "injuryTime": null,
+        "scorer": "V. van Dijk",
+        "team": "Group E/F/G/I/J third place",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 47,
+        "injuryTime": null,
+        "scorer": "L. Messi",
+        "team": "Group B winners",
+        "type": "PENALTY"
+      },
+      {
+        "minute": 63,
+        "injuryTime": null,
+        "scorer": "C. Gakpo",
+        "team": "Group E/F/G/I/J third place",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 89,
+        "injuryTime": null,
+        "scorer": "J. Álvarez",
+        "team": "Group B winners",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 57.3,
+      "awayPossession": 42.7,
+      "homeShotsOnTarget": 9,
+      "awayShotsOnTarget": 6,
+      "homeTotalShots": 18,
+      "awayTotalShots": 12,
+      "homeCorners": 8,
+      "awayCorners": 5
+    }
+  },
+  "86": {
+    "homeScore": 0,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 90,
+        "injuryTime": 2,
+        "scorer": "A. Isak",
+        "team": "Group H runners-up",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 47.8,
+      "awayPossession": 52.2,
+      "homeShotsOnTarget": 3,
+      "awayShotsOnTarget": 5,
+      "homeTotalShots": 10,
+      "awayTotalShots": 12,
+      "homeCorners": 4,
+      "awayCorners": 6
+    }
+  },
+  "87": {
+    "homeScore": 2,
+    "awayScore": 0,
+    "goals": [
+      {
+        "minute": 35,
+        "injuryTime": null,
+        "scorer": "B. Fernandes",
+        "team": "Group K winners",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 73,
+        "injuryTime": null,
+        "scorer": "D. Jota",
+        "team": "Group K winners",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 56.5,
+      "awayPossession": 43.5,
+      "homeShotsOnTarget": 6,
+      "awayShotsOnTarget": 2,
+      "homeTotalShots": 14,
+      "awayTotalShots": 6,
+      "homeCorners": 7,
+      "awayCorners": 3
+    }
+  },
+  "88": {
+    "homeScore": 2,
+    "awayScore": 2,
+    "shootoutScore": {
+      "home": 5,
+      "away": 4
+    },
+    "goals": [
+      {
+        "minute": 14,
+        "injuryTime": null,
+        "scorer": "F. Valverde",
+        "team": "Group D runners-up",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 42,
+        "injuryTime": null,
+        "scorer": "J. Musiala",
+        "team": "Group G runners-up",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 68,
+        "injuryTime": null,
+        "scorer": "L. Suárez",
+        "team": "Group D runners-up",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 90,
+        "injuryTime": 4,
+        "scorer": "K. Havertz",
+        "team": "Group G runners-up",
+        "type": "PENALTY"
+      }
+    ],
+    "stats": {
+      "homePossession": 45.6,
+      "awayPossession": 54.4,
+      "homeShotsOnTarget": 6,
+      "awayShotsOnTarget": 7,
+      "homeTotalShots": 13,
+      "awayTotalShots": 15,
+      "homeCorners": 5,
+      "awayCorners": 7
+    }
+  },
+  "89": {
+    "homeScore": 1,
+    "awayScore": 2,
+    "goals": [
+      {
+        "minute": 30,
+        "injuryTime": null,
+        "scorer": "K. Mbappé",
+        "team": "Winner Match 74",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 57,
+        "injuryTime": null,
+        "scorer": "V. Gyökeres",
+        "team": "Winner Match 77",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 84,
+        "injuryTime": null,
+        "scorer": "A. Isak",
+        "team": "Winner Match 77",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 52.1,
+      "awayPossession": 47.9,
+      "homeShotsOnTarget": 5,
+      "awayShotsOnTarget": 7,
+      "homeTotalShots": 13,
+      "awayTotalShots": 14,
+      "homeCorners": 5,
+      "awayCorners": 6
+    }
+  },
+  "90": {
+    "homeScore": 2,
+    "awayScore": 1,
+    "goals": [
+      {
+        "minute": 19,
+        "injuryTime": null,
+        "scorer": "A. Davies",
+        "team": "Winner Match 73",
+        "type": "NORMAL"
+      },
+      {
+        "minute": 50,
+        "injuryTime": null,
+        "scorer": "L. Messi",
+        "team": "Winner Match 75",
+        "type": "PENALTY"
+      },
+      {
+        "minute": 78,
+        "injuryTime": null,
+        "scorer": "C. Larin",
+        "team": "Winner Match 73",
+        "type": "NORMAL"
+      }
+    ],
+    "stats": {
+      "homePossession": 43.9,
+      "awayPossession": 56.1,
+      "homeShotsOnTarget": 5,
+      "awayShotsOnTarget": 6,
+      "homeTotalShots": 11,
+      "awayTotalShots": 14,
+      "homeCorners": 4,
+      "awayCorners": 7
+    }
   }
 }

@@ -31,8 +31,30 @@ const FINAL_ORDER = [104];
 export default function KnockoutBracket({ matches, queryStr = "" }: KnockoutBracketProps) {
   const [activeRoundIdx, setActiveRoundIdx] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const isProgrammaticScrollRef = useRef(false);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const tabsContainerRef = useRef<HTMLDivElement>(null);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStartRef.current) return;
+    const touch = e.changedTouches[0];
+    const diffX = touch.clientX - touchStartRef.current.x;
+    const diffY = touch.clientY - touchStartRef.current.y;
+
+    // Detect deliberate horizontal swipe (min 60px distance, horizontal is 1.5x vertical)
+    if (Math.abs(diffX) > 60 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+      if (diffX > 0) {
+        handlePrevRound();
+      } else {
+        handleNextRound();
+      }
+    }
+    touchStartRef.current = null;
+  };
 
   // Precompute scoreline predictions for all resolved matches (upcoming or completed)
   const predictionsMap = useMemo(() => {
@@ -68,12 +90,7 @@ export default function KnockoutBracket({ matches, queryStr = "" }: KnockoutBrac
   };
 
   const handleTabClick = (idx: number) => {
-    isProgrammaticScrollRef.current = true;
     setActiveRoundIdx(idx);
-
-    if (scrollTimeoutRef.current) {
-      clearTimeout(scrollTimeoutRef.current);
-    }
 
     if (containerRef.current) {
       const container = containerRef.current;
@@ -91,9 +108,17 @@ export default function KnockoutBracket({ matches, queryStr = "" }: KnockoutBrac
       }
     }
 
-    scrollTimeoutRef.current = setTimeout(() => {
-      isProgrammaticScrollRef.current = false;
-    }, 600);
+    if (tabsContainerRef.current) {
+      const tabsContainer = tabsContainerRef.current;
+      const activeButton = tabsContainer.children[idx] as HTMLElement;
+      if (activeButton) {
+        activeButton.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center"
+        });
+      }
+    }
   };
 
   const handlePrevRound = () => {
@@ -106,51 +131,7 @@ export default function KnockoutBracket({ matches, queryStr = "" }: KnockoutBrac
     handleTabClick(nextIdx);
   };
 
-  // Sync scroll position back to active tab (when user manual scrolls)
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
 
-    let scrollTimeout: NodeJS.Timeout | null = null;
-
-    const handleScroll = () => {
-      if (isProgrammaticScrollRef.current) return;
-
-      // If the container fits all columns without scrolling or is wide viewport,
-      // do not auto-change active tab focus.
-      if (container.offsetWidth > 768 || container.scrollWidth <= container.clientWidth) return;
-
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-
-      scrollTimeout = setTimeout(() => {
-        const containerWidth = container.offsetWidth;
-        const containerCenter = container.scrollLeft + containerWidth / 2;
-        const children = Array.from(container.children) as HTMLElement[];
-
-        let closestIdx = 0;
-        let minDistance = Infinity;
-
-        children.forEach((child, idx) => {
-          const childCenter = child.offsetLeft + child.offsetWidth / 2;
-          const distance = Math.abs(containerCenter - childCenter);
-          if (distance < minDistance) {
-            minDistance = distance;
-            closestIdx = idx;
-          }
-        });
-
-        setActiveRoundIdx(closestIdx);
-      }, 100); // 100ms debounce
-    };
-
-    container.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      container.removeEventListener("scroll", handleScroll);
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-    };
-  }, []);
 
   // Center active column on mount
   useEffect(() => {
@@ -173,7 +154,10 @@ export default function KnockoutBracket({ matches, queryStr = "" }: KnockoutBrac
           <ChevronLeft size={20} />
         </button>
 
-        <div className="flex items-center gap-1.5 sm:gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] py-1">
+        <div 
+          ref={tabsContainerRef}
+          className="flex items-center gap-1.5 sm:gap-3 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] py-1"
+        >
           {ROUNDS.map((r, idx) => (
             <button
               key={r.id}
@@ -203,7 +187,9 @@ export default function KnockoutBracket({ matches, queryStr = "" }: KnockoutBrac
       {/* ── Bracket Columns Display ── */}
       <div
         ref={containerRef}
-        className="flex gap-12 sm:gap-16 overflow-x-auto pb-8 pt-4 px-4 snap-x snap-mandatory scroll-smooth w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        className="flex gap-12 sm:gap-16 overflow-x-auto touch-pan-y pb-8 pt-4 px-4 scroll-smooth w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
       >
         {ROUNDS.map((round, rIdx) => {
           const roundMatches = getMatchesForRound(round.id);
@@ -213,7 +199,7 @@ export default function KnockoutBracket({ matches, queryStr = "" }: KnockoutBrac
             <div
               key={round.id}
               className={cn(
-                "snap-center min-w-[300px] sm:min-w-[320px] max-w-[350px] shrink-0 flex flex-col gap-6 items-center transition-all duration-300",
+                "min-w-[300px] sm:min-w-[320px] max-w-[350px] shrink-0 flex flex-col gap-6 items-center transition-all duration-300",
                 isActive 
                   ? "opacity-100 scale-100" 
                   : "opacity-35 scale-95 md:opacity-100 md:scale-100"

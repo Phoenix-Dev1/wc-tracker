@@ -409,3 +409,82 @@ export function getGoalLeaders(matches: ProcessedMatch[]): GoalLeader[] {
   return leaders;
 }
 
+/** Players ranked by number of penalty goals scored (type === "PENALTY"). */
+export function getPenaltyLeaders(matches: ProcessedMatch[]): GoalLeader[] {
+  const penaltyCounts: Record<string, { name: string; team: string; count: number }> = {};
+
+  matches.forEach((m) => {
+    if ((m.status === "COMPLETED" || m.status === "LIVE") && m.goals) {
+      m.goals.forEach((g) => {
+        if (g.type !== "PENALTY") return;
+        const key = `${g.scorer}_${g.team}`;
+        if (!penaltyCounts[key]) {
+          penaltyCounts[key] = { name: g.scorer, team: g.team, count: 0 };
+        }
+        penaltyCounts[key].count++;
+      });
+    }
+  });
+
+  const sortedList = Object.values(penaltyCounts).sort((a, b) => {
+    if (b.count !== a.count) return b.count - a.count;
+    return a.name.localeCompare(b.name);
+  });
+
+  const leaders: GoalLeader[] = [];
+  let currentRank = 1;
+  let prevCount = -1;
+
+  sortedList.forEach((item, idx) => {
+    if (idx > 0 && item.count < prevCount) currentRank = idx + 1;
+    leaders.push({ rank: currentRank, name: item.name, team: item.team, count: item.count });
+    prevCount = item.count;
+  });
+
+  return leaders;
+}
+
+export interface NationLeader {
+  rank: number;
+  /** Re-uses the "name" slot so the existing LeaderboardEntry UI works unchanged. */
+  name: string;
+  team: string;
+  count: number;
+}
+
+/**
+ * Teams ranked by total goals scored (own-goals excluded).
+ * Each entry has name === team so the shared row renderer works without changes.
+ */
+export function getTopNations(matches: ProcessedMatch[]): NationLeader[] {
+  const teamGoals: Record<string, number> = {};
+
+  matches.forEach((m) => {
+    if ((m.status === "COMPLETED" || m.status === "LIVE") && m.goals) {
+      m.goals.forEach((g) => {
+        if (g.type === "OWN") return;
+        teamGoals[g.team] = (teamGoals[g.team] ?? 0) + 1;
+      });
+    }
+  });
+
+  const sortedTeams = Object.entries(teamGoals)
+    .map(([team, count]) => ({ team, count }))
+    .sort((a, b) => {
+      if (b.count !== a.count) return b.count - a.count;
+      return a.team.localeCompare(b.team);
+    });
+
+  const leaders: NationLeader[] = [];
+  let currentRank = 1;
+  let prevCount = -1;
+
+  sortedTeams.forEach((item, idx) => {
+    if (idx > 0 && item.count < prevCount) currentRank = idx + 1;
+    leaders.push({ rank: currentRank, name: item.team, team: item.team, count: item.count });
+    prevCount = item.count;
+  });
+
+  return leaders;
+}
+
