@@ -192,7 +192,7 @@ export const getProcessedMatches = (systemTimeStr: string, rawFixturesInput?: Fi
       formattedDateJerusalem: formatJerusalemDate(fixture.kickoffUtc),
     };
   });
-  return resolveKnockoutPlaceholders(processed, systemTimeStr, rawFixturesInput);
+  return resolveKnockoutPlaceholders(processed, systemTimeStr);
 };
 
 export const getNextThreeUpcoming = (systemTimeStr: string, rawFixturesInput?: Fixture[]): ProcessedMatch[] => {
@@ -206,8 +206,7 @@ export const getNextThreeUpcoming = (systemTimeStr: string, rawFixturesInput?: F
 // Helper function to resolve placeholders dynamically based on simulation time
 export const resolveKnockoutPlaceholders = (
   matches: ProcessedMatch[],
-  systemTimeStr: string,
-  _rawFixturesInput?: Fixture[]
+  systemTimeStr: string
 ): ProcessedMatch[] => {
   const groupLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
   const groupStandings: Record<string, StandingGroup | null> = {};

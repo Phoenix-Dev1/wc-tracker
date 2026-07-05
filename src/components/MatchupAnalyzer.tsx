@@ -28,7 +28,6 @@ import {
   generateScorelinePredictions,
   getTeamInfo,
   isPlaceholderTeam,
-  ScorelinePrediction,
 } from "@/data/worldcup";
 
 /* ─────────────────────────────────────────────────────────────────────────────
